@@ -1,0 +1,8 @@
+{
+    "result": "FAIL",
+    "unity": "6000.4.12f1",
+    "checks": [
+        "Scene HUD is wired"
+    ],
+    "failure": "System.Exception: Initial snapshot matches Mage and LevelRange\r\n  at HudRegressionRunner.Require (System.Boolean condition, System.String name) [0x00016] in C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Tests\\HudRegressionRunner.cs:254 \r\n  at HudRegressionRunner+<Checks>d__13.MoveNext () [0x0028e] in C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Tests\\HudRegressionRunner.cs:109 \r\n  at HudRegressionRunner+<Run>d__12.MoveNext () [0x00060] in C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Tests\\HudRegressionRunner.cs:55 "
+}

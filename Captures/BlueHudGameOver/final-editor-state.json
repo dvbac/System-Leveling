@@ -1,0 +1,20 @@
+﻿{
+    "recentErrorCount":  0,
+    "recentErrors":  [
+
+                     ],
+    "scene":  "Assets/Scenes/SampleScene.unity",
+    "sceneDirty":  false,
+    "editor":  {
+                   "isPlaying":  false,
+                   "isPaused":  false,
+                   "isCompiling":  false,
+                   "timeSinceStartup":  2517.1120431,
+                   "unityVersion":  "6000.4.12f1",
+                   "platform":  "WindowsEditor"
+               },
+    "stop":  {
+                 "success":  true,
+                 "mode":  "stopped"
+             }
+}

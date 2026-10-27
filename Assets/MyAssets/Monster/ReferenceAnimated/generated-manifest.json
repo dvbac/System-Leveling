@@ -1,0 +1,42 @@
+{
+  "frame_size": 64,
+  "pixels_per_unit": 48,
+  "pivot": [
+    0.5,
+    0.15625
+  ],
+  "sources_sha256": {
+    "Slime.png": "d701d294bf8a55976f46da7284a2bc4d4a4782ed4a8a78be3b3dbb54272f2f01",
+    "Skeleton.png": "17f3e4d9fb7ef67fd9078b2fe070546091b612a69707e3201b73c86ec2940cbc",
+    "wolf.png": "20442c3efd729d4040f7f449c922db4fd4b9784824e0ca6b32b118101b6c53b8",
+    "Spider.png": "112ede2f59e9c9b0d6ea15d19330e18c7b4631fa9bd81fc1eec49b78aa98359c"
+  },
+  "states": {
+    "Idle": {
+      "frames": 8,
+      "fps": 8,
+      "loop": true
+    },
+    "Move": {
+      "frames": 8,
+      "fps": 12,
+      "loop": true
+    },
+    "Hit": {
+      "frames": 4,
+      "fps": 12,
+      "loop": false
+    },
+    "Die": {
+      "frames": 8,
+      "fps": 10,
+      "loop": false
+    }
+  },
+  "monsters": [
+    "Slime",
+    "Skeleton",
+    "Wolf",
+    "Spider"
+  ]
+}

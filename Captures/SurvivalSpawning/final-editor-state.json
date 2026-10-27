@@ -1,0 +1,18 @@
+{
+  "capturedUtc": "2026-10-22T04:49:00Z",
+  "unityVersion": "6000.4.12f1",
+  "instanceId": "SystemLeveling_BC4E0716",
+  "editorMode": "edit",
+  "compiling": false,
+  "scenePath": "Assets/Scenes/SampleScene.unity",
+  "sceneDirtyAfterSave": false,
+  "sceneSaveChangedBytes": false,
+  "suites": [
+    { "name": "survival-horde", "result": "PASS", "checks": 140, "utc": "2026-10-22T04:47:27Z", "file": "Captures/SurvivalSpawning/regression.json" },
+    { "name": "reference-enemy", "result": "PASS", "checks": 51, "utc": "2026-10-22T04:47:35Z", "file": "Captures/ReferenceAnimation/runtime-regression.json" },
+    { "name": "hud-levelup", "result": "PASS", "checks": 42, "utc": "2026-10-22T04:47:35Z", "file": "Captures/HudLevelUp/regression.json" },
+    { "name": "gameover-restart", "result": "PASS", "checks": 44, "utc": "2026-10-22T04:47:42Z", "file": "Captures/BlueHudGameOver/regression.json" }
+  ],
+  "compileJob": "c9027bda",
+  "newConsoleErrors": 0
+}

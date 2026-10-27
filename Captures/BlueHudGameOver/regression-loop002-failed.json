@@ -1,0 +1,9 @@
+{
+    "result": "FAIL",
+    "utc": "2026-10-22T03:34:30.8418493Z",
+    "checks": [
+        "Scene has Player, blue HUD, level-up and Game Over references"
+    ],
+    "failure": "System.Exception: Fresh run starts alive with gameplay running\r\n  at GameOverRegressionRunner.Require (System.Boolean ok, System.String message) [0x00016] in C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Tests\\GameOverRegressionRunner.cs:199 \r\n  at GameOverRegressionRunner+<Tests>d__11.MoveNext () [0x000ee] in C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Tests\\GameOverRegressionRunner.cs:69 \r\n  at GameOverRegressionRunner+<Run>d__10.MoveNext () [0x00075] in C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Tests\\GameOverRegressionRunner.cs:49 ",
+    "reloads": 0
+}

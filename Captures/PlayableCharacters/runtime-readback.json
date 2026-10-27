@@ -1,0 +1,236 @@
+[
+    {
+        "character":  "Knight",
+        "result":  "PASS",
+        "properties":  [
+                           {
+                               "name":  "IsDead",
+                               "type":  "Boolean",
+                               "fullType":  "System.Boolean",
+                               "value":  "false",
+                               "canWrite":  true
+                           },
+                           {
+                               "name":  "MaxHealth",
+                               "type":  "Single",
+                               "fullType":  "System.Single",
+                               "value":  "120",
+                               "canWrite":  true
+                           },
+                           {
+                               "name":  "didStart",
+                               "type":  "Boolean",
+                               "fullType":  "System.Boolean",
+                               "value":  "true",
+                               "canWrite":  false
+                           },
+                           {
+                               "name":  "didAwake",
+                               "type":  "Boolean",
+                               "fullType":  "System.Boolean",
+                               "value":  "true",
+                               "canWrite":  false
+                           }
+                       ],
+        "fields":  [
+                       {
+                           "name":  "characterData",
+                           "type":  "CharacterScriptableObject",
+                           "fullType":  "CharacterScriptableObject",
+                           "value":  "Knight",
+                           "isSerializable":  true
+                       },
+                       {
+                           "name":  "currentHealth",
+                           "type":  "Single",
+                           "fullType":  "System.Single",
+                           "value":  "120",
+                           "isSerializable":  true
+                       },
+                       {
+                           "name":  "currentRecovery",
+                           "type":  "Single",
+                           "fullType":  "System.Single",
+                           "value":  "0.4",
+                           "isSerializable":  true
+                       },
+                       {
+                           "name":  "currentMoveSpeed",
+                           "type":  "Single",
+                           "fullType":  "System.Single",
+                           "value":  "2.8",
+                           "isSerializable":  true
+                       },
+                       {
+                           "name":  "currentMagnet",
+                           "type":  "Single",
+                           "fullType":  "System.Single",
+                           "value":  "1.4",
+                           "isSerializable":  true
+                       },
+                       {
+                           "name":  "experienceCap",
+                           "type":  "Int32",
+                           "fullType":  "System.Int32",
+                           "value":  "100",
+                           "isSerializable":  true
+                       }
+                   ]
+    },
+    {
+        "character":  "Archer",
+        "result":  "PASS",
+        "properties":  [
+                           {
+                               "name":  "IsDead",
+                               "type":  "Boolean",
+                               "fullType":  "System.Boolean",
+                               "value":  "false",
+                               "canWrite":  true
+                           },
+                           {
+                               "name":  "MaxHealth",
+                               "type":  "Single",
+                               "fullType":  "System.Single",
+                               "value":  "80",
+                               "canWrite":  true
+                           },
+                           {
+                               "name":  "didStart",
+                               "type":  "Boolean",
+                               "fullType":  "System.Boolean",
+                               "value":  "true",
+                               "canWrite":  false
+                           },
+                           {
+                               "name":  "didAwake",
+                               "type":  "Boolean",
+                               "fullType":  "System.Boolean",
+                               "value":  "true",
+                               "canWrite":  false
+                           }
+                       ],
+        "fields":  [
+                       {
+                           "name":  "characterData",
+                           "type":  "CharacterScriptableObject",
+                           "fullType":  "CharacterScriptableObject",
+                           "value":  "Archer",
+                           "isSerializable":  true
+                       },
+                       {
+                           "name":  "currentHealth",
+                           "type":  "Single",
+                           "fullType":  "System.Single",
+                           "value":  "80",
+                           "isSerializable":  true
+                       },
+                       {
+                           "name":  "currentRecovery",
+                           "type":  "Single",
+                           "fullType":  "System.Single",
+                           "value":  "0.15",
+                           "isSerializable":  true
+                       },
+                       {
+                           "name":  "currentMoveSpeed",
+                           "type":  "Single",
+                           "fullType":  "System.Single",
+                           "value":  "3.6",
+                           "isSerializable":  true
+                       },
+                       {
+                           "name":  "currentMagnet",
+                           "type":  "Single",
+                           "fullType":  "System.Single",
+                           "value":  "1.8",
+                           "isSerializable":  true
+                       },
+                       {
+                           "name":  "experienceCap",
+                           "type":  "Int32",
+                           "fullType":  "System.Int32",
+                           "value":  "100",
+                           "isSerializable":  true
+                       }
+                   ]
+    },
+    {
+        "character":  "Hunter",
+        "result":  "PASS",
+        "properties":  [
+                           {
+                               "name":  "IsDead",
+                               "type":  "Boolean",
+                               "fullType":  "System.Boolean",
+                               "value":  "false",
+                               "canWrite":  true
+                           },
+                           {
+                               "name":  "MaxHealth",
+                               "type":  "Single",
+                               "fullType":  "System.Single",
+                               "value":  "100",
+                               "canWrite":  true
+                           },
+                           {
+                               "name":  "didStart",
+                               "type":  "Boolean",
+                               "fullType":  "System.Boolean",
+                               "value":  "true",
+                               "canWrite":  false
+                           },
+                           {
+                               "name":  "didAwake",
+                               "type":  "Boolean",
+                               "fullType":  "System.Boolean",
+                               "value":  "true",
+                               "canWrite":  false
+                           }
+                       ],
+        "fields":  [
+                       {
+                           "name":  "characterData",
+                           "type":  "CharacterScriptableObject",
+                           "fullType":  "CharacterScriptableObject",
+                           "value":  "Hunter",
+                           "isSerializable":  true
+                       },
+                       {
+                           "name":  "currentHealth",
+                           "type":  "Single",
+                           "fullType":  "System.Single",
+                           "value":  "100",
+                           "isSerializable":  true
+                       },
+                       {
+                           "name":  "currentRecovery",
+                           "type":  "Single",
+                           "fullType":  "System.Single",
+                           "value":  "0.25",
+                           "isSerializable":  true
+                       },
+                       {
+                           "name":  "currentMoveSpeed",
+                           "type":  "Single",
+                           "fullType":  "System.Single",
+                           "value":  "3.2",
+                           "isSerializable":  true
+                       },
+                       {
+                           "name":  "currentMagnet",
+                           "type":  "Single",
+                           "fullType":  "System.Single",
+                           "value":  "2",
+                           "isSerializable":  true
+                       },
+                       {
+                           "name":  "experienceCap",
+                           "type":  "Int32",
+                           "fullType":  "System.Int32",
+                           "value":  "100",
+                           "isSerializable":  true
+                       }
+                   ]
+    }
+]

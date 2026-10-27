@@ -1,0 +1,32 @@
+[
+    {
+        "source":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\HE194657\\Character\\Knight\\Idle.png",
+        "copy":  "Assets/MyAssets/Character/Playable/Knight/Idle.png",
+        "sha256":  "F81058DC8B7A4EC95D675CF8CFC9C80D28B7BAC037536DD8E3F80F47A45B9946"
+    },
+    {
+        "source":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\HE194657\\Character\\Knight\\walk.png",
+        "copy":  "Assets/MyAssets/Character/Playable/Knight/Walk.png",
+        "sha256":  "21641C98190062C3BDB02B1016DA7AA4B7317692696B56B969310F1EAA46E805"
+    },
+    {
+        "source":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\HE194657\\Character\\Archer\\Idle.png",
+        "copy":  "Assets/MyAssets/Character/Playable/Archer/Idle.png",
+        "sha256":  "4B54406EA96E7ED8FC0CAB4E8144285C4DEEF5CFAA1A0D6213208137C35DFC5A"
+    },
+    {
+        "source":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\HE194657\\Character\\Archer\\Walk.png",
+        "copy":  "Assets/MyAssets/Character/Playable/Archer/Walk.png",
+        "sha256":  "934FB9370FCE08396072C0EF13D2C71BD83FEC9B90BE864293D21FCF8F61EB4A"
+    },
+    {
+        "source":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\HE194657\\Character\\Hunter\\Idle.png",
+        "copy":  "Assets/MyAssets/Character/Playable/Hunter/Idle.png",
+        "sha256":  "4C42E99E6C75709D7EAC039AE7AAE06BD976E93BA319AC7C9042EB59446F50C2"
+    },
+    {
+        "source":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\HE194657\\Character\\Hunter\\Walk.png",
+        "copy":  "Assets/MyAssets/Character/Playable/Hunter/Walk.png",
+        "sha256":  "FB866822DD2229FB72DBD5DDBC077DD3A1DF81DC7E87C63F147EEA4738DE8CFA"
+    }
+]

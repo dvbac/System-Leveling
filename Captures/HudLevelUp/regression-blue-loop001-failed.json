@@ -1,0 +1,13 @@
+{
+    "result": "FAIL",
+    "unity": "6000.4.12f1",
+    "checks": [
+        "Scene HUD is wired",
+        "Initial snapshot matches Mage and LevelRange",
+        "Damage updates HUD",
+        "Healing clamps and updates HUD",
+        "Recovery still works",
+        "Gameplay scene contains the configured health potion"
+    ],
+    "failure": "System.Exception: Scene potion is collected by player trigger and heals\r\n  at HudRegressionRunner.Require (System.Boolean condition, System.String name) [0x00016] in C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Tests\\HudRegressionRunner.cs:251 \r\n  at HudRegressionRunner+<Checks>d__13.MoveNext () [0x004c9] in C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Tests\\HudRegressionRunner.cs:129 \r\n  at HudRegressionRunner+<Run>d__12.MoveNext () [0x00060] in C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Tests\\HudRegressionRunner.cs:55 "
+}

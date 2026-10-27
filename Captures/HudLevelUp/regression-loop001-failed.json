@@ -1,0 +1,12 @@
+{
+    "result": "FAIL",
+    "unity": "6000.4.12f1",
+    "checks": [
+        "Scene HUD is wired",
+        "Initial snapshot matches Mage and LevelRange",
+        "Damage updates HUD",
+        "Healing clamps and updates HUD",
+        "Recovery still works"
+    ],
+    "failure": "System.NullReferenceException: Object reference not set to an instance of an object\r\n  at HudRegressionRunner+<Checks>d__10.MoveNext () [0x00444] in C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Tests\\HudRegressionRunner.cs:117 \r\n  at HudRegressionRunner+<Run>d__9.MoveNext () [0x0004f] in C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Tests\\HudRegressionRunner.cs:50 "
+}

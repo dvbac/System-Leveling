@@ -1,0 +1,7 @@
+{
+    "result": "FAIL",
+    "checks": [
+        "Gameplay player exists"
+    ],
+    "failure": "System.InvalidOperationException: Slime: actual EnemySpawner created prefab\r\n  at ReferenceEnemyRegression.Check (System.Boolean condition, System.String label) [0x00016] in C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Tests\\ReferenceEnemyRegression.cs:162 \r\n  at ReferenceEnemyRegression+<Checks>d__6.MoveNext () [0x003d2] in C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Tests\\ReferenceEnemyRegression.cs:104 \r\n  at ReferenceEnemyRegression+<Run>d__5.MoveNext () [0x0006f] in C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Tests\\ReferenceEnemyRegression.cs:38 "
+}

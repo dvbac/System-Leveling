@@ -1,0 +1,13 @@
+{
+    "result": "FAIL",
+    "utc": "2026-10-22T03:28:21.0050875Z",
+    "checks": [
+        "Scene has Player, blue HUD, level-up and Game Over references",
+        "Fresh run starts alive with gameplay running",
+        "4:3 evidence uses actual 1280x960 Game View",
+        "Level-up pause still works before death",
+        "Earned upgrade changes this run only"
+    ],
+    "failure": "System.Exception: Lethal damage emits death once and opens Game Over\r\n  at GameOverRegressionRunner.Require (System.Boolean ok, System.String message) [0x00016] in C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Tests\\GameOverRegressionRunner.cs:196 \r\n  at GameOverRegressionRunner+<Tests>d__11.MoveNext () [0x00419] in C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Tests\\GameOverRegressionRunner.cs:105 \r\n  at GameOverRegressionRunner+<Run>d__10.MoveNext () [0x00075] in C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Tests\\GameOverRegressionRunner.cs:49 ",
+    "reloads": 0
+}

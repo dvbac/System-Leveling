@@ -1,0 +1,10 @@
+[
+    {
+        "path":  "Assets/Scenes/SampleScene.unity",
+        "sha256":  "250B544E8AB04127FDCEC46FA4F35168ACD320D9E0312260CE088B6F221DA49D"
+    },
+    {
+        "path":  "Assets/Scriptable Object/Character/Mage.asset",
+        "sha256":  "F7A2E8C6FD8B7441E0673D4D68FC2D914BC5E2C493D86587436ECC34D8B72EC7"
+    }
+]
