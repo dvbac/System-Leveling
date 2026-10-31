@@ -1,0 +1,17 @@
+[
+  {
+    "character": "Archer",
+    "unchangedOriginalNonTransformSections": 12,
+    "result": "PASS"
+  },
+  {
+    "character": "Hunter",
+    "unchangedOriginalNonTransformSections": 12,
+    "result": "PASS"
+  },
+  {
+    "character": "Knight",
+    "unchangedOriginalNonTransformSections": 12,
+    "result": "PASS"
+  }
+]

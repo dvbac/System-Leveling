@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class ProjectileWeaponBehaviour : MonoBehaviour
 {
@@ -12,6 +13,9 @@ public class ProjectileWeaponBehaviour : MonoBehaviour
     protected float currentDamage;
     protected float currentSpeed;
     protected int currentPierce;
+    private readonly HashSet<int> hitTargets = new HashSet<int>();
+    public float CurrentDamage => currentDamage;
+    public float CurrentSpeed => currentSpeed;
 
     protected virtual void Awake()
     {
@@ -39,6 +43,19 @@ public class ProjectileWeaponBehaviour : MonoBehaviour
         direction = dir.normalized;
     }
 
+    public void InitializeShot(WeaponScriptableObject source, PlayerStats owner, Vector3 dir, float damageFactor, float sizeFactor)
+    {
+        if (source == null) { Destroy(gameObject); return; }
+        weaponData = source;
+        currentDamage = WeaponScriptableObject.Safe(source.Damage, 0f) * (owner != null ? owner.DamageMultiplier : 1f) * WeaponScriptableObject.Safe(damageFactor, 1f);
+        currentSpeed = WeaponScriptableObject.Safe(source.Speed, 0f);
+        currentPierce = Mathf.Max(1, source.Pierce);
+        transform.localScale *= WeaponScriptableObject.Safe(sizeFactor, 1f);
+        hitTargets.Clear();
+        Initialize(dir);
+        transform.right = direction;
+    }
+
     public void ApplyOwnerStats(PlayerStats player)
     {
         if (weaponData != null)
@@ -60,6 +77,7 @@ public class ProjectileWeaponBehaviour : MonoBehaviour
 
         if (enemy != null)
         {
+            if (enemy.IsDead || !hitTargets.Add(enemy.GetInstanceID())) return;
             enemy.TakeDamage(currentDamage);
             ReducePierce();
             return;
@@ -70,6 +88,7 @@ public class ProjectileWeaponBehaviour : MonoBehaviour
 
         if (breakable != null)
         {
+            if (!hitTargets.Add(breakable.GetInstanceID())) return;
             breakable.TakeDamage(currentDamage);
             ReducePierce();
         }

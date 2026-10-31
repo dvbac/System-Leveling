@@ -1,0 +1,9 @@
+{
+    "result": "PASS",
+    "checks": [
+        "SetPrefabs: different counts, rebuild without duplicates, invalid input and scene instances rejected, 19-item vertical grid scrolling",
+        "(1920, 1080): compact circles visible; hover/focus only preview; character click advances; weapon submit confirms; raycasts and text fit",
+        "(1024, 768): compact circles visible; hover/focus only preview; character click advances; weapon submit confirms; raycasts and text fit"
+    ],
+    "failure": ""
+}

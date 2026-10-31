@@ -1,0 +1,15 @@
+{
+    "result": "FAIL",
+    "utc": "2026-10-29T05:29:41.4079941Z",
+    "checks": [
+        "Loaded a clean gameplay scene baseline",
+        "Inspector contains the four approved survival phase boundaries",
+        "Inspector contains approved normal spawn cadence and batches",
+        "Inspector exposes approved two-layer probability parameters",
+        "Inspector contains separate normal100/Horde30 caps and 10-20/4-frame Horde preset",
+        "Scene references active camera and actual ground Tilemap",
+        "Phase lookup handles exact boundaries",
+        "Phase order is not required; future-only phases do not unlock early"
+    ],
+    "failure": "System.Exception: Normal enemy pools unlock only at configured phases\r\n  at SurvivalSpawnRegression.Check (System.Boolean condition, System.String label) [0x00016] in C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Tests\\SurvivalSpawnRegression.cs:360 \r\n  at SurvivalSpawnRegression.CheckPureLogic () [0x000f7] in C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Tests\\SurvivalSpawnRegression.cs:235 \r\n  at SurvivalSpawnRegression+<Tests>d__22.MoveNext () [0x001b4] in C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Tests\\SurvivalSpawnRegression.cs:96 \r\n  at SurvivalSpawnRegression+<Run>d__21.MoveNext () [0x0009a] in C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Tests\\SurvivalSpawnRegression.cs:57 "
+}

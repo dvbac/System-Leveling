@@ -112,7 +112,14 @@ public class GameOverRegressionRunner : MonoBehaviour
         for (int i = 0; i < names.Length; i++)
         {
             GameObject prefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefab/" + names[i] + ".prefab");
+            bool syntheticLegacy = prefab == null && i == 0;
+            if (syntheticLegacy) prefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefab/ReferenceEnemies/Slime.prefab");
             GameObject enemy = Instantiate(prefab, player.transform.position + new Vector3(-4 + i * 2, 4, 0), Quaternion.identity);
+            if (syntheticLegacy)
+            {
+                DestroyImmediate(enemy.GetComponent<EnemyAnimation>());
+                names[i] = "Legacy Slime (without EnemyAnimation)";
+            }
             enemies.Add(enemy.GetComponent<Enemy>());
         }
         GameObject marker = new GameObject("Previous Run Marker");
@@ -222,7 +229,7 @@ public class GameOverRegressionRunner : MonoBehaviour
 
     private static T Field<T>(object target, string name) => (T)target.GetType().GetField(name, Flags).GetValue(target);
     private void Require(bool ok, string message) { if (!ok) throw new Exception(message); checks.Add(message); }
-    private void Loaded(Scene scene, LoadSceneMode mode) { if (scene.name == "SampleScene") loads++; }
+    private void Loaded(Scene scene, LoadSceneMode mode) { if (scene.name == "SampleScene") { GameplayRegressionBaseline.Prepare(); loads++; } }
     private static string SnapshotData()
     {
         string result = "";

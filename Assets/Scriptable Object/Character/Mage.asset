@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1663ac9003713ce46861cb5ff9583e45, type: 3}
   m_Name: Mage
   m_EditorClassIdentifier: Assembly-CSharp::CharacterScriptableObject
-  startingWeapon: {fileID: 0}
+  startingWeapon: {fileID: 343300575173549981, guid: 31c22699d8f19504f8e12cdefb592673, type: 3}
   maxHealth: 20
   recovery: 0
   moveSpeed: 3

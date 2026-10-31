@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -232,8 +233,20 @@ public class SurvivalSpawnRegression : MonoBehaviour
         Check(SpawnSelection.PhaseAt(phases, 29.99f) == phases[0] && SpawnSelection.PhaseAt(phases, 30) == phases[1] && SpawnSelection.PhaseAt(phases, 60) == phases[2] && SpawnSelection.PhaseAt(phases, 120) == phases[3], "Phase lookup handles exact boundaries");
         List<SpawnPhase> shuffled = new List<SpawnPhase> {phases[3], phases[1], phases[0], phases[2]};
         Check(SpawnSelection.PhaseAt(shuffled, 90) == phases[2] && SpawnSelection.PhaseAt(new List<SpawnPhase> {phases[1]}, 0) == null, "Phase order is not required; future-only phases do not unlock early");
-        Check(phases[0].enemies.Count == 2 && phases[1].enemies.Count == 3 && phases[2].enemies.Count == 4 && phases[3].enemies.Count == 5, "Normal enemy pools unlock only at configured phases");
-        GameObject a = phases[0].enemies[0].prefab, b = phases[0].enemies[1].prefab;
+        string[] unlocks = { "Slime", "Skeleton", "Spider", "Wolf" };
+        HashSet<GameObject> expected = new HashSet<GameObject>();
+        GameObject retiredSlime = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefab/Blue Slime.prefab");
+        if (retiredSlime != null) expected.Add(retiredSlime);
+        bool correctUnlocks = true;
+        for (int i = 0; i < unlocks.Length; i++)
+        {
+            expected.Add(AssetDatabase.LoadAssetAtPath<GameObject>($"Assets/Prefab/ReferenceEnemies/{unlocks[i]}.prefab"));
+            correctUnlocks &= expected.SetEquals(phases[i].enemies.Where(entry => entry != null && entry.IsUsable).Select(entry => entry.prefab));
+        }
+        Check(correctUnlocks, "Normal enemy pools unlock only at configured phases (retired assets excluded)");
+        // Keep weighted boundary fixtures independent of user-edited scene pools or retired prefabs.
+        GameObject a = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefab/ReferenceEnemies/Slime.prefab");
+        GameObject b = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefab/ReferenceEnemies/Skeleton.prefab");
         List<WeightedEnemySpawn> pool = new List<WeightedEnemySpawn> {new WeightedEnemySpawn(null, 99), new WeightedEnemySpawn(a, 0), new WeightedEnemySpawn(a, 1), new WeightedEnemySpawn(b, 3)};
         Check(SpawnSelection.Pick(pool, 0) == a && SpawnSelection.Pick(pool, 0.249f) == a && SpawnSelection.Pick(pool, 0.25f) == b && SpawnSelection.Pick(pool, 1) == b, "Weighted picker obeys cumulative boundaries and ignores null/zero entries");
         Check(SpawnSelection.Pick(new List<WeightedEnemySpawn> {new WeightedEnemySpawn(a, float.NaN), new WeightedEnemySpawn(b, -1)}, 0) == null, "Invalid weighted pools return no prefab without infinite retries");
@@ -356,7 +369,7 @@ public class SurvivalSpawnRegression : MonoBehaviour
     private static T Get<T>(object target, string name) => (T)target.GetType().GetField(name, Fields).GetValue(target);
     private static void Set(object target, string name, object value) => target.GetType().GetField(name, Fields).SetValue(target, value);
     private void Check(bool condition, string label) { if (!condition) throw new Exception(label); checks.Add(label); }
-    private void OnLoaded(Scene scene, LoadSceneMode mode) { loaded++; }
+    private void OnLoaded(Scene scene, LoadSceneMode mode) { GameplayRegressionBaseline.Prepare(); loaded++; }
     private void OnLog(string message, string stack, LogType type) { if (message.StartsWith("[Spawn")) trace.Add(type + ": " + message); }
     private static string Snapshot()
     {

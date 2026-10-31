@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1663ac9003713ce46861cb5ff9583e45, type: 3}
   m_Name: Knight
   m_EditorClassIdentifier: Assembly-CSharp::CharacterScriptableObject
-  startingWeapon: {fileID: 0}
+  startingWeapon: {fileID: 9218329595843393466, guid: a30d23a3c73590d4a9c897b14db3391f, type: 3}
   maxHealth: 120
   recovery: 0.4
   moveSpeed: 2.8

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1663ac9003713ce46861cb5ff9583e45, type: 3}
   m_Name: Archer
   m_EditorClassIdentifier: Assembly-CSharp::CharacterScriptableObject
-  startingWeapon: {fileID: 0}
+  startingWeapon: {fileID: 6457568805044639683, guid: 7bb5c6d34fe1cf94bb9ef60a22eea46d, type: 3}
   maxHealth: 80
   recovery: 0.15
   moveSpeed: 3.6

@@ -106,7 +106,9 @@ public class LevelUpSelection : MonoBehaviour
 
     private void PresentChoices()
     {
-        UpgradeKind[] pool = { UpgradeKind.Damage, UpgradeKind.MoveSpeed, UpgradeKind.Magnet, UpgradeKind.Vitality };
+        UpgradeKind[] pool = player.HasRangedWeapon
+            ? new[] { UpgradeKind.Damage, UpgradeKind.MoveSpeed, UpgradeKind.Magnet, UpgradeKind.Vitality, UpgradeKind.Ammo, UpgradeKind.Reload }
+            : new[] { UpgradeKind.Damage, UpgradeKind.MoveSpeed, UpgradeKind.Magnet, UpgradeKind.Vitality };
         for (int i = 0; i < choices.Length; i++)
         {
             int pick = Random.Range(i, pool.Length);
@@ -161,6 +163,8 @@ public class LevelUpSelection : MonoBehaviour
             case UpgradeKind.Damage: return "POWER";
             case UpgradeKind.MoveSpeed: return "SWIFTNESS";
             case UpgradeKind.Magnet: return "ATTRACTION";
+            case UpgradeKind.Ammo: return "CAPACITY";
+            case UpgradeKind.Reload: return "RECHARGE";
             default: return "VITALITY";
         }
     }
@@ -172,6 +176,8 @@ public class LevelUpSelection : MonoBehaviour
             case UpgradeKind.Damage: return "+10% DAMAGE\n\nStronger sword strikes\nand magic projectiles.";
             case UpgradeKind.MoveSpeed: return "+10% MOVE SPEED\n\nStay one step ahead\nof the approaching horde.";
             case UpgradeKind.Magnet: return "+20% PICKUP RANGE\n\nDraw experience closer.\nLeave nothing behind.";
+            case UpgradeKind.Ammo: return "+1 AMMO CAPACITY\n\nCrossbow: higher charge ceiling\nand a stronger maximum shot.";
+            case UpgradeKind.Reload: return "+RELOAD SPEED\n\nCrossbow also reaches\nfull charge sooner.";
             default: return "+20 MAX HEALTH\n\nRecover 20 health now.\nEndure the next battle.";
         }
     }
@@ -183,6 +189,8 @@ public class LevelUpSelection : MonoBehaviour
             case UpgradeKind.Damage: return "ATK";
             case UpgradeKind.MoveSpeed: return "SPD";
             case UpgradeKind.Magnet: return "EXP";
+            case UpgradeKind.Ammo: return "AMMO";
+            case UpgradeKind.Reload: return "RLD";
             default: return "HP";
         }
     }

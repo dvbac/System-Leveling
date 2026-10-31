@@ -165,11 +165,14 @@ public class ReferenceEnemyRegression : MonoBehaviour
             yield return null;
         }
         var legacyPrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefab/Blue Slime.prefab");
+        bool syntheticLegacy = legacyPrefab == null;
+        if (syntheticLegacy) legacyPrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefab/ReferenceEnemies/Slime.prefab");
         var legacy = Object.Instantiate(legacyPrefab, anchor, Quaternion.identity, sandbox.transform);
+        if (syntheticLegacy) Object.DestroyImmediate(legacy.GetComponent<EnemyAnimation>());
         legacy.GetComponent<DropRateManager>().drops.Clear();
         legacy.GetComponent<EnemyStats>().Kill();
         yield return null;
-        Check(legacy == null, "Legacy Blue Slime without EnemyAnimation retains immediate destruction");
+        Check(legacy == null, "Legacy enemy without EnemyAnimation retains immediate destruction");
     }
 
     private void Check(bool condition, string label)
@@ -178,7 +181,7 @@ public class ReferenceEnemyRegression : MonoBehaviour
         passed.Add(label);
     }
 
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode) => baselineLoaded = true;
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode) { GameplayRegressionBaseline.Prepare(); baselineLoaded = true; }
 
     [Serializable]
     private class Report { public string result; public string[] checks; public string failure; }

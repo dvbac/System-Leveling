@@ -1,6 +1,6 @@
 {
     "result": "PASS",
-    "utc": "2026-10-22T04:47:27.8836152Z",
+    "utc": "2026-10-29T07:07:22.4395139Z",
     "checks": [
         "Loaded a clean gameplay scene baseline",
         "Inspector contains the four approved survival phase boundaries",
@@ -10,7 +10,7 @@
         "Scene references active camera and actual ground Tilemap",
         "Phase lookup handles exact boundaries",
         "Phase order is not required; future-only phases do not unlock early",
-        "Normal enemy pools unlock only at configured phases",
+        "Normal enemy pools unlock only at configured phases (retired assets excluded)",
         "Weighted picker obeys cumulative boundaries and ignores null/zero entries",
         "Invalid weighted pools return no prefab without infinite retries",
         "Layer 1 success changes state but does not deploy immediately",

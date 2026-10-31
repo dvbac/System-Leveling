@@ -19,9 +19,17 @@ These are starting balance values, not a completed long-run balance pass. Might=
 
 Each character has eight Idle frames at 8 fps and eight Walk frames at 10 fps. Both loop. `isMoving` switches Idle ↔ Walk without exit-time delay, matching `PlayerController`. Sprite sheets are sliced as eight square cells, Point filtered, uncompressed, no mipmaps. Pixels-per-unit equals each sheet's cell height, keeping a one-world-unit canvas despite Hunter's larger source images. Source pixels are not resampled.
 
-Prefabs preserve the current scene Player's controller/input references, Rigidbody2D, collector, WeaponHolder/melee weapon hierarchy, I-frames and level progression. Capsule size is 0.36 × 0.70, offset (0, -0.04). No runtime scripts, existing character data or gameplay scene were edited.
+Original build (2026-10-26): prefabs preserved the scene Player's controller/input references, Rigidbody2D, collector, weapon hierarchy, I-frames and level progression. Capsule size was 0.36 × 0.70, offset (0, -0.04). The later weapon migration below preserves subsequent user character edits.
 
-Use one character at a time in place of the current Player, not alongside it: `PlayerController.Instance` is a singleton. Keep the existing Manager/PlayerInput, which enables the shared input map. When replacing the scene Player, reassign the spawner's player reference and camera follow target to the new instance. This task does not add character selection, a bow, class skills or new combat behavior; all three retain the existing melee setup. The supplied art contains only Idle/Walk, so there are no invented Attack/Die clips.
+Use one character at a time in place of the current Player, not alongside it: `PlayerController.Instance` is a singleton. Keep the existing Manager/PlayerInput, which enables the shared input map. When replacing the scene Player, reassign the spawner, HUD and camera references to the new instance. The supplied character art contains only Idle/Walk; no Attack/Die clips were invented.
+
+## Current equipment (2026-10-29)
+
+Defaults: Knight → Sword; Archer → Bow (7 arrows); Hunter → Crossbow (1 charged bolt); scene Mage → Magic Book (8 rounds). Weapon/projectile prefabs live in `Assets/Prefab/Weapons/`. Character prefabs now have neutral, empty holders: `StartingWeapon` is a fallback, not a class restriction. Future selection calls `holder.Equip(chosenPrefab)`; the same weapon works on every calibrated character without per-pair offsets. See `docs/spec-driven/weapon-equipping/USAGE.md` for the current contract and `docs/spec-driven/weapon-ammo-charge/` for combat behavior. The character-creation checks below are historical.
+
+### Selection-to-gameplay connection (2026-10-29)
+
+Start from `Assets/Scenes/LoadoutSelection.unity` (also build index 0). Clicking a character and then a weapon launches gameplay. `GameplayLoadout` applies the selected data, appearance, collider and hand calibration to the existing scene Player before its stats initialize, then calls `WeaponHolder.Equip`. This preserves the authored camera/HUD/spawner references. Restart retains the chosen loadout. See `docs/loadout-selection.md`; the 16-pairing runtime regression is recorded in `Captures/LoadoutGameplay/regression.json`.
 
 ## Verification (2026-10-26)
 

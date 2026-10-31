@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c6ab5874045d5f4098490eecb61e348, type: 3}
+  m_Name: Bow
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponScriptableObject
+  prefab: {fileID: 4025584811366786360, guid: dc2798ae61f95a245803c27c2c9d45e3, type: 3}
+  damage: 22
+  speed: 15
+  cooldown: 0.25
+  pierce: 1
+  swingAngle: 0
+  range: 0
+  fireMode: 1
+  magazineSize: 7
+  reloadTime: 0.65
+  bowRecoveryDelay: 0.45
+  chargeTime: 3
+  maxChargeDamage: 4
+  maxChargeSize: 2
+  chargeTimePerAmmo: 0.5
+  chargeDamagePerAmmo: 0.5
+  chargeSizePerAmmo: 0.16666667
+  reloadSpeedPerLevel: 0.2

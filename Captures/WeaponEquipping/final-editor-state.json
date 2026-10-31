@@ -1,0 +1,71 @@
+{
+    "scene":  {
+                  "sceneName":  "SampleScene",
+                  "scenePath":  "Assets/Scenes/SampleScene.unity",
+                  "isDirty":  false,
+                  "rootObjectCount":  10,
+                  "rootObjects":  [
+                                      {
+                                          "name":  "Manager",
+                                          "entityId":  "56566",
+                                          "instanceId":  0,
+                                          "childCount":  3
+                                      },
+                                      {
+                                          "name":  "Player",
+                                          "entityId":  "56448",
+                                          "instanceId":  0,
+                                          "childCount":  2
+                                      },
+                                      {
+                                          "name":  "Global Light 2D",
+                                          "entityId":  "56528",
+                                          "instanceId":  0,
+                                          "childCount":  0
+                                      },
+                                      {
+                                          "name":  "Enemy Spawner",
+                                          "entityId":  "56550",
+                                          "instanceId":  0,
+                                          "childCount":  0
+                                      },
+                                      {
+                                          "name":  "Enemies",
+                                          "entityId":  "56536",
+                                          "instanceId":  0,
+                                          "childCount":  0
+                                      },
+                                      {
+                                          "name":  "red health potion",
+                                          "entityId":  "56608",
+                                          "instanceId":  0,
+                                          "childCount":  0
+                                      },
+                                      {
+                                          "name":  "System HUD",
+                                          "entityId":  "18446744073709550218",
+                                          "instanceId":  0,
+                                          "childCount":  5
+                                      },
+                                      {
+                                          "name":  "UI EventSystem",
+                                          "entityId":  "56570",
+                                          "instanceId":  0,
+                                          "childCount":  0
+                                      },
+                                      {
+                                          "name":  "Chunk",
+                                          "entityId":  "18446744073709549776",
+                                          "instanceId":  0,
+                                          "childCount":  2
+                                      },
+                                      {
+                                          "name":  "MapController",
+                                          "entityId":  "56492",
+                                          "instanceId":  0,
+                                          "childCount":  0
+                                      }
+                                  ]
+              },
+    "hunter":  null
+}

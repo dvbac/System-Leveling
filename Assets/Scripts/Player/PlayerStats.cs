@@ -45,6 +45,16 @@ public class PlayerStats : MonoBehaviour
     public float MaxHealth { get; private set; }
     public float DamageMultiplier { get; private set; } = 1f;
     public int PendingUpgrades { get; private set; }
+    public int AmmoUpgradeLevel { get; private set; }
+    public int ReloadUpgradeLevel { get; private set; }
+    public bool HasRangedWeapon
+    {
+        get
+        {
+            WeaponHolder holder = GetComponentInChildren<WeaponHolder>();
+            return holder != null && holder.CurrentWeapon is RangedWeaponController && holder.CurrentWeapon.gameObject.activeInHierarchy;
+        }
+    }
 
     private void Awake()
     {
@@ -211,6 +221,14 @@ public class PlayerStats : MonoBehaviour
             case UpgradeKind.Vitality:
                 MaxHealth += 20f;
                 currentHealth = Mathf.Min(MaxHealth, currentHealth + 20f);
+                break;
+            case UpgradeKind.Ammo:
+                if (!HasRangedWeapon || AmmoUpgradeLevel >= 999) return false;
+                AmmoUpgradeLevel++;
+                break;
+            case UpgradeKind.Reload:
+                if (!HasRangedWeapon || ReloadUpgradeLevel >= 999) return false;
+                ReloadUpgradeLevel++;
                 break;
             default:
                 return false;

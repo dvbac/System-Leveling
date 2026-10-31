@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c6ab5874045d5f4098490eecb61e348, type: 3}
+  m_Name: Crossbow
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponScriptableObject
+  prefab: {fileID: 290389657465012760, guid: d859e304e42c4cf478839144e8f0a105, type: 3}
+  damage: 24
+  speed: 18
+  cooldown: 0.1
+  pierce: 2
+  swingAngle: 0
+  range: 0
+  fireMode: 2
+  magazineSize: 1
+  reloadTime: 1.5
+  bowRecoveryDelay: 0.45
+  chargeTime: 3
+  maxChargeDamage: 4
+  maxChargeSize: 2
+  chargeTimePerAmmo: 0.5
+  chargeDamagePerAmmo: 0.5
+  chargeSizePerAmmo: 0.16666667
+  reloadSpeedPerLevel: 0.2

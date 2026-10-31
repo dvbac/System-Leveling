@@ -3,5 +3,7 @@ public enum UpgradeKind
     Damage,
     MoveSpeed,
     Magnet,
-    Vitality
+    Vitality,
+    Ammo,
+    Reload
 }

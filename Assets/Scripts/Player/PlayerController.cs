@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[DefaultExecutionOrder(-100)]
 public class PlayerController : MonoBehaviour
 {
     public static PlayerController Instance { get; private set; }

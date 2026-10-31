@@ -26,41 +26,41 @@ PURE: Layer 1 roll=0.0%, chance=0.0%.
 PURE: Layer 1 deferred: no valid horde pool or reservable population slots.
 PURE: Layer 1 roll=100.0%, chance=100.0%.
 PURE: Layer 1 passed; waiting for the FIRST layer 2 interval (no immediate spawn).
-Log: [Spawn t=0.1 state=CheckingLayer1] Layer 1 roll=44.9%, chance=100.0%.
+Log: [Spawn t=0.1 state=CheckingLayer1] Layer 1 roll=71.2%, chance=100.0%.
 Log: [Spawn t=0.1 state=WaitingLayer2] Layer 1 passed; waiting for the FIRST layer 2 interval (no immediate spawn).
 Log: [Spawn t=0.1 state=WaitingLayer2] Reserved 12 independent horde slots.
-Log: [Spawn t=0.2 state=WaitingLayer2] Layer 2 roll=75.5%, chance=0.0%, wait=0.1s.
+Log: [Spawn t=0.2 state=WaitingLayer2] Layer 2 roll=91.4%, chance=0.0%, wait=0.1s.
 Log: [Spawn t=0.2 state=WaitingLayer2] Layer 2 failed; next chance=0.0%.
-Log: [Spawn t=0.3 state=WaitingLayer2] Layer 2 roll=29.4%, chance=0.0%, wait=0.2s.
+Log: [Spawn t=0.3 state=WaitingLayer2] Layer 2 roll=82.8%, chance=0.0%, wait=0.2s.
 Log: [Spawn t=0.3 state=WaitingLayer2] Layer 2 failed; next chance=0.0%.
 Log: [Spawn t=0.4 state=Spawning] Layer 2 deadline reached at 0.3s; forced deployment.
-Log: [Spawn t=0.4 state=Spawning] Deploying 12 horde enemies from side 3; budget 1/frame.
-Log: [Spawn t=2.0] All reserved horde members deployed. Alive=12, skipped=0.
-Log: [Spawn t=2.0 state=WaitingForClear] Deployment complete; waiting for 12 living horde enemies to clear.
-MEASURED shared production Tick: peak 6.798ms in fixture (not a target-device benchmark).
+Log: [Spawn t=0.4 state=Spawning] Deploying 12 horde enemies from side 0; budget 1/frame.
+Log: [Spawn t=1.5] All reserved horde members deployed. Alive=12, skipped=0.
+Log: [Spawn t=1.5 state=WaitingForClear] Deployment complete; waiting for 12 living horde enemies to clear.
+MEASURED shared production Tick: peak 2.145ms in fixture (not a target-device benchmark).
 Log: [Spawn t=103.7 state=CheckingLayer1] Horde cleared; restarting layer 1 timer.
-Log: [Spawn t=103.8 state=CheckingLayer1] Layer 1 roll=22.1%, chance=100.0%.
+Log: [Spawn t=103.8 state=CheckingLayer1] Layer 1 roll=38.0%, chance=100.0%.
 Log: [Spawn t=103.8 state=WaitingLayer2] Layer 1 passed; waiting for the FIRST layer 2 interval (no immediate spawn).
 Log: [Spawn t=103.8 state=WaitingLayer2] Reserved 12 independent horde slots.
-Log: [Spawn t=0.1 state=CheckingLayer1] Layer 1 roll=69.3%, chance=100.0%.
+Log: [Spawn t=0.1 state=CheckingLayer1] Layer 1 roll=16.8%, chance=100.0%.
 Log: [Spawn t=0.1 state=WaitingLayer2] Layer 1 passed; waiting for the FIRST layer 2 interval (no immediate spawn).
 Log: [Spawn t=0.1 state=WaitingLayer2] Reserved 3 independent horde slots.
-Log: [Spawn t=0.2 state=WaitingLayer2] Layer 2 roll=43.2%, chance=100.0%, wait=0.1s.
+Log: [Spawn t=0.2 state=WaitingLayer2] Layer 2 roll=85.2%, chance=100.0%, wait=0.1s.
 Log: [Spawn t=0.2 state=Spawning] Layer 2 passed; deploying horde.
 Warning: [Spawn t=0.2] No valid one-side anchor or reserved slots; no unsafe spawn was forced. Alive=0, skipped=3.
 Log: [Spawn t=0.2 state=CheckingLayer1] Horde cleared; restarting layer 1 timer.
-Log: [Spawn t=0.1 state=CheckingLayer1] Layer 1 roll=95.4%, chance=100.0%.
+Log: [Spawn t=0.1 state=CheckingLayer1] Layer 1 roll=84.4%, chance=100.0%.
 Log: [Spawn t=0.1 state=WaitingLayer2] Layer 1 passed; waiting for the FIRST layer 2 interval (no immediate spawn).
 Log: [Spawn t=0.1 state=WaitingLayer2] Reserved 3 independent horde slots.
-Log: [Spawn t=0.2 state=WaitingLayer2] Layer 2 roll=54.4%, chance=100.0%, wait=0.1s.
+Log: [Spawn t=0.2 state=WaitingLayer2] Layer 2 roll=2.6%, chance=100.0%, wait=0.1s.
 Log: [Spawn t=0.2 state=Spawning] Layer 2 passed; deploying horde.
-Log: [Spawn t=0.2 state=Spawning] Deploying 3 horde enemies from side 2; budget 3/frame.
+Log: [Spawn t=0.2 state=Spawning] Deploying 3 horde enemies from side 1; budget 3/frame.
 Warning: [Spawn t=0.3] Placement budget exhausted: Enemy separation. Alive=1, skipped=2.
 Log: [Spawn t=0.3 state=WaitingForClear] Deployment complete; waiting for 1 living horde enemies to clear.
-Log: [Spawn t=0.1 state=CheckingLayer1] Layer 1 roll=60.2%, chance=100.0%.
+Log: [Spawn t=0.1 state=CheckingLayer1] Layer 1 roll=34.2%, chance=100.0%.
 Log: [Spawn t=0.1 state=WaitingLayer2] Layer 1 passed; waiting for the FIRST layer 2 interval (no immediate spawn).
 Log: [Spawn t=0.1 state=WaitingLayer2] Reserved 3 independent horde slots.
 Log: [Spawn t=100.1 state=Spawning] Layer 2 deadline reached at 100.0s; forced deployment.
-Log: [Spawn t=100.1 state=Spawning] Deploying 3 horde enemies from side 1; budget 3/frame.
+Log: [Spawn t=100.1 state=Spawning] Deploying 3 horde enemies from side 2; budget 3/frame.
 Log: [Spawn t=100.1] All reserved horde members deployed. Alive=3, skipped=0.
 Log: [Spawn t=100.1 state=WaitingForClear] Deployment complete; waiting for 3 living horde enemies to clear.

@@ -1,0 +1,26 @@
+[
+    {
+        "path":  "Assets/MyAssets/Weapon/Base/Bow.png.meta",
+        "unchanged":  true
+    },
+    {
+        "path":  "Assets/MyAssets/Weapon/Base/Cross_bow.png.meta",
+        "unchanged":  true
+    },
+    {
+        "path":  "Assets/Scripts/Weapon/Controller/MeleeWeaponController.cs",
+        "unchanged":  true
+    },
+    {
+        "path":  "Assets/Scriptable Object/Weapon/Bow.asset",
+        "unchanged":  true
+    },
+    {
+        "path":  "Assets/Scriptable Object/Weapon/Crossbow.asset",
+        "unchanged":  true
+    },
+    {
+        "path":  "Assets/Scriptable Object/Weapon/Magic Book.asset",
+        "unchanged":  true
+    }
+]

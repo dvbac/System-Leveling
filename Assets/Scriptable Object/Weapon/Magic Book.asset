@@ -12,8 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c6ab5874045d5f4098490eecb61e348, type: 3}
   m_Name: Magic Book
   m_EditorClassIdentifier: Assembly-CSharp::WeaponScriptableObject
-  prefab: {fileID: 5044609311148809219, guid: 76a81105c39678b42949f95d87588de6, type: 3}
-  damage: 5
-  speed: 6
-  cooldown: 1
+  prefab: {fileID: 3021959967327139144, guid: d6348f3633826d246851e372508c0515, type: 3}
+  damage: 14
+  speed: 9
+  cooldown: 0.4
   pierce: 2
+  swingAngle: 0
+  range: 0
+  fireMode: 0
+  magazineSize: 8
+  reloadTime: 1.8
+  bowRecoveryDelay: 0.45
+  chargeTime: 3
+  maxChargeDamage: 4
+  maxChargeSize: 2
+  chargeTimePerAmmo: 0.5
+  chargeDamagePerAmmo: 0.5
+  chargeSizePerAmmo: 0.16666667
+  reloadSpeedPerLevel: 0.2

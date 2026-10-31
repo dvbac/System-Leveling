@@ -1,0 +1,47 @@
+{
+    "result":  "PASS",
+    "capturedUtc":  "2026-10-29T07:13:21.2797911Z",
+    "totalChecks":  749,
+    "compileJobs":  [
+                        "e663247d",
+                        "2bc83460"
+                    ],
+    "suites":  [
+                   {
+                       "file":  "Captures/WeaponEquipping/regression.json",
+                       "result":  "PASS",
+                       "checks":  355,
+                       "mtimeUtc":  "2026-10-29T07:03:16.7695131Z"
+                   },
+                   {
+                       "file":  "Captures/WeaponAmmo/regression.json",
+                       "result":  "PASS",
+                       "checks":  117,
+                       "mtimeUtc":  "2026-10-29T07:07:06.8488716Z"
+                   },
+                   {
+                       "file":  "Captures/ReferenceAnimation/runtime-regression.json",
+                       "result":  "PASS",
+                       "checks":  51,
+                       "mtimeUtc":  "2026-10-29T07:07:13.8696002Z"
+                   },
+                   {
+                       "file":  "Captures/HudLevelUp/regression.json",
+                       "result":  "PASS",
+                       "checks":  42,
+                       "mtimeUtc":  "2026-10-29T07:07:14.6511099Z"
+                   },
+                   {
+                       "file":  "Captures/BlueHudGameOver/regression.json",
+                       "result":  "PASS",
+                       "checks":  44,
+                       "mtimeUtc":  "2026-10-29T07:07:21.4058253Z"
+                   },
+                   {
+                       "file":  "Captures/SurvivalSpawning/regression.json",
+                       "result":  "PASS",
+                       "checks":  140,
+                       "mtimeUtc":  "2026-10-29T07:07:22.4404982Z"
+                   }
+               ]
+}

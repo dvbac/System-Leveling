@@ -1,0 +1,26 @@
+[
+    {
+        "path":  "Assets/MyAssets/Weapon/Base/Bow.png.meta",
+        "sha256":  "D8143523FA6B8B94D519B1005806DA96A45A6D1A699D144B48BA531D72A64C00"
+    },
+    {
+        "path":  "Assets/MyAssets/Weapon/Base/Cross_bow.png.meta",
+        "sha256":  "0E84F654F86C5B176CD4363E1645C85D7B5305B4ECC2297490B7159EB8452B58"
+    },
+    {
+        "path":  "Assets/Scripts/Weapon/Controller/MeleeWeaponController.cs",
+        "sha256":  "649C1E4ECB050FFF56EFB988199AC688D229E739A827EEC48BBA84744CE68D10"
+    },
+    {
+        "path":  "Assets/Scriptable Object/Weapon/Bow.asset",
+        "sha256":  "E8DB24220D101118E952DAAB5435E8D8390CA37F88CD2E0DE1BE2928B513E91C"
+    },
+    {
+        "path":  "Assets/Scriptable Object/Weapon/Crossbow.asset",
+        "sha256":  "2108364D34B558D0B9AB83F890437AF4589501441A83C71085E9FC41E5953ADB"
+    },
+    {
+        "path":  "Assets/Scriptable Object/Weapon/Magic Book.asset",
+        "sha256":  "D10B661551038471CFEA1DAFC7D63B34BFDAB394116D13E7685168A64EA53896"
+    }
+]

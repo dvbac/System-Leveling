@@ -1,0 +1,35 @@
+[
+  {
+    "character": "Archer",
+    "originalObjectsRetained": 15,
+    "changedOriginalSections": [
+      {
+        "id": "6090776166353097131",
+        "unityType": "4"
+      }
+    ],
+    "result": "PASS"
+  },
+  {
+    "character": "Hunter",
+    "originalObjectsRetained": 15,
+    "changedOriginalSections": [
+      {
+        "id": "3659366028906300980",
+        "unityType": "4"
+      }
+    ],
+    "result": "PASS"
+  },
+  {
+    "character": "Knight",
+    "originalObjectsRetained": 15,
+    "changedOriginalSections": [
+      {
+        "id": "7677911968092072802",
+        "unityType": "4"
+      }
+    ],
+    "result": "PASS"
+  }
+]

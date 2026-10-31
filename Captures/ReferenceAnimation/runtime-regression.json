@@ -51,7 +51,7 @@
         "Spider: one drop despite repeated death/damage calls",
         "Spider: corpse stays still",
         "Spider: destroyed after Die clip",
-        "Legacy Blue Slime without EnemyAnimation retains immediate destruction"
+        "Legacy enemy without EnemyAnimation retains immediate destruction"
     ],
     "failure": ""
 }

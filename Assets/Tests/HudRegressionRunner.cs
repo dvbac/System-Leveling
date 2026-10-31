@@ -73,6 +73,7 @@ public class HudRegressionRunner : MonoBehaviour
 
     private IEnumerator Checks()
     {
+        GameplayRegressionBaseline.Prepare();
         liveHud = Object.FindAnyObjectByType<PlayerHud>();
         Require(liveHud != null, "Scene HUD is wired");
         liveHudWasActive = liveHud.gameObject.activeSelf;
