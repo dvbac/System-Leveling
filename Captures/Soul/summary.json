@@ -1,0 +1,24 @@
+{
+    "result":  "PASS_WITH_MENU_FLOW_FAILURE",
+    "utc":  "2026-11-01T12:21:45.6867735Z",
+    "reports":  [
+                    {
+                        "report":  "runtime.json",
+                        "result":  "PASS",
+                        "checks":  264
+                    },
+                    {
+                        "report":  "boss-regression.json",
+                        "result":  "PASS",
+                        "checks":  49
+                    },
+                    {
+                        "report":  "game-over-regression.json",
+                        "result":  "PASS",
+                        "checks":  44
+                    }
+                ],
+    "preservedSourceFiles":  16,
+    "unresolved":  "Keyboard-driven menu-flow regression fails Esc from map before gameplay; see run-flow-escape-failed.json",
+    "notChecked":  "Standalone build; upgrades deferred"
+}

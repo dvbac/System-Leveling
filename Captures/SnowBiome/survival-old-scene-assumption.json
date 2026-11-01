@@ -1,0 +1,12 @@
+{
+    "result": "FAIL",
+    "utc": "2026-11-01T06:21:08.3471317Z",
+    "checks": [
+        "Loaded a clean gameplay scene baseline",
+        "Inspector contains the four approved survival phase boundaries",
+        "Inspector contains approved normal spawn cadence and batches",
+        "Inspector exposes approved two-layer probability parameters",
+        "Inspector contains separate normal100/Horde30 caps and 10-20/4-frame Horde preset"
+    ],
+    "failure": "System.Exception: Scene references active camera and actual ground Tilemap\r\n  at SurvivalSpawnRegression.Check (System.Boolean condition, System.String label) [0x00016] in C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Tests\\SurvivalSpawnRegression.cs:371 \r\n  at SurvivalSpawnRegression.CheckScenePreset () [0x0017c] in C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Tests\\SurvivalSpawnRegression.cs:227 \r\n  at SurvivalSpawnRegression+<Tests>d__22.MoveNext () [0x001ae] in C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Tests\\SurvivalSpawnRegression.cs:96 \r\n  at SurvivalSpawnRegression+<Run>d__21.MoveNext () [0x0009a] in C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Tests\\SurvivalSpawnRegression.cs:58 "
+}

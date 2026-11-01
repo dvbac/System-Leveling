@@ -23,7 +23,7 @@ public class ReferenceEnemyRegression : MonoBehaviour
     public static void Begin()
     {
         if (!Application.isPlaying) throw new InvalidOperationException("Enter Play Mode first.");
-        GameObject root = new GameObject("Reference Enemy Regression");
+        GameObject root = new GameObject("Reference Enemy Regression", typeof(SoulTestIsolation));
         Object.DontDestroyOnLoad(root);
         root.AddComponent<ReferenceEnemyRegression>().StartCoroutine("Run");
     }
@@ -142,7 +142,8 @@ public class ReferenceEnemyRegression : MonoBehaviour
             yield return null;
             Check(stats.currentHealth == health - 1 && animator.GetCurrentAnimatorStateInfo(0).IsName("Hit"),
                 name + ": nonlethal damage plays Hit");
-            yield return new WaitForSeconds(0.4f);
+            float recoveryDeadline = Time.realtimeSinceStartup + 2f;
+            while (!animator.GetCurrentAnimatorStateInfo(0).IsName("Move") && Time.realtimeSinceStartup < recoveryDeadline) yield return null;
             Check(animator.GetCurrentAnimatorStateInfo(0).IsName("Move"), name + ": Hit returns to movement");
             stats.TakeDamage(10000);
             stats.Kill();

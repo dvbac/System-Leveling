@@ -24,7 +24,7 @@ public class WeaponAmmoRegression : MonoBehaviour
     {
         if (!Application.isPlaying) throw new InvalidOperationException("Enter Play Mode first.");
         if (FindAnyObjectByType<WeaponAmmoRegression>() != null) return;
-        GameObject root = new GameObject("Weapon Ammo Regression"); DontDestroyOnLoad(root);
+        GameObject root = new GameObject("Weapon Ammo Regression", typeof(SoulTestIsolation)); DontDestroyOnLoad(root);
         root.AddComponent<WeaponAmmoRegression>().StartCoroutine("Run");
     }
 
@@ -119,6 +119,10 @@ public class WeaponAmmoRegression : MonoBehaviour
         bow.Tick(100, true); Check(bow.State.Ammo == rounds - 1, "Controller long frame fires at most once");
         rounds = bow.State.Ammo; bow.Tick(1.1f, false);
         Check(bow.State.Ammo == rounds + 1, "Actual bow recovers one arrow when released");
+        while (bow.State.Ammo > 0) bow.Tick(0.25f, true);
+        int bowShots = bow.ShotsFired;
+        bow.Tick(1.1f, true);
+        Check(bow.ShotsFired == bowShots + 1 && bow.State.Ammo == 0, "Actual empty bow recovers and fires without releasing held input");
         RangedWeaponController book = Fixture("Mage");
         int count = book.State.Ammo;
         GameObject original = book.weaponData.Prefab;
@@ -136,8 +140,12 @@ public class WeaponAmmoRegression : MonoBehaviour
         Check(cross.ShotsFired == count, "Releasing after pause does not fire a stored charge");
         book.Tick(0, true, true); count = book.ShotsFired; book.Tick(1, true);
         Check(book.ShotsFired == count, "UI click requires a release before firing resumes");
-        book.Tick(0, false); book.Tick(0.4f, true);
+        book.Tick(0, false); book.Tick(book.State.ReloadDuration, true);
         Check(book.ShotsFired == count + 1, "Ranged input works again after UI release gate");
+        Check(book.State.Ammo == book.State.Capacity - 1, "Actual partial magazine reload completes before the held trigger fires again");
+        while (book.State.Ammo > 0) book.Tick(0.4f, true);
+        count = book.ShotsFired; book.Tick(book.State.ReloadDuration, true);
+        Check(book.ShotsFired == count + 1 && book.State.Ammo == book.State.Capacity - 1, "Actual empty magazine reload resumes held fire without another click");
         while (book.State.Ammo > 0) book.Tick(0.4f, true);
         float reloadBeforePause = book.State.ReloadFraction;
         Time.timeScale = 0; book.Tick(100, false);
@@ -289,11 +297,13 @@ public class WeaponAmmoRegression : MonoBehaviour
         for (int i = 0; i < 6; i++) state.Tick(0.4f, true);
         Check(state.Ammo == 0 && state.IsReloading, "Eighth book shot starts magazine reload");
         state.Tick(1.79f, true); Check(state.Ammo == 0, "Book does not refill early");
-        state.Tick(0.02f, true); Check(state.Ammo == 8 && !state.IsReloading, "Book refills its entire magazine at 1.8s");
-        state.SetUpgrades(1, 1); Check(state.Capacity == 9 && state.Ammo == 8 && Near(state.ReloadDuration, 1.5f), "Magazine upgrades increase cap without free ammo and shorten reload");
+        Check(state.Tick(0.02f, true) && state.Ammo == 7 && !state.IsReloading, "Book resumes held fire immediately after its 1.8s reload");
+        state.SetUpgrades(1, 1); Check(state.Capacity == 9 && state.Ammo == 7 && Near(state.ReloadDuration, 1.5f), "Magazine upgrades increase cap without free ammo and shorten reload");
         state = new RangedWeaponState(bow);
         for (int i = 0; i < 7; i++) Check(state.Tick(i == 0 ? 0 : 0.25f, true), "Bow can fire ready arrow " + i);
-        Check(state.Ammo == 0 && !state.Tick(100, true) && state.Ammo == 0, "An empty bow cannot regenerate while trigger is held");
+        Check(state.Ammo == 0 && state.Tick(100, true) && state.Ammo == 0, "An empty bow recovers and emits at most one shot during a held long frame");
+        state = new RangedWeaponState(bow);
+        for (int i = 0; i < 7; i++) state.Tick(i == 0 ? 0 : 0.25f, true);
         state.Tick(0.45f, false); state.Tick(0.64f, false); Check(state.Ammo == 0, "Bow waits idle delay plus per-arrow recovery");
         state.Tick(0.01f, false); Check(state.Ammo == 1, "Bow recovers exactly one arrow after 1.10s");
         state.Tick(0.65f, false); Check(state.Ammo == 2, "Later bow arrows recover at 0.65s each");

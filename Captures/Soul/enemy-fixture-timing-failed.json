@@ -1,0 +1,14 @@
+{
+    "result": "FAIL",
+    "checks": [
+        "Fresh reference-enemy test baseline is not a previously dead run",
+        "Gameplay player exists",
+        "Slime: actual EnemySpawner created prefab",
+        "Slime: maxEnemies limit respected",
+        "Slime: hunts player",
+        "Slime: Move clip advances sprites",
+        "Slime: correct left/right facing",
+        "Slime: nonlethal damage plays Hit"
+    ],
+    "failure": "System.InvalidOperationException: Slime: Hit returns to movement\r\n  at ReferenceEnemyRegression.Check (System.Boolean condition, System.String label) [0x00016] in C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Tests\\ReferenceEnemyRegression.cs:182 \r\n  at ReferenceEnemyRegression+<Checks>d__9.MoveNext () [0x00749] in C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Tests\\ReferenceEnemyRegression.cs:146 \r\n  at ReferenceEnemyRegression+<Run>d__8.MoveNext () [0x00070] in C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Tests\\ReferenceEnemyRegression.cs:44 "
+}

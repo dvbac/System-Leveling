@@ -1,6 +1,6 @@
 {
     "result": "PASS",
-    "utc": "2026-10-29T07:07:21.4058253Z",
+    "utc": "2026-11-01T12:21:35.6563205Z",
     "checks": [
         "Test baseline loads the actual gameplay scene",
         "Scene has Player, blue HUD, level-up and Game Over references",

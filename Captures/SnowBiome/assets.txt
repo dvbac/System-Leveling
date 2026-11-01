@@ -1,0 +1,1 @@
+PASS: 3 snow chunks, each 400 contiguous ground tiles and 5 snow-only props; grass props intact; 3 usable snow enemies; connected spawner; boundary Y=50

@@ -41,20 +41,25 @@ public sealed class RangedWeaponState
         requireRelease = true;
     }
 
-    // At most one shot or recovered bow arrow per Tick, even after a stalled frame.
+    // At most one shot and one recovered bow arrow per Tick, even after a stalled frame.
     public bool Tick(float delta, bool held)
     {
         if (delta < 0 || float.IsNaN(delta) || float.IsInfinity(delta)) return false;
         cooldown = Mathf.Max(0, cooldown - delta);
+        if (data.FireMode == WeaponFireMode.Magazine && !held && Ammo < Capacity && !IsReloading)
+        {
+            IsReloading = true;
+            reloadElapsed = 0;
+        }
         if (IsReloading && data.FireMode != WeaponFireMode.Bow)
         {
+            if (data.FireMode == WeaponFireMode.Magazine && !held) requireRelease = false;
             reloadElapsed += delta;
             if (reloadElapsed < ReloadDuration) { wasHeld = held; return false; }
             Ammo = Capacity;
             reloadElapsed = 0;
             IsReloading = false;
-            wasHeld = held;
-            return false;
+            if (data.FireMode == WeaponFireMode.Crossbow) { wasHeld = held; return false; }
         }
         bool triggerBlocked = requireRelease;
         if (!held) requireRelease = false;
@@ -78,7 +83,7 @@ public sealed class RangedWeaponState
 
         if (data.FireMode == WeaponFireMode.Bow)
         {
-            if (held)
+            if (held && Ammo > 0)
             {
                 idleElapsed = reloadElapsed = 0;
                 IsReloading = false;
@@ -88,7 +93,7 @@ public sealed class RangedWeaponState
                 float before = idleElapsed;
                 idleElapsed += delta;
                 reloadElapsed += Mathf.Max(0, idleElapsed - data.BowRecoveryDelay) - Mathf.Max(0, before - data.BowRecoveryDelay);
-                IsReloading = idleElapsed >= data.BowRecoveryDelay;
+                IsReloading = Ammo == 0 || idleElapsed >= data.BowRecoveryDelay;
                 if (reloadElapsed + 0.000001f >= ReloadDuration)
                 {
                     Ammo++;

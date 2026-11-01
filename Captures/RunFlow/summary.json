@@ -1,0 +1,38 @@
+{
+    "result":  "PASS",
+    "compileJob":  "50f02298",
+    "totalChecks":  1719,
+    "reports":  [
+                    {
+                        "file":  "runtime.json",
+                        "result":  "PASS",
+                        "checks":  234
+                    },
+                    {
+                        "file":  "loadout-regression.json",
+                        "result":  "PASS",
+                        "checks":  245
+                    },
+                    {
+                        "file":  "main-menu-regression.json",
+                        "result":  "PASS",
+                        "checks":  66
+                    },
+                    {
+                        "file":  "map-regression.json",
+                        "result":  "PASS",
+                        "checks":  1031
+                    },
+                    {
+                        "file":  "loadout-ui-regression.json",
+                        "result":  "PASS",
+                        "checks":  3
+                    },
+                    {
+                        "file":  "survival-regression.json",
+                        "result":  "PASS",
+                        "checks":  140
+                    }
+                ],
+    "standaloneFullscreenTested":  false
+}

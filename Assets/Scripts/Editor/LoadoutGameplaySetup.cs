@@ -42,13 +42,14 @@ public static class LoadoutGameplaySetup
         EditorUtility.SetDirty(ui);
         EditorSceneManager.MarkSceneDirty(ui.gameObject.scene);
         Require(EditorSceneManager.SaveScene(ui.gameObject.scene), "Could not save selection scene.");
-        EditorBuildSettings.scenes = new[]
+        EditorBuildSettingsScene[] menu = File.Exists(MainMenu.ScenePath) ? new[] { new EditorBuildSettingsScene(MainMenu.ScenePath, true) } : Array.Empty<EditorBuildSettingsScene>();
+        EditorBuildSettings.scenes = menu.Concat(new[]
         {
             new EditorBuildSettingsScene(LoadoutLauncher.SelectionScene, true),
             new EditorBuildSettingsScene(LoadoutLauncher.GameplayScene, true)
-        }.Concat(EditorBuildSettings.scenes.Where(s => s.path != LoadoutLauncher.SelectionScene && s.path != LoadoutLauncher.GameplayScene)).ToArray();
-        Require(EditorBuildSettings.scenes[0].enabled && EditorBuildSettings.scenes[0].path == LoadoutLauncher.SelectionScene, "Selection entry scene was not configured.");
-        Debug.Log("LOADOUT GAMEPLAY CONNECTED: selection is the build entry scene; direct weapon click launches SampleScene with the chosen character and weapon. Restart retains the loadout.");
+        }).Concat(EditorBuildSettings.scenes.Where(s => s.path != MainMenu.ScenePath && s.path != LoadoutLauncher.SelectionScene && s.path != LoadoutLauncher.GameplayScene)).ToArray();
+        Require(EditorBuildSettings.scenes[0].enabled && EditorBuildSettings.scenes[0].path == (menu.Length > 0 ? MainMenu.ScenePath : LoadoutLauncher.SelectionScene), "Entry scene was not configured.");
+        Debug.Log("LOADOUT GAMEPLAY CONNECTED: main menu entry retained when present; weapon click launches gameplay and Restart retains the loadout.");
     }
 
     public static void EnsureDefaultCharacterPrefab()

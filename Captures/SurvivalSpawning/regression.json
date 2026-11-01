@@ -1,13 +1,13 @@
 {
     "result": "PASS",
-    "utc": "2026-10-29T07:07:22.4395139Z",
+    "utc": "2026-11-01T10:25:51.9519555Z",
     "checks": [
         "Loaded a clean gameplay scene baseline",
         "Inspector contains the four approved survival phase boundaries",
         "Inspector contains approved normal spawn cadence and batches",
         "Inspector exposes approved two-layer probability parameters",
         "Inspector contains separate normal100/Horde30 caps and 10-20/4-frame Horde preset",
-        "Scene references active camera and actual ground Tilemap",
+        "Scene references active camera and ground Tilemap or streamed ground chunks",
         "Phase lookup handles exact boundaries",
         "Phase order is not required; future-only phases do not unlock early",
         "Normal enemy pools unlock only at configured phases (retired assets excluded)",

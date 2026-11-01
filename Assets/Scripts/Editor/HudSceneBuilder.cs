@@ -34,7 +34,7 @@ public static class HudSceneBuilder
         if (player == null)
             throw new System.InvalidOperationException("Open the gameplay scene containing PlayerStats first.");
 
-        const string spritePath = "Assets/MyAssets/UI/Kenney/fantasy-frame.png";
+        const string spritePath = "Assets/MyAssets/UI/Border/fantasy-frame.png";
         AssetDatabase.ImportAsset(spritePath);
         TextureImporter importer = (TextureImporter)AssetImporter.GetAtPath(spritePath);
         importer.textureType = TextureImporterType.Sprite;
@@ -149,7 +149,7 @@ public static class HudSceneBuilder
 
     private static void UpgradeExistingHud()
     {
-        frame = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/MyAssets/UI/Kenney/fantasy-frame.png");
+        frame = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/MyAssets/UI/Border/fantasy-frame.png");
         font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
         const string path = "Assets/Prefab/UI/System HUD.prefab";
         GameObject contents = PrefabUtility.LoadPrefabContents(path);
@@ -350,7 +350,7 @@ public static class HudSceneBuilder
 
     private static void RefreshBarStyle()
     {
-        const string path = "Assets/MyAssets/UI/Kenney/bar-fill.png";
+        const string path = "Assets/MyAssets/UI/Border/bar-fill.png";
         AssetDatabase.ImportAsset(path);
         TextureImporter importer = (TextureImporter)AssetImporter.GetAtPath(path);
         importer.textureType = TextureImporterType.Sprite;

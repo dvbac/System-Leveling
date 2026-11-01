@@ -9,6 +9,9 @@ public class PlayerHud : MonoBehaviour
     [SerializeField] private Text healthText;
     [SerializeField] private Text experienceText;
     [SerializeField] private Text levelText;
+    [SerializeField] private EnemySpawner runClock;
+    [SerializeField] private Text timeText;
+    private int lastSecond = -1;
     private int lastHealth = -1;
     private int lastMaxHealth = -1;
     private int lastExperience = -1;
@@ -42,6 +45,15 @@ public class PlayerHud : MonoBehaviour
     {
         if (player != null)
             player.Changed -= Refresh;
+    }
+
+    private void LateUpdate()
+    {
+        if (runClock == null || timeText == null) return;
+        int seconds = Mathf.FloorToInt(runClock.ElapsedTime);
+        if (seconds == lastSecond) return;
+        timeText.text = $"{seconds / 60:00}:{seconds % 60:00}";
+        lastSecond = seconds;
     }
 
     public void Refresh()

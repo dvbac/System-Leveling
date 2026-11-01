@@ -115,7 +115,7 @@ public class LoadoutSelection : MonoBehaviour
 
     private void Update()
     {
-        if (ChoosingWeapon && Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame)
+        if (Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame)
             Back();
     }
 
@@ -142,12 +142,26 @@ public class LoadoutSelection : MonoBehaviour
 
     public void Back()
     {
+        LoadoutLauncher launcher = GetComponent<LoadoutLauncher>();
+        if (launcher != null && launcher.IsLoading) return;
+        if (launcher != null && launcher.ChoosingMap) { launcher.BackToWeapons(); return; }
+        if (!ChoosingWeapon && launcher != null && launcher.enabled)
+        {
+            launcher.ReturnToMainMenu();
+            return;
+        }
         ChoosingWeapon = false;
         Confirmed = false;
         characterPreview = CharacterIndex;
         weaponPreview = WeaponIndex;
         Refresh();
         characterView.cards[CharacterIndex].Select();
+    }
+
+    public void ReopenWeapons()
+    {
+        ChoosingWeapon = true; Confirmed = false; weaponPreview = WeaponIndex;
+        Refresh(); weaponView.cards[WeaponIndex].Select();
     }
 
     public void PreviewCharacter(int index)
@@ -172,7 +186,7 @@ public class LoadoutSelection : MonoBehaviour
         subtitle.text = "HOVER TO INSPECT   /   CLICK AN ICON TO SELECT";
         stepOne.color = ChoosingWeapon ? Muted : Accent;
         stepTwo.color = ChoosingWeapon ? Accent : Muted;
-        back.gameObject.SetActive(ChoosingWeapon);
+        back.gameObject.SetActive(true);
         string selectedWeapon = SelectedWeapon.GetComponent<WeaponController>().weaponData.name.ToUpperInvariant();
         selectionCount.text = $"{(ChoosingWeapon ? weaponPrefabs.Length : characterPrefabs.Length):00} OPTIONS / ALL AVAILABLE";
         summary.text = SelectedCharacter.name.ToUpperInvariant() + "  /  " + (Confirmed ? selectedWeapon : "SELECT A WEAPON");
@@ -194,7 +208,7 @@ public class LoadoutSelection : MonoBehaviour
         weaponView.category.text = melee ? "MELEE" : "RANGED / " + w.FireMode.ToString().ToUpperInvariant();
         weaponView.description.text = melee ? "Strike nearby enemies in a sweeping arc." : w.FireMode == WeaponFireMode.Crossbow
             ? "Hold to charge a stronger shot, then release to fire." : w.FireMode == WeaponFireMode.Bow
-            ? "Fire arrows and recover ammunition over time." : "Fire projectiles toward your aim. Reload when the magazine is empty.";
+            ? "Hold to fire arrows. Release to recover; an empty bow also recovers while held." : "Hold to fire. Reload when empty or after releasing a partially used magazine.";
         weaponView.stats.text = melee ? "DAMAGE\n\nCOOLDOWN\n\nSWING ANGLE\n\nREACH" : "DAMAGE\n\nCOOLDOWN\n\nMAGAZINE\n\n" + (w.FireMode == WeaponFireMode.Bow ? "RECOVERY" : "RELOAD");
         weaponView.statValues.text = melee
             ? $"{w.Damage:0.##}\n\n{w.Cooldown:0.##} s\n\n{w.SwingAngle:0.##} deg\n\n{w.Range:0.##}"

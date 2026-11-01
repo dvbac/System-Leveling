@@ -1,0 +1,27 @@
+{
+    "result":  "PASS",
+    "totalChecks":  1403,
+    "compileJob":  "5683107c",
+    "reports":  [
+                    {
+                        "file":  "runtime.json",
+                        "result":  "PASS",
+                        "checks":  1031
+                    },
+                    {
+                        "file":  "loadout-gameplay-regression.json",
+                        "result":  "PASS",
+                        "checks":  229
+                    },
+                    {
+                        "file":  "selection-layout-regression.json",
+                        "result":  "PASS",
+                        "checks":  3
+                    },
+                    {
+                        "file":  "survival-regression.json",
+                        "result":  "PASS",
+                        "checks":  140
+                    }
+                ]
+}

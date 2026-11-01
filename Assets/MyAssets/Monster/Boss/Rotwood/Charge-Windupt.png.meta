@@ -1,0 +1,533 @@
+fileFormatVersion: 2
+guid: 8a5ffac40fd51f74db1a5beb1e38fa3d
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5163747836652845629
+    second: Charge-Windupt_0
+  - first:
+      213: -1215820591626700383
+    second: Charge-Windupt_1
+  - first:
+      213: -6813141487935430382
+    second: Charge-Windupt_2
+  - first:
+      213: -5704532832519213097
+    second: Charge-Windupt_3
+  - first:
+      213: 6185938834521059452
+    second: Charge-Windupt_4
+  - first:
+      213: -2898497474411394185
+    second: Charge-Windupt_5
+  - first:
+      213: 9080973680630325010
+    second: Charge-Windupt_6
+  - first:
+      213: 7651791161386178431
+    second: Charge-Windupt_7
+  - first:
+      213: 3824513163973829435
+    second: Charge-Windupt_8
+  - first:
+      213: 7620500823328376736
+    second: Charge-Windupt_9
+  - first:
+      213: -8793537423312751959
+    second: Charge-Windupt_10
+  - first:
+      213: 5669835348785507724
+    second: Charge-Windupt_11
+  - first:
+      213: -8783958074081651547
+    second: Charge-Windupt_12
+  - first:
+      213: -165292705160377253
+    second: Charge-Windupt_13
+  - first:
+      213: 4408668159317947187
+    second: Charge-Windupt_14
+  - first:
+      213: -271774234612872669
+    second: Charge-Windupt_15
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Charge-Windupt_0
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 7
+        width: 119
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3a72697c4159a740800000000000000
+      internalID: 5163747836652845629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Charge-Windupt_1
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 7
+        width: 119
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a93c751d99802fe0800000000000000
+      internalID: -1215820591626700383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Charge-Windupt_2
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 7
+        width: 119
+        height: 107
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 211e12f0aebd271a0800000000000000
+      internalID: -6813141487935430382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Charge-Windupt_3
+      rect:
+        serializedVersion: 2
+        x: 387
+        y: 7
+        width: 119
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7dfa32cdc9d65d0b0800000000000000
+      internalID: -5704532832519213097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Charge-Windupt_4
+      rect:
+        serializedVersion: 2
+        x: 515
+        y: 7
+        width: 119
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c70fbe1789ed8d550800000000000000
+      internalID: 6185938834521059452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Charge-Windupt_5
+      rect:
+        serializedVersion: 2
+        x: 643
+        y: 7
+        width: 121
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 77b875767e776c7d0800000000000000
+      internalID: -2898497474411394185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Charge-Windupt_6
+      rect:
+        serializedVersion: 2
+        x: 772
+        y: 7
+        width: 121
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21f54a01379160e70800000000000000
+      internalID: 9080973680630325010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Charge-Windupt_7
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 7
+        width: 121
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7795e5358f903a60800000000000000
+      internalID: 7651791161386178431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Charge-Windupt_8
+      rect:
+        serializedVersion: 2
+        x: 1028
+        y: 7
+        width: 121
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b332771a576631530800000000000000
+      internalID: 3824513163973829435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Charge-Windupt_9
+      rect:
+        serializedVersion: 2
+        x: 1156
+        y: 7
+        width: 121
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a74f09af1571c960800000000000000
+      internalID: 7620500823328376736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Charge-Windupt_10
+      rect:
+        serializedVersion: 2
+        x: 1284
+        y: 7
+        width: 117
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a2f65cbd4417f580800000000000000
+      internalID: -8793537423312751959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Charge-Windupt_11
+      rect:
+        serializedVersion: 2
+        x: 1412
+        y: 7
+        width: 112
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c8d205ba53d4fae40800000000000000
+      internalID: 5669835348785507724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Charge-Windupt_12
+      rect:
+        serializedVersion: 2
+        x: 1540
+        y: 7
+        width: 112
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a45078cbac191680800000000000000
+      internalID: -8783958074081651547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Charge-Windupt_13
+      rect:
+        serializedVersion: 2
+        x: 1668
+        y: 7
+        width: 109
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5cc3f01923c4bdf0800000000000000
+      internalID: -165292705160377253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Charge-Windupt_14
+      rect:
+        serializedVersion: 2
+        x: 1804
+        y: 10
+        width: 103
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 333b8b0355cbe2d30800000000000000
+      internalID: 4408668159317947187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Charge-Windupt_15
+      rect:
+        serializedVersion: 2
+        x: 1926
+        y: 12
+        width: 116
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32acbc606c67a3cf0800000000000000
+      internalID: -271774234612872669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Charge-Windupt_0: 5163747836652845629
+      Charge-Windupt_1: -1215820591626700383
+      Charge-Windupt_10: -8793537423312751959
+      Charge-Windupt_11: 5669835348785507724
+      Charge-Windupt_12: -8783958074081651547
+      Charge-Windupt_13: -165292705160377253
+      Charge-Windupt_14: 4408668159317947187
+      Charge-Windupt_15: -271774234612872669
+      Charge-Windupt_2: -6813141487935430382
+      Charge-Windupt_3: -5704532832519213097
+      Charge-Windupt_4: 6185938834521059452
+      Charge-Windupt_5: -2898497474411394185
+      Charge-Windupt_6: 9080973680630325010
+      Charge-Windupt_7: 7651791161386178431
+      Charge-Windupt_8: 3824513163973829435
+      Charge-Windupt_9: 7620500823328376736
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

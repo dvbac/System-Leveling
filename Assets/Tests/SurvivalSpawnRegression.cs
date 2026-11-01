@@ -35,7 +35,7 @@ public class SurvivalSpawnRegression : MonoBehaviour
     {
         if (!Application.isPlaying) throw new InvalidOperationException("Enter Play Mode first.");
         if (FindAnyObjectByType<SurvivalSpawnRegression>() != null) return;
-        GameObject root = new GameObject("Survival Spawn Regression");
+        GameObject root = new GameObject("Survival Spawn Regression", typeof(SoulTestIsolation));
         DontDestroyOnLoad(root);
         root.AddComponent<SurvivalSpawnRegression>().StartCoroutine("Run");
     }
@@ -224,7 +224,10 @@ public class SurvivalSpawnRegression : MonoBehaviour
             "Inspector exposes approved two-layer probability parameters");
         Check(horde.minCount == 10 && horde.maxCount == 20 && horde.populationCap == 30 && horde.spawnsPerFrame == 4 && Get<int>(sceneSpawner, "normalPopulationCap") == 100,
             "Inspector contains separate normal100/Horde30 caps and 10-20/4-frame Horde preset");
-        Check(Get<Camera>(sceneSpawner, "spawnCamera") != null && Get<Tilemap>(sceneSpawner, "allowedGround") != null, "Scene references active camera and actual ground Tilemap");
+        MapController map = FindAnyObjectByType<MapController>();
+        Check(Get<Camera>(sceneSpawner, "spawnCamera") != null && (Get<Tilemap>(sceneSpawner, "allowedGround") != null ||
+            (map != null && map.terrainChunks.Length > 0 && map.terrainChunks.All(chunk => chunk != null && chunk.GetComponentInChildren<Tilemap>() != null))),
+            "Scene references active camera and ground Tilemap or streamed ground chunks");
     }
 
     private void CheckPureLogic()

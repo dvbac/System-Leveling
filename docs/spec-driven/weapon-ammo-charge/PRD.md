@@ -4,6 +4,8 @@ Status: Frozen
 Approval: User "chốt", 2026-10-29 — toàn bộ khuyến nghị D001/D002/D003, preset, HUD và nâng cấp đã trình bày được chấp thuận. Các nhãn "đề xuất/chờ" dưới đây là lịch sử bản nháp, nay được giải quyết theo cột khuyến nghị.
 Last updated: 2026-10-29
 
+2026-11-01 behavior update: the user approved partial normal-magazine reload when firing stops, and held firing must resume after empty reload/recovery. The old empty-bow held restriction below is historical and superseded by `docs/weapon-reload.md`. Crossbow mechanics are unchanged.
+
 ## Bối cảnh / mục tiêu
 Thêm cung và nỏ bằng sprite đã có; phân biệt nhịp chiến đấu qua đạn, nạp và tích lực. Giữ kiếm tương thích. Tất cả số cân bằng chỉnh được Inspector, không lưu trạng thái runtime lên ScriptableObject.
 

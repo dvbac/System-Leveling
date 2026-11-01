@@ -1,0 +1,8 @@
+{
+    "result": "FAIL",
+    "utc": "2026-11-01T06:38:54.0729366Z",
+    "checks": [
+        "Loaded a clean gameplay scene baseline"
+    ],
+    "failure": "System.NullReferenceException: Object reference not set to an instance of an object\r\n  at SurvivalSpawnRegression+<Tests>d__22.MoveNext () [0x000c9] in C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Tests\\SurvivalSpawnRegression.cs:82 \r\n  at SurvivalSpawnRegression+<Run>d__21.MoveNext () [0x0009a] in C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Tests\\SurvivalSpawnRegression.cs:58 "
+}

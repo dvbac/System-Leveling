@@ -106,7 +106,11 @@ public class MapController : MonoBehaviour
 
     void HandleChunkSpawning(Vector2 moveDelta, bool checkWithoutDelta = false)
     {
-
+        Physics2D.SyncTransforms();
+        var existingChunks = new Dictionary<Vector2, Transform>();
+        foreach (Transform child in transform)
+            if (child.TryGetComponent<PropRandomizer>(out _) && (!deleteCulledChunks || child.gameObject.activeSelf))
+                existingChunks[child.position] = child;
         HashSet<Vector2> spawnedPositions = new HashSet<Vector2>();
         Vector2 currentPosition = referenceCamera.transform.position;
 
@@ -128,8 +132,12 @@ public class MapController : MonoBehaviour
             Vector3 checkedPosition = SnapPosition(vp);
 
             // If the position has no chunks, then spawn chunk.
-            if (!spawnedPositions.Contains(checkedPosition) && !Physics2D.OverlapPoint(checkedPosition, terrainMask))
-                SpawnChunk(checkedPosition);
+            if (!spawnedPositions.Contains(checkedPosition))
+            {
+                // Culled chunks still own their cells even though physics cannot see them.
+                if (existingChunks.TryGetValue(checkedPosition, out Transform existing)) existing.gameObject.SetActive(true);
+                else if (!Physics2D.OverlapPoint(checkedPosition, terrainMask)) SpawnChunk(checkedPosition);
+            }
 
             spawnedPositions.Add(checkedPosition);
         }
@@ -148,10 +156,12 @@ public class MapController : MonoBehaviour
     // Spawns a chunk at a designated position.
     PropRandomizer SpawnChunk(Vector3 spawnPosition, int variant = -1)
     {
-        if (terrainChunks.Length < 1) return null;
+        if (terrainChunks == null || terrainChunks.Length < 1) return null;
         int rand = variant < 0 ? Random.Range(0, terrainChunks.Length) : variant;
         PropRandomizer chunk = Instantiate(terrainChunks[rand], transform);
         chunk.transform.position = spawnPosition;
+        // OverlapPoint in this batch must see the new position, not the prefab origin.
+        Physics2D.SyncTransforms();
         return chunk;
     }
 

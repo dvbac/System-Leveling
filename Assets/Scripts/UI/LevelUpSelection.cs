@@ -21,7 +21,7 @@ public class LevelUpSelection : MonoBehaviour
     private int openedFrame;
 
     public bool IsOpen => ownsPause;
-    public static bool InputBlocked => GameOverController.GameplayStopped || (active != null && active.IsOpen) || Time.frameCount <= blockedThroughFrame;
+    public static bool InputBlocked => GameOverController.GameplayStopped || RunMenu.InputBlocked || (active != null && active.IsOpen) || Time.frameCount <= blockedThroughFrame;
     public UpgradeKind ChoiceAt(int index) => choices[index];
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
@@ -77,7 +77,7 @@ public class LevelUpSelection : MonoBehaviour
             active = null;
     }
 
-    private void Sync()
+    public void Sync()
     {
         if (player.IsDead || GameOverController.GameplayStopped)
         {
@@ -86,6 +86,7 @@ public class LevelUpSelection : MonoBehaviour
         }
         if (selecting)
             return;
+        if (RunMenu.IsPaused) return;
         if (player.PendingUpgrades <= 0)
         {
             Close();

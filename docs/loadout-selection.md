@@ -1,21 +1,21 @@
 # Character and weapon selection
 
-Open `Assets/Scenes/LoadoutSelection.unity` and enter Play Mode. Select a character, then click a weapon to enter gameplay immediately. The selection scene is also the first enabled scene in Build Settings.
+Start from `Assets/Scenes/MainMenu.unity` and choose Start Run, or open `Assets/Scenes/LoadoutSelection.unity` directly in the Editor. Select a character, then a weapon, then choose **GRASSLANDS / SNOWFIELDS** on the dedicated map screen. Clicking a map starts gameplay. MainMenu is the first enabled build scene when present.
 
 - Dark navy background, teal preview rings, warm gold confirmed weapon rings and stat values.
 - Compact, icon-only circles generated from the supplied prefab arrays. The current defaults contain four characters and four weapons; the UI does not assume those counts or names.
-- Reference-style placement: large name and description at the upper left; six-column icon grid below; base stats in the right-hand portrait region instead of a portrait. Back is at the lower left on the weapon screen, retaining the existing navigation behavior.
+- Reference-style placement: large name and description at the upper left; six-column icon grid below; base stats in the right-hand portrait region instead of a portrait. Back is at the lower left on both selection screens.
 - Hover or keyboard/gamepad focus previews details without committing a choice.
 - Click/submit a character icon to select it and advance immediately to weapons.
-- Click/submit a weapon icon to confirm and load `SampleScene` immediately. Input is locked while loading so repeated clicks cannot start a second load.
-- Back or Escape returns to characters without losing either choice. Returning clears confirmation, so a new run configuration can be chosen.
+- Click/submit a weapon icon to open the map screen without loading gameplay. Click a map to load `SampleScene` (grass) or `SnowScene`. Input is locked while loading so repeated clicks cannot start a second load. Map Back/Esc returns to weapons; weapon Back returns to characters.
+- Back or Escape returns from weapons to characters without losing either choice; from characters it opens MainMenu. Returning to characters clears confirmation, so a new run configuration can be chosen.
 - No Choose Weapon or Confirm Loadout buttons.
 - Mouse and standard UGUI keyboard/gamepad navigation use the existing Input System UI module.
 - The canvas scales by width and centers a 1280×720 safe layout, keeping it visible at 16:9 and 4:3.
 
 ## Scope
 
-Character/weapon stat assets, save data and balance are not rewritten. Migration adds a Mage prefab copied from the authored gameplay Player so every catalog entry is a real prefab. Existing weapon-grip settings are reused; Unity can reserialize their calibrated visual transforms when saving imported weapon prefabs. No currencies, locked content or fictional passive abilities were added.
+Character/weapon stat assets and balance are not rewritten. Migration adds a Mage prefab copied from the authored gameplay Player so every catalog entry is a real prefab. Existing weapon-grip settings are reused; Unity can reserialize their calibrated visual transforms when saving imported weapon prefabs. No locked content or fictional passive abilities were added. The persistent Soul balance is displayed separately; purchases/upgrades are deferred (see `docs/soul-currency.md`).
 
 ## Populate from prefabs
 
@@ -31,11 +31,11 @@ Call this in Play Mode with non-empty `GameObject[]` arrays of prefab assets, no
 
 For a legacy scene, use `Tools > System Leveling > Use Dynamic Prefab Lists` outside Play Mode. It saves a copy of the current live scene (including unsaved layout edits) to `Captures/LoadoutSelection/BeforeDynamic.unity`, preserves the rest of the layout and gameplay wiring, and replaces only old option buttons with list containers. The initial prefab arrays are discovered from `Assets/Prefab/Characters` and `Assets/Prefab/Weapons`; afterward, edit those arrays in Inspector or supply your own arrays to the function. To change the appearance of every item, edit the shared UI prefab.
 
-`LoadoutLauncher` listens to `onConfirmed`, retains the selected character data, appearance prefab and weapon in memory, and loads `SampleScene`. This is session state, not a disk save. Opening selection clears the prior run; entering a new Play session clears statics even with domain reload disabled.
+`LoadoutLauncher` listens to `onConfirmed` to show its map page, then retains the selected character data, appearance prefab and weapon in memory when a map is clicked and loads that scene. This is session state, not a disk save. Opening selection clears the prior run; entering a new Play session clears statics even with domain reload disabled. See `docs/snow-biome.md` for the two maps and `docs/run-menus.md` for pause, Quick Restart and Another Fate.
 
 `GameplayLoadout` on the existing scene Player runs at execution order -200, before PlayerController (-100), PlayerStats and WeaponHolder. It sets character data before stats initialize, copies the chosen prefab's animation, sprite, scale, body collider and calibrated hand transform, then calls the existing `WeaponHolder.Equip`. The original Player object is never replaced, so camera, input, HUD, collection, enemy targeting and spawner references stay valid. Runtime weapon defaults cannot replace the explicit selection.
 
-The existing Game Over Restart reloads the same gameplay scene and retains the session's character/weapon, while resetting health, XP and upgrades. Starting `SampleScene` directly in a fresh Play session still uses its original default Mage and Magic Book. A return-to-selection menu and disk persistence are not added.
+Quick Restart reloads the same gameplay scene and retains the session's character/weapon, while resetting health, XP and upgrades. Esc opens the in-game pause menu. Game Over offers Quick Restart, Another Fate (fresh character selection), Settings and Main Menu. Starting `SampleScene` directly in a fresh Play session still uses its original default Mage and Magic Book. Loadout/run state is session-only; Soul persists separately and is not reset by these routes. See `docs/run-menus.md` for navigation.
 
 ## Connection setup
 
@@ -44,7 +44,7 @@ The existing Game Over Restart reloads the same gameplay scene and retains the s
 - Backs up both scenes and Build Settings under `Captures/LoadoutGameplay/Before/`.
 - Validates the supplied prefab lists, adds `LoadoutLauncher`/`CanvasGroup`, and updates the footer. It does not replace the supplied lists or look up characters by name.
 - Adds only `GameplayLoadout` to the gameplay Player; existing scene objects and links are kept.
-- Places the enabled selection scene first and gameplay scene second in Build Settings, preserving other entries.
+- Keeps MainMenu first when present, followed by the enabled selection/gameplay scenes; preserves other entries.
 
 ## Verification
 

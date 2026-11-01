@@ -3,6 +3,8 @@ using UnityEngine;
 public class EnemyStats : MonoBehaviour
 {
     public EnemyScriptableObject enemyData;
+    [SerializeField, Min(0)] private int soulReward = 1;
+    public int SoulReward => Mathf.Max(0, soulReward);
 
     [HideInInspector]
     public float currentMoveSpeed;
@@ -35,6 +37,8 @@ public class EnemyStats : MonoBehaviour
         if (isDead || GameOverController.GameplayStopped)
             return;
 
+        if (TryGetComponent(out RotwoodBoss boss))
+            dmg *= boss.DamageTakenMultiplier;
         currentHealth -= dmg;
         if (currentHealth <= 0)
         {
@@ -51,14 +55,17 @@ public class EnemyStats : MonoBehaviour
         if (isDead) return;
         isDead = true;
 
+        if (Application.isPlaying && enemyData != null && !GameOverController.GameplayStopped)
+            SoulWallet.Add(SoulReward);
+
         if (TryGetComponent(out DropRateManager dropManager))
         {
             dropManager.DropItem();
         }
 
-        float deathDuration = TryGetComponent(out EnemyAnimation animation)
-            ? animation.PlayDeath()
-            : 0f;
+        float deathDuration = TryGetComponent(out RotwoodBoss boss)
+            ? boss.BeginDeath()
+            : TryGetComponent(out EnemyAnimation animation) ? animation.PlayDeath() : 0f;
         Destroy(gameObject, deathDuration);
     }
 

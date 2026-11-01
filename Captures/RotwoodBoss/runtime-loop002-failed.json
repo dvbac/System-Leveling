@@ -1,0 +1,9 @@
+{
+    "result": "FAIL",
+    "checks": [
+        "AC-001: authored encounter uses minute 15",
+        "AC-001: pause does not advance encounter",
+        "AC-001: no early spawn before 900 seconds"
+    ],
+    "failure": "System.InvalidOperationException: AC-001: spawns once after 900s\r\n  at RotwoodBossRegression.Check (System.Boolean condition, System.String label) [0x00016] in C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Tests\\RotwoodBossRegression.cs:280 \r\n  at RotwoodBossRegression+<Tests>d__9.MoveNext () [0x00208] in C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Tests\\RotwoodBossRegression.cs:88 \r\n  at RotwoodBossRegression+<Start>d__8.MoveNext () [0x00085] in C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Tests\\RotwoodBossRegression.cs:51 "
+}

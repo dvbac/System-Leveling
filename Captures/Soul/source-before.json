@@ -1,0 +1,66 @@
+[
+    {
+        "path":  "Assets/MyAssets/Other/Drop/Soul.png",
+        "sha256":  "0F608A9986D640E691BB48D60434C2712AB828C7CEAD1FE67441D74BC618BBD6"
+    },
+    {
+        "path":  "Assets/MyAssets/Other/Drop/Soul.png.meta",
+        "sha256":  "73341634F58A9700C584FB770E284EB63D65ACAA2E74DA705E60B3F95B0287AE"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Scriptable Object\\Enemy\\Blue Slime.asset",
+        "sha256":  "BFC849331E6EE7410A2F7E2848E4977A6A624852517829E7C45C9AE9BC8BC8BB"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Scriptable Object\\Enemy\\Blue Slime.asset.meta",
+        "sha256":  "EFAC3E82DEA8BE0B478B79552EFC3BCABDD7DCCE9B978E5E27721CA38C2A58DD"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Scriptable Object\\Enemy\\ReferenceEnemies.meta",
+        "sha256":  "0F6E8F4760D7E8E6C13477C56793FAC4F75620B862D2FF6DE32F14D15E7C164C"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Scriptable Object\\Enemy\\Snow.meta",
+        "sha256":  "BB348B266C3B3E9FBB84A63AC4A87A9BFF0D8691F55A6B11DF6CFDD245521173"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Scriptable Object\\Enemy\\ReferenceEnemies\\Skeleton.asset",
+        "sha256":  "E5A542CD8B5E14EC81C82940C94498BB377D7B858D90074DCFB37621095842D7"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Scriptable Object\\Enemy\\ReferenceEnemies\\Skeleton.asset.meta",
+        "sha256":  "530EDE25FDCE5FD3ABC2F1C22745F5CE6A26C3E955CDB44AC2146FB1AA173500"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Scriptable Object\\Enemy\\ReferenceEnemies\\Slime.asset",
+        "sha256":  "6BA0316804D7C521D4CB71CABE85D2C61398A633140B94425B9CF74A98ED0B8C"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Scriptable Object\\Enemy\\ReferenceEnemies\\Slime.asset.meta",
+        "sha256":  "4F344BD5BA324B48CD52390079105BF6C0118A9A464C1B87FBD94A1088992F31"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Scriptable Object\\Enemy\\ReferenceEnemies\\Spider.asset",
+        "sha256":  "79700156FD1E959EA98309F0C7DFA5A8F0103ED96168BE1F8C949E0F2776D54E"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Scriptable Object\\Enemy\\ReferenceEnemies\\Spider.asset.meta",
+        "sha256":  "AA4697FA06DF83A2B74B7E27BC5616A47F2662AF43834E9D5CC6C7691B6A17D9"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Scriptable Object\\Enemy\\ReferenceEnemies\\Wolf.asset",
+        "sha256":  "02F13FAD8351D7F450C4321F251786BF8BB5BF6DEA2C34028861AF4413E9FD6F"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Scriptable Object\\Enemy\\ReferenceEnemies\\Wolf.asset.meta",
+        "sha256":  "168ABFA77B2CABB2F1C44CB207107D52ED6FDB63F216B834EA8397F0C7C04E8D"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Scriptable Object\\Enemy\\Snow\\Snowman.asset",
+        "sha256":  "4276AEFAA1CB74CAB9F1D6C46FF0AAC2A55D653CB848956B5E5FEDBC404AC9B7"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Scriptable Object\\Enemy\\Snow\\Snowman.asset.meta",
+        "sha256":  "09860566BC00E470B9AFF90FD51D581D2DDE81C6615CF9EED9CF925C4BE597FA"
+    }
+]

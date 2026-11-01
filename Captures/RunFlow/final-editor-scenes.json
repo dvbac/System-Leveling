@@ -1,0 +1,18 @@
+{
+    "status":  "success",
+    "result":  {
+                   "success":  true,
+                   "count":  1,
+                   "scenes":  [
+                                  {
+                                      "name":  "LoadoutSelection",
+                                      "path":  "Assets/Scenes/LoadoutSelection.unity",
+                                      "isLoaded":  true,
+                                      "isDirty":  false,
+                                      "isActive":  true,
+                                      "rootCount":  3,
+                                      "isPseudoScene":  false
+                                  }
+                              ]
+               }
+}

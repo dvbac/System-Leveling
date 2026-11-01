@@ -1,0 +1,90 @@
+[
+    {
+        "path":  "Assets/MyAssets/Monster/SnowVariants/Snowman/Snowman.png",
+        "sha256":  "8BDDFE15D3B453D7BEEDDADB19E467A5F5523A83647CCF3BB7A68E1B05D15533"
+    },
+    {
+        "path":  "Assets/MyAssets/Monster/SnowVariants/Snowman/Snowman.png.meta",
+        "sha256":  "9B61DACE3CB52CB1261CCFF71836187A7DF569415EFA425B5F0CCCB0B60148D6"
+    },
+    {
+        "path":  "Assets/Prefab/ReferenceEnemies/Skeleton.prefab",
+        "sha256":  "E412F3B296DAE1F6B63EFE3E4EA3E562F2CB095571598176460B3700FD41112C"
+    },
+    {
+        "path":  "Assets/Scriptable Object/Enemy/ReferenceEnemies/Skeleton.asset",
+        "sha256":  "E5A542CD8B5E14EC81C82940C94498BB377D7B858D90074DCFB37621095842D7"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\MyAssets\\Monster\\ReferenceAnimated\\Skeleton\\Die.anim",
+        "sha256":  "F8A0DCA928C5A487B0058305AF71624BB7DD2064B6B6089C6A9A79C2861BCF0E"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\MyAssets\\Monster\\ReferenceAnimated\\Skeleton\\Die.anim.meta",
+        "sha256":  "8067D23AA3FCE1EBC8629B93D4F213C537BE1C556C5967EC5B8EF87C547890A6"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\MyAssets\\Monster\\ReferenceAnimated\\Skeleton\\Die.png",
+        "sha256":  "FF318565DE7BA0C6900906A98E0F3FEAB7942802904DBCC9CBD822C38D0C2081"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\MyAssets\\Monster\\ReferenceAnimated\\Skeleton\\Die.png.meta",
+        "sha256":  "CD24561F51B87C1A0E7898739CFA674F6619887A69EC11F51629682344F3C7B6"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\MyAssets\\Monster\\ReferenceAnimated\\Skeleton\\Hit.anim",
+        "sha256":  "691EF1161E826AA390BCEADE1B308A1CC52FB974D689240E8701F09CB3731A0C"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\MyAssets\\Monster\\ReferenceAnimated\\Skeleton\\Hit.anim.meta",
+        "sha256":  "F92CC423FA01FA7956E568FBAA95BF511967E9F70C57204091F5B1DFD7851F68"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\MyAssets\\Monster\\ReferenceAnimated\\Skeleton\\Hit.png",
+        "sha256":  "939AA04573CAE845AAEC4671220BBF424A09E1DB90481D7E31C6275718711216"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\MyAssets\\Monster\\ReferenceAnimated\\Skeleton\\Hit.png.meta",
+        "sha256":  "6C2077E63384812F95EBB8ADA29B3A3D336A42BE64792CB45081EB0B501D1B56"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\MyAssets\\Monster\\ReferenceAnimated\\Skeleton\\Idle.anim",
+        "sha256":  "8070D90E689D8480C02E5FAB420BFB7561A67233FC82C515C631F3038229FF50"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\MyAssets\\Monster\\ReferenceAnimated\\Skeleton\\Idle.anim.meta",
+        "sha256":  "194BBB79CBC9E980023952D6D74CF2A3041F3A7B0F5C92A42991109506DD610B"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\MyAssets\\Monster\\ReferenceAnimated\\Skeleton\\Idle.png",
+        "sha256":  "C17E6216B900EB337FFDEC45927487BBDCB509125CA0900976A50000BC21DF2D"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\MyAssets\\Monster\\ReferenceAnimated\\Skeleton\\Idle.png.meta",
+        "sha256":  "8C64FE1BA4359B93D9B177878E2F2F3FB268AF08A1BDF353A21A46B811F37534"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\MyAssets\\Monster\\ReferenceAnimated\\Skeleton\\Move.anim",
+        "sha256":  "799983540D20F2DF7B96EB75ED996D5A9C2FBB4EC2B818701D79BA982BCA8F47"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\MyAssets\\Monster\\ReferenceAnimated\\Skeleton\\Move.anim.meta",
+        "sha256":  "DE9BA21B2187FFC93DD9FD86474A4F5D66C51394CD838A3AC701D6EDEF0ACF06"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\MyAssets\\Monster\\ReferenceAnimated\\Skeleton\\Move.png",
+        "sha256":  "5832D5DADC7980D86CBB54C870ED4AA9722468AFF76680F71F5E875B0B4DD272"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\MyAssets\\Monster\\ReferenceAnimated\\Skeleton\\Move.png.meta",
+        "sha256":  "1B4E29AC2D8D564215782B2366B39C39AD676983B665D46835BBA39C4D1A0EDA"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\MyAssets\\Monster\\ReferenceAnimated\\Skeleton\\Skeleton.controller",
+        "sha256":  "E635DF33F33F421B6ED0AFEC419FEA2AB31963A173BF8191A3C569EB38714FEA"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\MyAssets\\Monster\\ReferenceAnimated\\Skeleton\\Skeleton.controller.meta",
+        "sha256":  "0581ACFD7B158D963F30D33F930C47CEDF9198970EC296C6CC4841955FCD21D4"
+    }
+]

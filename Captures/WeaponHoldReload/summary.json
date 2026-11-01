@@ -1,0 +1,23 @@
+{
+    "result":  "PASS",
+    "totalChecks":  145,
+    "schedulerCompile":  "2f15a8ab",
+    "uiCompile":  "af568698",
+    "reports":  [
+                    {
+                        "file":  "state.json",
+                        "result":  "PASS",
+                        "checks":  22
+                    },
+                    {
+                        "file":  "runtime.json",
+                        "result":  "PASS",
+                        "checks":  120
+                    },
+                    {
+                        "file":  "ui-regression.json",
+                        "result":  "PASS",
+                        "checks":  3
+                    }
+                ]
+}

@@ -1,0 +1,10 @@
+{
+    "result": "FAIL",
+    "utc": "2026-11-01T05:57:42.8750546Z",
+    "failure": "System.Exception: Stopped Snowman returns to Idle\r\n  at SnowmanRegression.Check (System.Boolean pass, System.String label) [0x00016] in C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Tests\\SnowmanRegression.cs:116 \r\n  at SnowmanRegression+<Tests>d__10.MoveNext () [0x00384] in C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Tests\\SnowmanRegression.cs:78 \r\n  at SnowmanRegression+<Run>d__9.MoveNext () [0x000af] in C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Tests\\SnowmanRegression.cs:41 ",
+    "checks": [
+        "Actual prefab initializes Snowman stats 45/1.25/8",
+        "Snowman follows the player using the existing Enemy component",
+        "Moving plays the generated Move animation"
+    ]
+}

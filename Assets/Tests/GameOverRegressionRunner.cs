@@ -28,7 +28,7 @@ public class GameOverRegressionRunner : MonoBehaviour
     {
         if (!Application.isPlaying) throw new InvalidOperationException("Enter Play Mode first.");
         if (FindAnyObjectByType<GameOverRegressionRunner>() != null) return;
-        GameObject root = new GameObject("Game Over Regression Runner");
+        GameObject root = new GameObject("Game Over Regression Runner", typeof(SoulTestIsolation));
         DontDestroyOnLoad(root);
         root.AddComponent<GameOverRegressionRunner>().StartCoroutine("Run");
     }

@@ -1,0 +1,17 @@
+{
+    "result":  "PASS",
+    "compileJob":  "a335d659",
+    "totalChecks":  523,
+    "reports":  [
+                    {
+                        "file":  "runtime.json",
+                        "result":  "PASS",
+                        "checks":  278
+                    },
+                    {
+                        "file":  "loadout-regression.json",
+                        "result":  "PASS",
+                        "checks":  245
+                    }
+                ]
+}

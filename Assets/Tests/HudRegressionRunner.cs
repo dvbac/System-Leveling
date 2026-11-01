@@ -35,7 +35,7 @@ public class HudRegressionRunner : MonoBehaviour
             throw new InvalidOperationException("Enter Play Mode before running HUD regression.");
         if (Object.FindAnyObjectByType<HudRegressionRunner>() != null)
             return;
-        new GameObject("HUD Regression Runner").AddComponent<HudRegressionRunner>().StartCoroutine("Run");
+        new GameObject("HUD Regression Runner", typeof(SoulTestIsolation)).AddComponent<HudRegressionRunner>().StartCoroutine("Run");
     }
 
     private IEnumerator Run()

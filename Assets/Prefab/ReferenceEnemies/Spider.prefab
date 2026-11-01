@@ -210,6 +210,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyStats
   enemyData: {fileID: 11400000, guid: 82b616a798d4f5649bd38730d8ef338d, type: 2}
+  soulReward: 3
   currentMoveSpeed: 0
   currentHealth: 0
   currentDamage: 0

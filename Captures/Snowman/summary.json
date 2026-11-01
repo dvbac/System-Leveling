@@ -1,0 +1,19 @@
+{
+    "result":  "PASS",
+    "totalChecks":  56,
+    "compileJob":  "1278af61",
+    "reports":  [
+                    {
+                        "file":  "Captures/Snowman/asset-validation.json",
+                        "result":  "PASS",
+                        "checks":  43,
+                        "utc":  "2026-11-01T05:55:40.1677356Z"
+                    },
+                    {
+                        "file":  "Captures/Snowman/runtime-validation.json",
+                        "result":  "PASS",
+                        "checks":  13,
+                        "utc":  "2026-11-01T06:05:10.9299033Z"
+                    }
+                ]
+}

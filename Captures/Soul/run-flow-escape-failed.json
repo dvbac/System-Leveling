@@ -1,0 +1,8 @@
+{
+    "result": "FAIL",
+    "failure": "System.Exception: Esc from map returns exactly one step to weapons\r\n  at RunFlowRegression.Check (System.Boolean pass, System.String text) [0x00016] in C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Tests\\RunFlowRegression.cs:202 \r\n  at RunFlowRegression+<Tests>d__10.MoveNext () [0x0020c] in C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Tests\\RunFlowRegression.cs:68 \r\n  at RunFlowRegression+<Run>d__9.MoveNext () [0x00094] in C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Tests\\RunFlowRegression.cs:43 ",
+    "checks": [
+        "Run begins at character selection, not map selection",
+        "Character > weapon > separate map screen, without starting gameplay"
+    ]
+}

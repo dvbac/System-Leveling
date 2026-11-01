@@ -146,14 +146,14 @@ public class EnemySpawner : MonoBehaviour
         for (int i = 0; i < normalSpawnsPerFrame && normalPending > 0; i++)
         {
             if (normalEnemies.Count >= normalPopulationCap) { normalPending = 0; break; }
-            GameObject prefab = SpawnSelection.Pick(phase.enemies, Random.value);
-            if (prefab == null) { normalPending = 0; break; }
             normalPending--;
             if (!TryPosition(false, out Vector3 position))
             {
                 Log($"Normal placement skipped: {LastPlacementFailure}.");
                 continue;
             }
+            GameObject prefab = SpawnSelection.Pick(phase.enemies, Random.value);
+            if (prefab == null) { normalPending = 0; break; }
             normalEnemies.Add(CreateEnemy(prefab, position));
             NormalSpawnedThisFrame++;
             TotalNormalSpawned++;
@@ -194,18 +194,18 @@ public class EnemySpawner : MonoBehaviour
                 FinishDeployment("Horde cap changed or reached; remaining members skipped.", true);
                 return;
             }
-            GameObject prefab = SpawnSelection.Pick(horde.enemies, Random.value);
-            if (prefab == null)
-            {
-                FinishDeployment("Horde prefab pool is empty or invalid.", true);
-                return;
-            }
             if (!TryPosition(true, out Vector3 position))
             {
                 placementFailures++;
                 if (placementFailures >= horde.maxPlacementFailures)
                     FinishDeployment($"Placement budget exhausted: {LastPlacementFailure}.", true);
                 break;
+            }
+            GameObject prefab = SpawnSelection.Pick(horde.enemies, Random.value);
+            if (prefab == null)
+            {
+                FinishDeployment("Horde prefab pool is empty or invalid.", true);
+                return;
             }
             hordeEnemies.Add(CreateEnemy(prefab, position));
             HordeSpawnedThisFrame++;

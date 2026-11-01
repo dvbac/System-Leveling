@@ -1,0 +1,122 @@
+[
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Scriptable Object\\Weapon\\Bow.asset",
+        "sha256":  "E8DB24220D101118E952DAAB5435E8D8390CA37F88CD2E0DE1BE2928B513E91C"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Scriptable Object\\Weapon\\Bow.asset.meta",
+        "sha256":  "935794CBB7376A40FEB7734759C9C0947E847237F2735E227930A8F9E0F7DF0D"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Scriptable Object\\Weapon\\Crossbow.asset",
+        "sha256":  "2108364D34B558D0B9AB83F890437AF4589501441A83C71085E9FC41E5953ADB"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Scriptable Object\\Weapon\\Crossbow.asset.meta",
+        "sha256":  "AC66226B80620C9C42D79B5EB35E13CBF5298623D94E77BB8D197698844B8085"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Scriptable Object\\Weapon\\Magic Book.asset",
+        "sha256":  "D10B661551038471CFEA1DAFC7D63B34BFDAB394116D13E7685168A64EA53896"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Scriptable Object\\Weapon\\Magic Book.asset.meta",
+        "sha256":  "6A0890CE369EDF1679AE34CC4B3EAE16F77B0B83AD08A833649470C0ED5B2DD6"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Scriptable Object\\Weapon\\Sword.asset",
+        "sha256":  "8FE170DA096F50A1878482910586D3872BCBC31FB368B3FBDA0B7FBB48BEE777"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Scriptable Object\\Weapon\\Sword.asset.meta",
+        "sha256":  "E96F0344102A767ED9B1AE506CE5421B05E4E52B584DE050E976A6EC4AF86450"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Prefab\\Weapons\\Arrow.prefab",
+        "sha256":  "EB73533E9A634E31B12762E29B72FF0F136E2AF40A8195FC7F76EC31F86F0F5A"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Prefab\\Weapons\\Arrow.prefab.meta",
+        "sha256":  "EDB03B55B91C22081522204DC51112A1DD4AE5F9ABC41E5EFD61A88B3419773B"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Prefab\\Weapons\\Bow.prefab",
+        "sha256":  "38C45075C4A47D5E27F014C88D087FEB742616670E84CF6274CBFC3D90F4EC8D"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Prefab\\Weapons\\Bow.prefab.meta",
+        "sha256":  "56A2CF4A41416BED4C4D592C810494C15F4D3A0E090F460772184129718238A4"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Prefab\\Weapons\\Crossbow.prefab",
+        "sha256":  "6676540A92CFBAD33C8EE25313B5D224CBC43DD64B9ED1564DB667D645567D95"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Prefab\\Weapons\\Crossbow.prefab.meta",
+        "sha256":  "3668479EE62470D9672EB1C674D55ACBE0F5F34521DDBCE844211F03A5A5F2EF"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Prefab\\Weapons\\CrossbowBolt.prefab",
+        "sha256":  "15635A718E746A1C788F2F9FBCE613B96CAC9722770D0E16CD500AE033F2DB59"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Prefab\\Weapons\\CrossbowBolt.prefab.meta",
+        "sha256":  "BD839D78287909E60B8B7E139D61B471CEA534B8A2BB6C1DB263D84ADF05A824"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Prefab\\Weapons\\MagicBolt.prefab",
+        "sha256":  "4A00A9758F16DCB327C31C896122C84FD7213420B337EEE635C97B8B1BEBB41C"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Prefab\\Weapons\\MagicBolt.prefab.meta",
+        "sha256":  "9FAE60517F2AB19C1B705C3184A58CC9B8A38B5589A20435E3BFBBF236ECD190"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Prefab\\Weapons\\MagicBook.prefab",
+        "sha256":  "33C9E131727A8CE72F98E255A1789403E020FB92D97C794B1A909D99CE237F50"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Prefab\\Weapons\\MagicBook.prefab.meta",
+        "sha256":  "704FACE539B6A46BA9B4E67C5079E0764BEDE7040B1C7FF98CFEABDA98BF4ECA"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Prefab\\Weapons\\Sword.prefab",
+        "sha256":  "FB9B050F5E445275CBE803C6073C7B87385B1489764517BAAE7CE1B87799413C"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Prefab\\Weapons\\Sword.prefab.meta",
+        "sha256":  "D7DAF3AA79B273A14CEC93C8934D5A27A88D2C39DD03BA7E812D7324592266DA"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Prefab\\Characters\\Archer.prefab",
+        "sha256":  "67A281E4512D3E42559BBD714550AA636208CB9C4DBC0C5E549EDDE29426A5DE"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Prefab\\Characters\\Archer.prefab.meta",
+        "sha256":  "84931E72FDD3C33386A7ACEB422128B62487E71B6698729983A9CD7AD0DF286E"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Prefab\\Characters\\Hunter.prefab",
+        "sha256":  "9307B8DD3B735FD34382BF2DE496FBA3DBE3FE3C99CB7A190CDB6BE873E92C9F"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Prefab\\Characters\\Hunter.prefab.meta",
+        "sha256":  "4495E6C2E1690E72B35CE3F8F28B666ECCD982AE7499E58C1D4AAB67E727635F"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Prefab\\Characters\\Knight.prefab",
+        "sha256":  "B38580C8F79F064553E113CCBA2FB33324968C594DC6BA538617E49F9F2D42E6"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Prefab\\Characters\\Knight.prefab.meta",
+        "sha256":  "47E47601787AD40A105A12B870B3A244F631BFE812F4128CDAA7A3D1C4D5CF1A"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Prefab\\Characters\\Mage.prefab",
+        "sha256":  "F13C5797562ABA71C6FFFECD84A79F46F877BC7182A44279F3F1BCAC175D0414"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Prefab\\Characters\\Mage.prefab.meta",
+        "sha256":  "8ED2240DFAE1D20C019D8EA4491D3BAA0230EDB554557C43575C70A8122769D8"
+    }
+]

@@ -1,0 +1,12 @@
+PASS: 3 scenes and shared HUD styled; sliced decorative borders do not block raycasts.
+Border/panel-border-005.png
+Border/panel-border-009.png
+Border/panel-border-014.png
+Border/panel-border-028.png
+Border/panel-border-002.png
+Border/panel-border-022.png
+Panel/panel-014.png
+Transparent center/panel-transparent-center-005.png
+Transparent border/panel-transparent-border-015.png
+Divider/divider-004.png
+Divider Fade/divider-fade-003.png

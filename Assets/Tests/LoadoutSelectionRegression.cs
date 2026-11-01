@@ -28,7 +28,7 @@ public class LoadoutSelectionRegression : MonoBehaviour
             throw new InvalidOperationException("Enter Play Mode in LoadoutSelection first.");
         if (FindAnyObjectByType<LoadoutSelectionRegression>() != null)
             throw new InvalidOperationException("Selection regression is already running.");
-        new GameObject("Loadout Regression").AddComponent<LoadoutSelectionRegression>();
+        new GameObject("Loadout Regression", typeof(SoulTestIsolation)).AddComponent<LoadoutSelectionRegression>();
     }
 
     private IEnumerator Start()

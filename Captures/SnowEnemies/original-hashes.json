@@ -1,0 +1,162 @@
+[
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\MyAssets\\Monster\\ReferenceAnimated\\Wolf\\Die.anim",
+        "sha256":  "56E137C54586273022F8EBCCC8A77138C383B97A2EB77E3E491F9209D871073D"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\MyAssets\\Monster\\ReferenceAnimated\\Wolf\\Die.anim.meta",
+        "sha256":  "0F073F9CD71B7139D8E8AEF142076D97E55DE9C1FCD98FCC52FD44685E24E4C8"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\MyAssets\\Monster\\ReferenceAnimated\\Wolf\\Die.png",
+        "sha256":  "CAFCB4474BAE9DB128FEB14BF6D022A0ABD62C67F3741A1969222B83F38CDEE9"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\MyAssets\\Monster\\ReferenceAnimated\\Wolf\\Die.png.meta",
+        "sha256":  "3039BF7660FE133FC55AAA19E346954E5E767B8A1C8C47AE5B200FBB50BC1577"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\MyAssets\\Monster\\ReferenceAnimated\\Wolf\\Hit.anim",
+        "sha256":  "2641766D10A4F0362A2BB694511CA14067AECC390644BCAD56C6848D4B1007C5"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\MyAssets\\Monster\\ReferenceAnimated\\Wolf\\Hit.anim.meta",
+        "sha256":  "BCD86C13CFEE42FCCC39B74524B26632D7EC6BC627CDF3F7FD3918360B0CBF4C"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\MyAssets\\Monster\\ReferenceAnimated\\Wolf\\Hit.png",
+        "sha256":  "32F7F693EB23BDDF67B6C08B97267681A48EC7AE793AE6839D3A7D715D373062"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\MyAssets\\Monster\\ReferenceAnimated\\Wolf\\Hit.png.meta",
+        "sha256":  "C88E6FEC8153AA3E3C11559306709A4758757DF1D482EFBDCDED04EEE73C268C"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\MyAssets\\Monster\\ReferenceAnimated\\Wolf\\Idle.anim",
+        "sha256":  "446787101911CC3D058DA5C9453C2C7A244C8F0D3023C491D6515F2EC7328648"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\MyAssets\\Monster\\ReferenceAnimated\\Wolf\\Idle.anim.meta",
+        "sha256":  "30765E039B9C61B7AD92734B3AA0C4BA007CACB5E6EDA1B29196214781C9DEE0"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\MyAssets\\Monster\\ReferenceAnimated\\Wolf\\Idle.png",
+        "sha256":  "28045A29705F2E66BF1FD05CFD1CC8C91B18A73D91C13D3B56849CFBDC17FBF7"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\MyAssets\\Monster\\ReferenceAnimated\\Wolf\\Idle.png.meta",
+        "sha256":  "27B30AE3E461F72D66EC37BDD2644FC9460ABD289DF4719B77A3BA5269CCA79B"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\MyAssets\\Monster\\ReferenceAnimated\\Wolf\\Move.anim",
+        "sha256":  "2D49B4D3A3542C4A5D58B73CD065471D1692F5F34114385A9D88D5AD8177947E"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\MyAssets\\Monster\\ReferenceAnimated\\Wolf\\Move.anim.meta",
+        "sha256":  "3A3BC87344861D33823432F8D3E532437AFE19F4F4461D0632A99D2E60FB5EC4"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\MyAssets\\Monster\\ReferenceAnimated\\Wolf\\Move.png",
+        "sha256":  "3633062EF804E03506C1F071DC94169EAE61F999DDBE3454F1221FE34D2DB6E5"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\MyAssets\\Monster\\ReferenceAnimated\\Wolf\\Move.png.meta",
+        "sha256":  "4872DAF4EBD72D5609401723231FE37A36E40935F17886DDF2768D1288EC482A"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\MyAssets\\Monster\\ReferenceAnimated\\Wolf\\Wolf.controller",
+        "sha256":  "AA7579213383A14B1B267C9DFAA41B91970BBA995C733E55E7A5CBF037186321"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\MyAssets\\Monster\\ReferenceAnimated\\Wolf\\Wolf.controller.meta",
+        "sha256":  "76F65AFF34420662F3FD9CC9129C63328AC3198AC3BD056E6F1173449428CC2A"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Prefab\\ReferenceEnemies\\Wolf.prefab",
+        "sha256":  "8230AA3BC03FE407D58DF9D1206E3EDBC475269887E19433230B15DD0CDAC3B2"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Scriptable Object\\Enemy\\ReferenceEnemies\\Wolf.asset",
+        "sha256":  "02F13FAD8351D7F450C4321F251786BF8BB5BF6DEA2C34028861AF4413E9FD6F"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\MyAssets\\Monster\\ReferenceAnimated\\Slime\\Die.anim",
+        "sha256":  "304E1C423900C1FDE3DCA32055498DD0E6723E6EDD8C211CF7FA2775D0CAA7B7"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\MyAssets\\Monster\\ReferenceAnimated\\Slime\\Die.anim.meta",
+        "sha256":  "AFAB5D6B36C83665158DFDCA0536FB3551914C6DD121C4BB57EB938D61C70220"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\MyAssets\\Monster\\ReferenceAnimated\\Slime\\Die.png",
+        "sha256":  "A5A9C5A835BAD738F5DA62237A1FC7A2AD55CF23173E4FAEB21B9625FCAB25DE"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\MyAssets\\Monster\\ReferenceAnimated\\Slime\\Die.png.meta",
+        "sha256":  "C48AEB29C7AC3EEE333C8E15BF2959915F05728C589BB47775121F4193A8D900"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\MyAssets\\Monster\\ReferenceAnimated\\Slime\\Hit.anim",
+        "sha256":  "2D9ACCA2AB7A1CEAAD5A86EAB07847500EB98172DA00E0A74B76147545CCDE5D"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\MyAssets\\Monster\\ReferenceAnimated\\Slime\\Hit.anim.meta",
+        "sha256":  "B2C8A82D208D57BBC07588BECAB80A06A3F35CE940C57883D62C23D981F8ADBB"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\MyAssets\\Monster\\ReferenceAnimated\\Slime\\Hit.png",
+        "sha256":  "90A80CB0073A2B6112C4E022A05A8C8EF6FBD080555DE14C95277921237623B0"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\MyAssets\\Monster\\ReferenceAnimated\\Slime\\Hit.png.meta",
+        "sha256":  "A79EF1FDBA955905EFE4A4E67C983958E18F040DD0E568B8D04A010DCB2EDA58"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\MyAssets\\Monster\\ReferenceAnimated\\Slime\\Idle.anim",
+        "sha256":  "8A45A4684FF3A38572B0D3D4DA183F83893F7D75CE5C01119EC1B201AC9B9995"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\MyAssets\\Monster\\ReferenceAnimated\\Slime\\Idle.anim.meta",
+        "sha256":  "59AEB4EC6D27F64B9656BB26CD3CCC96F25E02D6B282970354AA438D1E4B367A"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\MyAssets\\Monster\\ReferenceAnimated\\Slime\\Idle.png",
+        "sha256":  "7D8345D7D96D9CE4293D647D3999EEAE1E60313A943244A470C00FD9AAA41487"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\MyAssets\\Monster\\ReferenceAnimated\\Slime\\Idle.png.meta",
+        "sha256":  "4C9B71AEC2FC618A382B045DBAFD0F27FDAE09812224D6113DFD0FD35546FD48"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\MyAssets\\Monster\\ReferenceAnimated\\Slime\\Move.anim",
+        "sha256":  "61B84CF98BD78ED9186CA534482729293A66B1004C50D448ECFA0056853E8617"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\MyAssets\\Monster\\ReferenceAnimated\\Slime\\Move.anim.meta",
+        "sha256":  "2BB599B47A29A2F64DB67061BC055EB4F263378DFA668D0F208A110C66534CEA"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\MyAssets\\Monster\\ReferenceAnimated\\Slime\\Move.png",
+        "sha256":  "6B612A9EC81150C30901213A89F1CF4402F184F1F2EE4BF8A04217C6DCB4B8F4"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\MyAssets\\Monster\\ReferenceAnimated\\Slime\\Move.png.meta",
+        "sha256":  "D5CB1B7530F701FCD07627FBED702CC3AEF9A073C66E3763F57F911B99E66D43"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\MyAssets\\Monster\\ReferenceAnimated\\Slime\\Slime.controller",
+        "sha256":  "96B365659C2AC89185486161768C416872FC6612CBEEF0C7FA9F4FA968354B15"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\MyAssets\\Monster\\ReferenceAnimated\\Slime\\Slime.controller.meta",
+        "sha256":  "8BBD8002BA269E5F18540000BDC536A2EBCA0DF242B5CF831AD4AEFDDB20BEC5"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Prefab\\ReferenceEnemies\\Slime.prefab",
+        "sha256":  "602A30CA44BF1A0451269167D549126F217297A9E6647CCDBACC22317726FB57"
+    },
+    {
+        "path":  "C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Scriptable Object\\Enemy\\ReferenceEnemies\\Slime.asset",
+        "sha256":  "6BA0316804D7C521D4CB71CABE85D2C61398A633140B94425B9CF74A98ED0B8C"
+    }
+]

@@ -1,0 +1,30 @@
+{
+    "result": "FAIL",
+    "utc": "2026-11-01T10:47:45.3175535Z",
+    "checks": [
+        "Empty magazine cannot fire before reload completes",
+        "Held fire continues after the first post-reload shot",
+        "Holding again waits for the partial reload to finish",
+        "Reload completion does not defeat a pause/UI input fence",
+        "An interrupted held trigger still requires a real release",
+        "Input resumes after the actual release",
+        "Empty bow does not fire twice without recovery time",
+        "A partly used bow starts its existing recovery delay without needing to empty",
+        "A partly used bow recovers the missing arrow without firing",
+        "Crossbow still fires only when a charge is released",
+        "Crossbow hold/release mechanics remain unchanged by the normal weapon fix",
+        "Crossbow can still charge a fresh full-power shot"
+    ],
+    "failures": [
+        "Held magazine fires immediately when reload completes without releasing the trigger",
+        "Reload completion never bypasses shot cooldown",
+        "Releasing a partly used magazine starts recovery before ammo reaches zero",
+        "Holding again resumes fire after a partial reload",
+        "Partial reload refills the magazine but never fires with the trigger released",
+        "A release observed during reload clears the UI fence, so a later held trigger can resume",
+        "An empty bow recovers and fires while the trigger remains held",
+        "Held empty bow keeps recovering one arrow and firing again",
+        "Bow recovery cannot emit a shot through a UI fence",
+        "Invalid time cannot consume recovered ammo"
+    ]
+}

@@ -343,6 +343,7 @@ public static class LoadoutSelectionBuilder
         bool launchEnabled = launcher != null && launcher.enabled;
         try
         {
+            if (launcher != null && launcher.ChoosingMap) launcher.BackToWeapons();
             if (launcher != null) launcher.enabled = false;
             ValidateSelection(ui);
         }
@@ -388,7 +389,8 @@ public static class LoadoutSelectionBuilder
         Require(ui.CharacterIndex == retained, "Invalid choices must be ignored.");
         Require(before == AssetSnapshot(), "Selection modified source data.");
         ui.SelectCharacter(0); ui.SelectWeapon(0); ui.Back();
-        Require(ui.GetComponentsInChildren<Button>(true).Length == ui.characterPrefabs.Length + ui.weaponPrefabs.Length + 1, "Only generated icon buttons and Back should exist.");
+        int mapButtons = ui.GetComponent<LoadoutLauncher>()?.mapPage != null ? 3 : 0;
+        Require(ui.GetComponentsInChildren<Button>(true).Length == ui.characterPrefabs.Length + ui.weaponPrefabs.Length + 1 + mapButtons, "Only catalog, Back and the dedicated map screen buttons should exist.");
         Debug.Log("LOADOUT SELECTION PASS: generated prefab lists, hover does not commit, back retains choices, single confirmation, invalid indices, source assets unchanged.");
     }
 

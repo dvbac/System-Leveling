@@ -1,0 +1,20 @@
+{
+    "result": "PASS",
+    "utc": "2026-11-01T06:05:10.9299033Z",
+    "failure": "",
+    "checks": [
+        "Fixture is independent of a previously finished gameplay run",
+        "Actual prefab initializes Snowman stats 45/1.25/8",
+        "Snowman follows the player using the existing Enemy component",
+        "Moving plays the generated Move animation",
+        "Stopped Snowman returns to Idle",
+        "Real 2D collision deals eight contact damage and respects player i-frames",
+        "Snowman takes actual enemy damage",
+        "Damage plays Hit without interrupting the enemy system",
+        "Death immediately stops movement, physics and body collision",
+        "Repeated death drops loot exactly once",
+        "Snowman remains alive long enough to play its melt animation",
+        "Death animation never drags the world transform",
+        "Snowman is destroyed after the existing death-animation duration"
+    ]
+}

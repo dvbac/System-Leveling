@@ -24,7 +24,7 @@ public class WeaponEquippingRegression : MonoBehaviour
     {
         if (!Application.isPlaying) throw new InvalidOperationException("Enter Play Mode first.");
         if (FindAnyObjectByType<WeaponEquippingRegression>() != null) return;
-        GameObject root = new GameObject("Weapon Equipping Regression"); DontDestroyOnLoad(root);
+        GameObject root = new GameObject("Weapon Equipping Regression", typeof(SoulTestIsolation)); DontDestroyOnLoad(root);
         root.AddComponent<WeaponEquippingRegression>().StartCoroutine("Run");
     }
 

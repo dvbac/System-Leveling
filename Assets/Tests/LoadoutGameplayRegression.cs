@@ -28,7 +28,7 @@ public class LoadoutGameplayRegression : MonoBehaviour
     {
         if (!Application.isPlaying) throw new InvalidOperationException("Enter Play Mode first.");
         if (FindAnyObjectByType<LoadoutGameplayRegression>() != null) return;
-        GameObject root = new GameObject("Loadout Gameplay Regression");
+        GameObject root = new GameObject("Loadout Gameplay Regression", typeof(SoulTestIsolation));
         DontDestroyOnLoad(root); root.AddComponent<LoadoutGameplayRegression>();
         EditorWindow.GetWindow(typeof(Editor).Assembly.GetType("UnityEditor.GameView")).Focus();
     }
@@ -58,8 +58,9 @@ public class LoadoutGameplayRegression : MonoBehaviour
     private IEnumerator Tests()
     {
         string before = Snapshot();
-        Check(EditorBuildSettings.scenes[0].enabled && EditorBuildSettings.scenes[0].path == LoadoutLauncher.SelectionScene,
-            "Selection is the enabled build entry scene");
+        string entry = File.Exists(MainMenu.ScenePath) ? MainMenu.ScenePath : LoadoutLauncher.SelectionScene;
+        Check(EditorBuildSettings.scenes[0].enabled && EditorBuildSettings.scenes[0].path == entry,
+            "Menu flow starts at the enabled build entry scene");
         Check(File.ReadAllText("ProjectSettings/EditorBuildSettings.asset").Contains(LoadoutLauncher.SelectionScene),
             "Selection scene is persisted in project Build Settings");
         yield return SceneManager.LoadSceneAsync(LoadoutLauncher.SelectionScene);
@@ -85,7 +86,9 @@ public class LoadoutGameplayRegression : MonoBehaviour
             Click(ui.characterView.cards[c]);
             Check(ui.ChoosingWeapon && ui.CharacterIndex == c && !ui.GetComponent<LoadoutLauncher>().IsLoading, "Character click selects without launching");
             Click(ui.weaponView.cards[w]);
-            Check(ui.GetComponent<LoadoutLauncher>().IsLoading && !ui.GetComponent<CanvasGroup>().interactable, "Weapon click launches and locks further input");
+            Check(ui.GetComponent<LoadoutLauncher>().ChoosingMap && !ui.GetComponent<LoadoutLauncher>().IsLoading, "Weapon click opens the dedicated map screen");
+            Click(ui.GetComponent<LoadoutLauncher>().grassMapButton);
+            Check(ui.GetComponent<LoadoutLauncher>().IsLoading && !ui.GetComponent<CanvasGroup>().interactable, "Map click launches and locks further input");
             ui.GetComponent<LoadoutLauncher>().Launch();
             float timeout = Time.realtimeSinceStartup + 20;
             while (SceneManager.GetActiveScene().path != LoadoutLauncher.GameplayScene && Time.realtimeSinceStartup < timeout) yield return null;

@@ -1,0 +1,56 @@
+{
+  "source_sha256": "0a07115eb643d1dce6ca804417457545de55227e6f2d77777538699cc15e8855",
+  "source_unchanged": true,
+  "frame_order": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    3,
+    2,
+    1
+  ],
+  "offsets": [
+    [
+      0,
+      0
+    ],
+    [
+      -1,
+      -2
+    ],
+    [
+      -1,
+      -2
+    ],
+    [
+      -1,
+      -1
+    ],
+    [
+      0,
+      0
+    ],
+    [
+      -1,
+      -1
+    ],
+    [
+      -1,
+      -2
+    ],
+    [
+      -1,
+      -2
+    ]
+  ],
+  "frame_size": [
+    128,
+    128
+  ],
+  "fps": 8,
+  "wrap_difference_before": 1604591,
+  "wrap_difference_after": 851335,
+  "limitation": "Reversible half-stride; not eight newly drawn gait poses."
+}

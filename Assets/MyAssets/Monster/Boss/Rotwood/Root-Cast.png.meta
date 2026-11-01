@@ -1,0 +1,533 @@
+fileFormatVersion: 2
+guid: c308bcb9962caa64980e3d988391310b
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4622229678235184311
+    second: Root-Cast_0
+  - first:
+      213: -635454281579519293
+    second: Root-Cast_1
+  - first:
+      213: 8387780396670948589
+    second: Root-Cast_2
+  - first:
+      213: 3838187788961294617
+    second: Root-Cast_3
+  - first:
+      213: 7100229464475567758
+    second: Root-Cast_4
+  - first:
+      213: 4875210171438210112
+    second: Root-Cast_5
+  - first:
+      213: -9112442183612526537
+    second: Root-Cast_6
+  - first:
+      213: -6317166724649434293
+    second: Root-Cast_7
+  - first:
+      213: 1992755276004968432
+    second: Root-Cast_8
+  - first:
+      213: -3109194989882713389
+    second: Root-Cast_9
+  - first:
+      213: 7158364606027989842
+    second: Root-Cast_10
+  - first:
+      213: -3684953850700261407
+    second: Root-Cast_11
+  - first:
+      213: 665233713891807241
+    second: Root-Cast_12
+  - first:
+      213: -5058350141693280493
+    second: Root-Cast_13
+  - first:
+      213: 2630066634197533300
+    second: Root-Cast_14
+  - first:
+      213: 347217008340610205
+    second: Root-Cast_15
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Root-Cast_0
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 7
+        width: 119
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7bce9791765752040800000000000000
+      internalID: 4622229678235184311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Root-Cast_1
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 7
+        width: 119
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c2a37b92b96e27f0800000000000000
+      internalID: -635454281579519293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Root-Cast_2
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 7
+        width: 119
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de49e8594d1676470800000000000000
+      internalID: 8387780396670948589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Root-Cast_3
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 7
+        width: 119
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 919a74e557bf34530800000000000000
+      internalID: 3838187788961294617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Root-Cast_4
+      rect:
+        serializedVersion: 2
+        x: 516
+        y: 7
+        width: 119
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8604dd4415198260800000000000000
+      internalID: 7100229464475567758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Root-Cast_5
+      rect:
+        serializedVersion: 2
+        x: 644
+        y: 7
+        width: 119
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04c12f922d938a340800000000000000
+      internalID: 4875210171438210112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Root-Cast_6
+      rect:
+        serializedVersion: 2
+        x: 772
+        y: 7
+        width: 119
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7309d712d1a1a8180800000000000000
+      internalID: -9112442183612526537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Root-Cast_7
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 7
+        width: 119
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b434a5e655ae458a0800000000000000
+      internalID: -6317166724649434293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Root-Cast_8
+      rect:
+        serializedVersion: 2
+        x: 1028
+        y: 7
+        width: 119
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f7cf8e8d50b7ab10800000000000000
+      internalID: 1992755276004968432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Root-Cast_9
+      rect:
+        serializedVersion: 2
+        x: 1156
+        y: 7
+        width: 119
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3dadd9241abe9d4d0800000000000000
+      internalID: -3109194989882713389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Root-Cast_10
+      rect:
+        serializedVersion: 2
+        x: 1284
+        y: 7
+        width: 119
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 253070bbeae975360800000000000000
+      internalID: 7158364606027989842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Root-Cast_11
+      rect:
+        serializedVersion: 2
+        x: 1412
+        y: 7
+        width: 119
+        height: 103
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e79d4b1ff96cdcc0800000000000000
+      internalID: -3684953850700261407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Root-Cast_12
+      rect:
+        serializedVersion: 2
+        x: 1540
+        y: 7
+        width: 119
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9009229c9826b3900800000000000000
+      internalID: 665233713891807241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Root-Cast_13
+      rect:
+        serializedVersion: 2
+        x: 1668
+        y: 7
+        width: 119
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31f33dea8512dc9b0800000000000000
+      internalID: -5058350141693280493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Root-Cast_14
+      rect:
+        serializedVersion: 2
+        x: 1796
+        y: 7
+        width: 119
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 47283fa4bafdf7420800000000000000
+      internalID: 2630066634197533300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Root-Cast_15
+      rect:
+        serializedVersion: 2
+        x: 1924
+        y: 7
+        width: 119
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d9cad1a870091d400800000000000000
+      internalID: 347217008340610205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Root-Cast_0: 4622229678235184311
+      Root-Cast_1: -635454281579519293
+      Root-Cast_10: 7158364606027989842
+      Root-Cast_11: -3684953850700261407
+      Root-Cast_12: 665233713891807241
+      Root-Cast_13: -5058350141693280493
+      Root-Cast_14: 2630066634197533300
+      Root-Cast_15: 347217008340610205
+      Root-Cast_2: 8387780396670948589
+      Root-Cast_3: 3838187788961294617
+      Root-Cast_4: 7100229464475567758
+      Root-Cast_5: 4875210171438210112
+      Root-Cast_6: -9112442183612526537
+      Root-Cast_7: -6317166724649434293
+      Root-Cast_8: 1992755276004968432
+      Root-Cast_9: -3109194989882713389
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

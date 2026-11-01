@@ -24,6 +24,18 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D rb;
     private PlayerStats player;
+    private float slowUntil;
+    private float slowFactor = 1f;
+    public float MovementMultiplier => Time.time < slowUntil ? slowFactor : 1f;
+
+    public void ApplySlow(float factor, float duration)
+    {
+        if (duration <= 0f || float.IsNaN(duration) || float.IsInfinity(duration) ||
+            float.IsNaN(factor) || float.IsInfinity(factor)) return;
+        factor = Mathf.Clamp(factor, 0.1f, 1f);
+        slowFactor = Time.time < slowUntil ? Mathf.Min(slowFactor, factor) : factor;
+        slowUntil = Mathf.Max(slowUntil, Time.time + duration);
+    }
 
     private void Awake()
     {
@@ -109,6 +121,7 @@ public class PlayerController : MonoBehaviour
             rb.position +
             moveInput *
             player.currentMoveSpeed *
+            MovementMultiplier *
             Time.fixedDeltaTime
         );
     }
