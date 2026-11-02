@@ -145,7 +145,7 @@ public class LoadoutGameplayRegression : MonoBehaviour
             if (c == characterCount - 1 && w == weaponCount - 1)
             {
                 player.IncreaseExperience(player.experienceCap - player.experience);
-                Check(player.TryApplyUpgrade(UpgradeKind.Damage) && player.DamageMultiplier > 1, "Existing level-up upgrades still apply");
+                Check(player.TryApplyUpgrade(UpgradeKind.Damage) && player.BaseDamageBonus > 0, "Existing level-up upgrades still apply");
                 player.Kill();
                 GameOverController gameOver = FindAnyObjectByType<GameOverController>();
                 Check(gameOver.IsGameOver, "Existing game-over flow still runs");
@@ -155,7 +155,7 @@ public class LoadoutGameplayRegression : MonoBehaviour
                 yield return null;
                 PlayerStats restarted = FindAnyObjectByType<PlayerStats>();
                 Check(restarted != player && !restarted.IsDead && restarted.characterData == characterData && restarted.currentHealth == characterData.MaxHealth &&
-                    restarted.GetComponentInChildren<WeaponHolder>().CurrentWeapon.weaponData == weaponData && restarted.DamageMultiplier == 1 && !GameOverController.GameplayStopped,
+                    restarted.GetComponentInChildren<WeaponHolder>().CurrentWeapon.weaponData == weaponData && restarted.DamageMultiplier == 1 && restarted.BaseDamageBonus == 0 && !GameOverController.GameplayStopped,
                     "Restart retains character/weapon and resets health, upgrades and game-over state");
             }
         }

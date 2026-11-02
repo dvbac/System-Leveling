@@ -16,6 +16,8 @@ public class ProjectileWeaponBehaviour : MonoBehaviour
     private readonly HashSet<int> hitTargets = new HashSet<int>();
     public float CurrentDamage => currentDamage;
     public float CurrentSpeed => currentSpeed;
+    public float CurrentKnockback { get; private set; }
+    public float CriticalChance { get; private set; }
 
     protected virtual void Awake()
     {
@@ -28,8 +30,7 @@ public class ProjectileWeaponBehaviour : MonoBehaviour
             return;
         }
 
-        currentDamage = weaponData.Damage;
-        currentSpeed = weaponData.Speed;
+        ApplyOwnerStats(null);
         currentPierce = weaponData.Pierce;
     }
 
@@ -47,8 +48,8 @@ public class ProjectileWeaponBehaviour : MonoBehaviour
     {
         if (source == null) { Destroy(gameObject); return; }
         weaponData = source;
-        currentDamage = WeaponScriptableObject.Safe(source.Damage, 0f) * (owner != null ? owner.DamageMultiplier : 1f) * WeaponScriptableObject.Safe(damageFactor, 1f);
-        currentSpeed = WeaponScriptableObject.Safe(source.Speed, 0f);
+        ApplyOwnerStats(owner);
+        currentDamage *= WeaponScriptableObject.Safe(damageFactor, 1f);
         currentPierce = Mathf.Max(1, source.Pierce);
         transform.localScale *= WeaponScriptableObject.Safe(sizeFactor, 1f);
         hitTargets.Clear();
@@ -58,8 +59,11 @@ public class ProjectileWeaponBehaviour : MonoBehaviour
 
     public void ApplyOwnerStats(PlayerStats player)
     {
-        if (weaponData != null)
-            currentDamage = weaponData.Damage * (player != null ? player.DamageMultiplier : 1f);
+        if (weaponData == null) return;
+        currentDamage = (WeaponScriptableObject.Safe(weaponData.Damage, 0f) + (player != null ? player.BaseDamageBonus : 0f)) * (player != null ? player.DamageMultiplier * player.ProjectileDamageMultiplier : 1f);
+        currentSpeed = WeaponScriptableObject.Safe(weaponData.Speed, 0f) * (player != null ? player.ProjectileSpeedMultiplier : 1f);
+        CurrentKnockback = weaponData.Knockback * (player != null ? player.KnockbackMultiplier : 1f);
+        CriticalChance = Mathf.Clamp01(weaponData.CriticalChance + (player != null ? player.CriticalChanceBonus : 0f));
     }
 
     protected virtual void Update()
@@ -78,7 +82,9 @@ public class ProjectileWeaponBehaviour : MonoBehaviour
         if (enemy != null)
         {
             if (enemy.IsDead || !hitTargets.Add(enemy.GetInstanceID())) return;
-            enemy.TakeDamage(currentDamage);
+            enemy.TakeDamage(WeaponScriptableObject.RollDamage(currentDamage, CriticalChance));
+            if (!enemy.IsDead && enemy.TryGetComponent(out Enemy movement))
+                movement.ApplyKnockback(direction, CurrentKnockback);
             ReducePierce();
             return;
         }
@@ -89,7 +95,7 @@ public class ProjectileWeaponBehaviour : MonoBehaviour
         if (breakable != null)
         {
             if (!hitTargets.Add(breakable.GetInstanceID())) return;
-            breakable.TakeDamage(currentDamage);
+            breakable.TakeDamage(WeaponScriptableObject.RollDamage(currentDamage, CriticalChance));
             ReducePierce();
         }
     }

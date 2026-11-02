@@ -5,5 +5,10 @@ public enum UpgradeKind
     Magnet,
     Vitality,
     Ammo,
-    Reload
+    Reload,
+    DoubleShot,
+    Focus,
+    PowerBullet,
+    QuickHands,
+    Critical
 }

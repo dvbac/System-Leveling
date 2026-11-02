@@ -1,0 +1,42 @@
+{
+    "result":  "PASS",
+    "utc":  "2026-11-01T18:13:22.1221505Z",
+    "reports":  [
+                    {
+                        "report":  "runtime.json",
+                        "result":  "PASS",
+                        "checks":  321
+                    },
+                    {
+                        "report":  "ammo-regression.json",
+                        "result":  "PASS",
+                        "checks":  120
+                    },
+                    {
+                        "report":  "hud-regression.json",
+                        "result":  "PASS",
+                        "checks":  42
+                    },
+                    {
+                        "report":  "enemy-regression.json",
+                        "result":  "PASS",
+                        "checks":  51
+                    },
+                    {
+                        "report":  "elite-regression.json",
+                        "result":  "PASS",
+                        "checks":  58
+                    },
+                    {
+                        "report":  "boss-regression.json",
+                        "result":  "PASS",
+                        "checks":  49
+                    }
+                ],
+    "totalChecks":  641,
+    "limits":  [
+                   "Standalone build and long-session balance/performance not tested",
+                   "Soul spending/permanent upgrades deferred",
+                   "Rotwood remains immune to knockback"
+               ]
+}

@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Wolf
   m_EditorClassIdentifier: Assembly-CSharp::EnemyScriptableObject
   moveSpeed: 3.6
-  maxHealth: 18
+  maxHealth: 10
   damage: 7
+  experienceReward: 10

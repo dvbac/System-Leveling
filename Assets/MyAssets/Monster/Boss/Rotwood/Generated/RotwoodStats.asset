@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eec8f7279d6244c4c81b73df7f11d069, type: 3}
   m_Name: RotwoodStats
   m_EditorClassIdentifier: Assembly-CSharp::EnemyScriptableObject
-  moveSpeed: 1.2
-  maxHealth: 1800
-  damage: 15
+  moveSpeed: 1.3
+  maxHealth: 300
+  damage: 5
+  experienceReward: 150

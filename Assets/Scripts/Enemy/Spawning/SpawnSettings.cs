@@ -69,6 +69,24 @@ public class HordeSpawnSettings
 public enum SpawnRegion { ScreenEdges, PlayerRing }
 
 [Serializable]
+public class EliteSpawnSettings
+{
+    public bool enabled = true;
+    [Min(1f)] public float sizeMultiplier = 1.6f;
+    [Min(1f)] public float healthMultiplier = 5f;
+    [Min(1f)] public float speedMultiplier = 1.25f;
+    [Min(1f)] public float damageMultiplier = 2f;
+
+    public void Validate()
+    {
+        sizeMultiplier = Mathf.Clamp(SpawnSelection.Positive(sizeMultiplier, 1.6f), 1f, 3f);
+        healthMultiplier = Mathf.Clamp(SpawnSelection.Positive(healthMultiplier, 5f), 1f, 100f);
+        speedMultiplier = Mathf.Clamp(SpawnSelection.Positive(speedMultiplier, 1.25f), 1f, 10f);
+        damageMultiplier = Mathf.Clamp(SpawnSelection.Positive(damageMultiplier, 2f), 1f, 100f);
+    }
+}
+
+[Serializable]
 public class SpawnPlacementSettings
 {
     public SpawnRegion region = SpawnRegion.ScreenEdges;

@@ -6,6 +6,9 @@ using UnityEngine;
 )]
 public class EnemyScriptableObject : ScriptableObject
 {
+    [SerializeField, Min(0)] private int experienceReward = 15;
+    public int ExperienceReward => Mathf.Max(0, experienceReward);
+
     // Base stats for enemy
 
     [SerializeField]

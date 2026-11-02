@@ -196,7 +196,7 @@ public class RotwoodBossRegression : MonoBehaviour
         hp = player.currentHealth;
         Enter(boss,RotwoodBoss.ActionState.Windup);
         boss.Tick(1.01f); boss.Tick(1f);
-        Check(player.currentHealth == hp-25, "AC-004: swept charge hits a player crossed between frames");
+        Check(player.currentHealth == hp-8, "AC-004: swept charge hits a player crossed between frames");
 
         boss.transform.position = anchor+Vector3.left*4;
         player.transform.position = anchor;

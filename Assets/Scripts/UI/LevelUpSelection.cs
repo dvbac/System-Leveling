@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using System.Linq;
 
 public class LevelUpSelection : MonoBehaviour
 {
@@ -98,6 +99,7 @@ public class LevelUpSelection : MonoBehaviour
             ownsPause = true;
             Time.timeScale = 0f;
             panel.SetActive(true);
+            panel.transform.SetAsLastSibling();
             PresentChoices();
         }
         queueText.text = player.PendingUpgrades > 1
@@ -107,9 +109,7 @@ public class LevelUpSelection : MonoBehaviour
 
     private void PresentChoices()
     {
-        UpgradeKind[] pool = player.HasRangedWeapon
-            ? new[] { UpgradeKind.Damage, UpgradeKind.MoveSpeed, UpgradeKind.Magnet, UpgradeKind.Vitality, UpgradeKind.Ammo, UpgradeKind.Reload }
-            : new[] { UpgradeKind.Damage, UpgradeKind.MoveSpeed, UpgradeKind.Magnet, UpgradeKind.Vitality };
+        UpgradeKind[] pool = ((UpgradeKind[])System.Enum.GetValues(typeof(UpgradeKind))).Where(player.CanReceiveUpgrade).ToArray();
         for (int i = 0; i < choices.Length; i++)
         {
             int pick = Random.Range(i, pool.Length);
@@ -166,6 +166,11 @@ public class LevelUpSelection : MonoBehaviour
             case UpgradeKind.Magnet: return "ATTRACTION";
             case UpgradeKind.Ammo: return "CAPACITY";
             case UpgradeKind.Reload: return "RECHARGE";
+            case UpgradeKind.DoubleShot: return "DOUBLE SHOT";
+            case UpgradeKind.Focus: return "FOCUS";
+            case UpgradeKind.PowerBullet: return "POWER BULLET";
+            case UpgradeKind.QuickHands: return "QUICK HANDS";
+            case UpgradeKind.Critical: return "CRITICAL";
             default: return "VITALITY";
         }
     }
@@ -174,12 +179,17 @@ public class LevelUpSelection : MonoBehaviour
     {
         switch (kind)
         {
-            case UpgradeKind.Damage: return "+10% DAMAGE\n\nStronger sword strikes\nand magic projectiles.";
-            case UpgradeKind.MoveSpeed: return "+10% MOVE SPEED\n\nStay one step ahead\nof the approaching horde.";
+            case UpgradeKind.Damage: return "+1 BASE DAMAGE\n\nApplied before damage\npercentage bonuses.";
+            case UpgradeKind.MoveSpeed: return "+0.2 MOVE SPEED\n\nStay one step ahead\nof the approaching horde.";
             case UpgradeKind.Magnet: return "+20% PICKUP RANGE\n\nDraw experience closer.\nLeave nothing behind.";
             case UpgradeKind.Ammo: return "+1 AMMO CAPACITY\n\nCrossbow: higher charge ceiling\nand a stronger maximum shot.";
             case UpgradeKind.Reload: return "+RELOAD SPEED\n\nCrossbow also reaches\nfull charge sooner.";
-            default: return "+20 MAX HEALTH\n\nRecover 20 health now.\nEndure the next battle.";
+            case UpgradeKind.DoubleShot: return "+1 PROJECTILE\n+10 DEG SPREAD\n-10% PROJECTILE DAMAGE";
+            case UpgradeKind.Focus: return "+20% PROJECTILE SPEED\n-15 DEG SPREAD";
+            case UpgradeKind.PowerBullet: return "+15% DAMAGE\n+20% KNOCKBACK";
+            case UpgradeKind.QuickHands: return "+5% RELOAD SPEED\n+5% FIRE RATE";
+            case UpgradeKind.Critical: return "+10% CRITICAL CHANCE\nCRITICAL HITS DEAL x2 DAMAGE";
+            default: return "+3 MAX HEALTH\n\nRecover 3 health now.\nEndure the next battle.";
         }
     }
 
@@ -192,6 +202,11 @@ public class LevelUpSelection : MonoBehaviour
             case UpgradeKind.Magnet: return "EXP";
             case UpgradeKind.Ammo: return "AMMO";
             case UpgradeKind.Reload: return "RLD";
+            case UpgradeKind.DoubleShot: return "2X";
+            case UpgradeKind.Focus: return "AIM";
+            case UpgradeKind.PowerBullet: return "DMG";
+            case UpgradeKind.QuickHands: return "FAST";
+            case UpgradeKind.Critical: return "CRIT";
             default: return "HP";
         }
     }

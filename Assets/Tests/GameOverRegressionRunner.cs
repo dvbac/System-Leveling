@@ -104,7 +104,7 @@ public class GameOverRegressionRunner : MonoBehaviour
         Canvas.ForceUpdateCanvases();
         yield return new WaitForEndOfFrame();
         Capture("level-up-16x9.png");
-        Require(player.TryApplyUpgrade(UpgradeKind.Damage) && player.DamageMultiplier > 1, "Earned upgrade changes this run only");
+        Require(player.TryApplyUpgrade(UpgradeKind.Damage) && player.BaseDamageBonus > 0, "Earned upgrade changes this run only");
         yield return null;
 
         string[] names = {"Blue Slime", "ReferenceEnemies/Slime", "ReferenceEnemies/Skeleton", "ReferenceEnemies/Spider", "ReferenceEnemies/Wolf"};
@@ -224,7 +224,7 @@ public class GameOverRegressionRunner : MonoBehaviour
     private void CheckFreshRun(PlayerStats player, GameOverController gameOver)
     {
         Require(!player.IsDead && player.currentHealth == player.MaxHealth && player.level == 1 && player.experience == 0 && player.PendingUpgrades == 0, "Restart restores full HP, level 1, zero EXP and no pending rewards");
-        Require(player.DamageMultiplier == 1 && !gameOver.IsGameOver && !GameOverController.GameplayStopped && Time.timeScale == 1, "Restart resets upgrades, death flags and time scale");
+        Require(player.DamageMultiplier == 1 && player.BaseDamageBonus == 0 && !gameOver.IsGameOver && !GameOverController.GameplayStopped && Time.timeScale == 1, "Restart resets upgrades, death flags and time scale");
     }
 
     private static T Field<T>(object target, string name) => (T)target.GetType().GetField(name, Flags).GetValue(target);

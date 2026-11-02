@@ -124,5 +124,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e581a3ba02683c43b11bb1bcbf599a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Experience
-  experienceGranted: 25
+  experienceGranted: 15
   collectDistance: 0.15

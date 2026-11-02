@@ -14,6 +14,7 @@ public class MeleeWeaponBehaviour : MonoBehaviour
     private Transform owner;
 
     private float damage;
+    private float knockback, criticalChance;
     private float speed;
     private float swingAngle;
     private float startAngle;
@@ -45,7 +46,9 @@ public class MeleeWeaponBehaviour : MonoBehaviour
         damage = data.Damage;
         PlayerStats player = attackOrigin.GetComponentInParent<PlayerStats>();
         if (player != null)
-            damage *= player.DamageMultiplier;
+            damage = (damage + player.BaseDamageBonus) * player.DamageMultiplier;
+        knockback = data.Knockback * (player != null ? player.KnockbackMultiplier : 1f);
+        criticalChance = Mathf.Clamp01(data.CriticalChance + (player != null ? player.CriticalChanceBonus : 0f));
         speed = data.Speed;
         swingAngle = data.SwingAngle;
 
@@ -114,7 +117,11 @@ public class MeleeWeaponBehaviour : MonoBehaviour
         if (enemy != null)
         {
             if (hitEnemies.Add(enemy))
-                enemy.TakeDamage(damage);
+            {
+                enemy.TakeDamage(WeaponScriptableObject.RollDamage(damage, criticalChance));
+                if (!enemy.IsDead && enemy.TryGetComponent(out Enemy movement))
+                    movement.ApplyKnockback(enemy.transform.position - owner.position, knockback);
+            }
 
             return;
         }
@@ -123,7 +130,7 @@ public class MeleeWeaponBehaviour : MonoBehaviour
             other.GetComponentInParent<BreakableProps>();
 
         if (prop != null && hitProps.Add(prop))
-            prop.TakeDamage(damage);
+            prop.TakeDamage(WeaponScriptableObject.RollDamage(damage, criticalChance));
     }
 
     private void FinishSwing()

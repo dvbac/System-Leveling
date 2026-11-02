@@ -67,7 +67,6 @@ public class SnowmanRegression : MonoBehaviour
         dummyData = Instantiate(AssetDatabase.LoadAssetAtPath<CharacterScriptableObject>("Assets/Scriptable Object/Character/Mage.asset"));
         SerializedObject data = new SerializedObject(dummyData); data.FindProperty("maxHealth").floatValue = 100; data.FindProperty("recovery").floatValue = 0; data.ApplyModifiedPropertiesWithoutUndo();
         PlayerStats player = target.AddComponent<PlayerStats>(); player.characterData = dummyData; player.invincibilityDuration = 0.5f;
-        player.levelRanges = new List<PlayerStats.LevelRange> { new PlayerStats.LevelRange { startLevel = 1, endLevel = 999, experienceCapIncrease = 100 } };
         target.AddComponent<PlayerController>().enabled = false;
         Rigidbody2D body = target.AddComponent<Rigidbody2D>(); body.gravityScale = 0; body.constraints = RigidbodyConstraints2D.FreezeAll;
         BoxCollider2D collider = target.AddComponent<BoxCollider2D>(); collider.size = new Vector2(0.5f, 0.9f); collider.offset = new Vector2(0, 0.45f);
@@ -76,7 +75,7 @@ public class SnowmanRegression : MonoBehaviour
         GameObject monster = Instantiate(prefab, new Vector3(10000, 10000), Quaternion.identity, sandbox.transform);
         EnemyStats stats = monster.GetComponent<EnemyStats>(); Enemy movement = monster.GetComponent<Enemy>();
         Animator animator = monster.GetComponent<Animator>(); animator.cullingMode = AnimatorCullingMode.AlwaysAnimate;
-        Check(stats.currentHealth == 45 && stats.currentMoveSpeed == 1.25f && stats.currentDamage == 8, "Actual prefab initializes Snowman stats 45/1.25/8");
+        Check(stats.currentHealth == 14 && stats.currentMoveSpeed == 1.6f && stats.currentDamage == 7, "Actual prefab initializes Snowman stats 14/1.6/7");
         float distance = Vector3.Distance(monster.transform.position, target.transform.position);
         yield return new WaitForSeconds(0.22f);
         Check(Vector3.Distance(monster.transform.position, target.transform.position) < distance - 0.1f, "Snowman follows the player using the existing Enemy component");

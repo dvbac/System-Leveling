@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Skeleton
   m_EditorClassIdentifier: Assembly-CSharp::EnemyScriptableObject
   moveSpeed: 1.8
-  maxHealth: 25
+  maxHealth: 13
   damage: 6
+  experienceReward: 12

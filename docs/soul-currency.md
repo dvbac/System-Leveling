@@ -31,7 +31,7 @@ Gameplay HUDs show **Soul earned this run**, starting at zero on every new map/Q
 
 Victory and defeat both show **TIME PLAYED (MM:SS)** and **SOUL EARNED** alongside the final level. Time is captured from the existing gameplay clock (pauses excluded), and Soul is counted separately from the saved wallet so earnings stay correct even when the wallet is saturated. Results freeze when the run ends; reopening the view does not reset them. Rewards are still saved immediately, not awarded a second time at the results screen.
 
-**Purchasing/upgrading characters or weapons is deliberately deferred.** No shop buttons, upgrade effects/prices, physical Soul drops, cloud sync, anti-tamper protection or account system were added. PlayerPrefs is per local application/profile (Editor and standalone use their respective Unity storage).
+**Soul-funded purchases/permanent upgrades are deliberately deferred.** No shop buttons, permanent upgrade effects/prices, physical Soul drops, cloud sync, anti-tamper protection or account system were added. Run-only level-up rewards are separate and do not spend Soul (see `docs/run-combat-upgrades.md`). PlayerPrefs is per local application/profile (Editor and standalone use their respective Unity storage).
 
 ## Authoring / validation
 

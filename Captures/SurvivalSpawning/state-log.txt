@@ -37,7 +37,7 @@ Log: [Spawn t=0.4 state=Spawning] Layer 2 deadline reached at 0.3s; forced deplo
 Log: [Spawn t=0.4 state=Spawning] Deploying 12 horde enemies from side 0; budget 1/frame.
 Log: [Spawn t=1.5] All reserved horde members deployed. Alive=12, skipped=0.
 Log: [Spawn t=1.5 state=WaitingForClear] Deployment complete; waiting for 12 living horde enemies to clear.
-MEASURED shared production Tick: peak 2.117ms in fixture (not a target-device benchmark).
+MEASURED shared production Tick: peak 2.153ms in fixture (not a target-device benchmark).
 Log: [Spawn t=103.7 state=CheckingLayer1] Horde cleared; restarting layer 1 timer.
 Log: [Spawn t=103.8 state=CheckingLayer1] Layer 1 roll=67.7%, chance=100.0%.
 Log: [Spawn t=103.8 state=WaitingLayer2] Layer 1 passed; waiting for the FIRST layer 2 interval (no immediate spawn).

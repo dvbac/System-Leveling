@@ -8,10 +8,13 @@ public class WeaponController : MonoBehaviour
     protected float currentCooldown;
 
     protected WeaponHolder wh;
+    protected PlayerStats owner;
+    public virtual bool IsAttacking => false;
 
     protected virtual void Start()
     {
         wh = GetComponentInParent<WeaponHolder>();
+        owner = GetComponentInParent<PlayerStats>();
 
         currentCooldown = 0f;
     }
@@ -37,6 +40,6 @@ public class WeaponController : MonoBehaviour
         if (weaponData == null)
             return;
 
-        currentCooldown = weaponData.Cooldown;
+        currentCooldown = weaponData.Cooldown / (owner != null ? owner.FireRateMultiplier : 1f);
     }
 }

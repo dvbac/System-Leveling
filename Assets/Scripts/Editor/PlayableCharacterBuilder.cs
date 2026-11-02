@@ -144,7 +144,7 @@ public static class PlayableCharacterBuilder
             Require(prefab != null && prefab.CompareTag("Player") && prefab.GetComponent<PlayerController>() != null, "Invalid player prefab: " + name); checks++;
             CharacterScriptableObject data = prefab.GetComponent<PlayerStats>().characterData;
             Require(data != null && data.MaxHealth == Health[i] && data.Recovery == Recovery[i] && data.MoveSpeed == Speed[i] && data.Magnet == Magnet[i], "Invalid stats: " + name); checks++;
-            Require(prefab.GetComponent<PlayerStats>().levelRanges.Count > 0 && prefab.GetComponent<Rigidbody2D>().gravityScale == 0 && prefab.GetComponentInChildren<PlayerCollector>() != null && prefab.GetComponentInChildren<WeaponHolder>() != null, "Missing gameplay configuration: " + name); checks++;
+            Require(prefab.GetComponent<Rigidbody2D>().gravityScale == 0 && prefab.GetComponentInChildren<PlayerCollector>() != null && prefab.GetComponentInChildren<WeaponHolder>() != null, "Missing gameplay configuration: " + name); checks++;
             SerializedObject input = new SerializedObject(prefab.GetComponent<PlayerController>());
             Require(input.FindProperty("move").objectReferenceValue != null && input.FindProperty("pointerPosition").objectReferenceValue != null, "Missing input: " + name); checks++;
             AnimatorController controller = prefab.GetComponent<Animator>().runtimeAnimatorController as AnimatorController;

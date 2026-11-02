@@ -23,6 +23,8 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private List<SpawnPhase> phases = new List<SpawnPhase>();
     [Header("Horde (independent population cap)")]
     [SerializeField] private HordeSpawnSettings horde = new HordeSpawnSettings();
+    [Header("Elite - one every 5 minutes (independent population)")]
+    [SerializeField] private EliteSpawnSettings elite = new EliteSpawnSettings();
     [Header("Placement")]
     [SerializeField] private SpawnPlacementSettings placement = new SpawnPlacementSettings();
     [Header("Diagnostics")]
@@ -32,6 +34,9 @@ public class EnemySpawner : MonoBehaviour
 
     private readonly List<EnemyStats> normalEnemies = new List<EnemyStats>();
     private readonly List<EnemyStats> hordeEnemies = new List<EnemyStats>();
+    private readonly List<EnemyStats> eliteEnemies = new List<EnemyStats>();
+    private float nextEliteAt = 300f, eliteRetryAt;
+    private bool elitePending;
     private readonly Collider2D[] obstacleHit = new Collider2D[1];
     private HordeSpawnCycle cycle;
     private System.Func<float> rollPercent;
@@ -57,6 +62,8 @@ public class EnemySpawner : MonoBehaviour
     public int HordeSpawnedThisFrame { get; private set; }
     public int TotalNormalSpawned { get; private set; }
     public int TotalHordeSpawned { get; private set; }
+    public int TotalEliteSpawned { get; private set; }
+    public int EliteAliveCount => eliteEnemies.Count;
     public string LastPlacementFailure { get; private set; }
     public SpawnPhase CurrentPhase => SpawnSelection.PhaseAt(phases, ElapsedTime);
 
@@ -83,9 +90,11 @@ public class EnemySpawner : MonoBehaviour
         normalSpawnsPerFrame = Mathf.Clamp(normalSpawnsPerFrame, 1, 64);
         if (placement == null) placement = new SpawnPlacementSettings();
         if (horde == null) horde = new HordeSpawnSettings();
+        if (elite == null) elite = new EliteSpawnSettings();
         if (phases == null) phases = new List<SpawnPhase>();
         placement.Validate();
         horde.Validate();
+        elite.Validate();
         foreach (SpawnPhase phase in phases)
         {
             if (phase == null) continue;
@@ -107,8 +116,10 @@ public class EnemySpawner : MonoBehaviour
             return;
         RemoveDead(normalEnemies);
         RemoveDead(hordeEnemies);
+        RemoveDead(eliteEnemies);
         ElapsedTime += delta;
         TickNormal(delta);
+        TickElite();
 
         // A pending/spawning horde completes even if its toggle is disabled mid-event.
         if (horde.enabled || HordeState == HordeSpawnState.Spawning)
@@ -129,6 +140,32 @@ public class EnemySpawner : MonoBehaviour
             }
             else if (cycle.State == HordeSpawnState.Spawning) DeployFrame(delta);
         }
+    }
+
+    private void TickElite()
+    {
+        if (!elite.enabled) return;
+        if (ElapsedTime >= nextEliteAt)
+        {
+            elitePending = true;
+            // Like normal spawning, a long frame must not catch up several waves in one burst.
+            nextEliteAt = (Mathf.Floor(ElapsedTime / 300f) + 1f) * 300f;
+        }
+        if (!elitePending || ElapsedTime < eliteRetryAt) return;
+        eliteRetryAt = ElapsedTime + 1f;
+        GameObject prefab = SpawnSelection.Pick(CurrentPhase?.enemies, Random.value);
+        if (prefab == null) { Log("Elite waiting: current map phase has no valid enemies."); return; }
+        if (!TryPosition(false, out Vector3 position, elite.sizeMultiplier))
+        {
+            Log($"Elite waiting for safe placement: {LastPlacementFailure}.");
+            return;
+        }
+        EnemyStats stats = CreateEnemy(prefab, position);
+        stats.gameObject.AddComponent<EliteEnemy>().Configure(elite);
+        eliteEnemies.Add(stats);
+        TotalEliteSpawned++;
+        elitePending = false;
+        Log($"Elite spawned: {prefab.name} at {ElapsedTime:F1}s.");
     }
 
     private void TickNormal(float delta)
@@ -232,7 +269,7 @@ public class EnemySpawner : MonoBehaviour
         return created.GetComponent<EnemyStats>();
     }
 
-    private bool TryPosition(bool isHorde, out Vector3 position)
+    private bool TryPosition(bool isHorde, out Vector3 position, float sizeMultiplier = 1f)
     {
         position = Vector3.zero;
         for (int i = 0; i < placement.attemptsPerEnemy; i++)
@@ -244,7 +281,7 @@ public class EnemySpawner : MonoBehaviour
             }
             else if (!TrySample(-1, out position)) continue;
             if (isHorde && !OnHordeSide(position)) { LastPlacementFailure = "Outside the selected horde side"; continue; }
-            if (IsPositionValid(position)) return true;
+            if (IsPositionValid(position, sizeMultiplier)) return true;
         }
         return false;
     }
@@ -298,7 +335,7 @@ public class EnemySpawner : MonoBehaviour
         return true;
     }
 
-    public bool IsPositionValid(Vector3 position)
+    public bool IsPositionValid(Vector3 position, float sizeMultiplier = 1f)
     {
         if (player == null) return Reject("No player");
         if (((Vector2)(position - player.position)).sqrMagnitude < placement.minPlayerDistance * placement.minPlayerDistance)
@@ -306,11 +343,11 @@ public class EnemySpawner : MonoBehaviour
         if (placement.requireOutsideCamera)
         {
             if (!TryCameraRect(out Rect rect)) return Reject("Missing orthographic spawn camera");
-            float padding = placement.cameraPadding + placement.clearanceRadius;
+            float padding = placement.cameraPadding + placement.clearanceRadius * sizeMultiplier;
             rect.xMin -= padding; rect.xMax += padding; rect.yMin -= padding; rect.yMax += padding;
             if (rect.Contains(position)) return Reject("Inside camera safety boundary");
         }
-        float radius = placement.clearanceRadius;
+        float radius = placement.clearanceRadius * sizeMultiplier;
         Vector3 diagonal = new Vector3(radius * 0.7071068f, radius * 0.7071068f, 0);
         if (!OnAllowedGround(position) || !OnAllowedGround(position + Vector3.right * radius) ||
             !OnAllowedGround(position - Vector3.right * radius) || !OnAllowedGround(position + Vector3.up * radius) ||
@@ -325,7 +362,8 @@ public class EnemySpawner : MonoBehaviour
             if (Physics2D.OverlapCircle(position, Mathf.Max(0.001f, radius), filter, obstacleHit) > 0)
                 return Reject("Solid obstacle overlap");
         }
-        if (TooClose(normalEnemies, position) || TooClose(hordeEnemies, position)) return Reject("Enemy separation");
+        if (TooClose(normalEnemies, position, sizeMultiplier) || TooClose(hordeEnemies, position, sizeMultiplier) ||
+            TooClose(eliteEnemies, position, sizeMultiplier)) return Reject("Enemy separation");
         LastPlacementFailure = "";
         return true;
     }
@@ -333,11 +371,15 @@ public class EnemySpawner : MonoBehaviour
     private bool OnAllowedGround(Vector3 position) => (allowedGround == null || allowedGround.HasTile(allowedGround.WorldToCell(position))) &&
         (allowedArea == null || allowedArea.OverlapPoint(position));
 
-    private bool TooClose(List<EnemyStats> population, Vector3 position)
+    private bool TooClose(List<EnemyStats> population, Vector3 position, float sizeMultiplier)
     {
-        float minSquared = placement.separation * placement.separation;
         foreach (EnemyStats enemy in population)
-            if (IsLiving(enemy) && ((Vector2)(enemy.transform.position - position)).sqrMagnitude < minSquared) return true;
+        {
+            if (!IsLiving(enemy)) continue;
+            float otherSize = enemy.TryGetComponent(out EliteEnemy other) ? other.SizeMultiplier : 1f;
+            float distance = placement.separation * (sizeMultiplier + otherSize) * 0.5f;
+            if (((Vector2)(enemy.transform.position - position)).sqrMagnitude < distance * distance) return true;
+        }
         return false;
     }
 

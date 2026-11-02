@@ -6,6 +6,7 @@ public sealed class RangedWeaponState
 {
     private readonly WeaponScriptableObject data;
     private int ammoLevel, reloadLevel;
+    private float reloadBonus, fireRate = 1f;
     private float cooldown, reloadElapsed, idleElapsed, chargeElapsed;
     private bool wasHeld, requireRelease;
 
@@ -14,7 +15,8 @@ public sealed class RangedWeaponState
     public bool IsReloading { get; private set; }
     public bool IsCharging { get; private set; }
     public float ReloadDuration => WeaponScriptableObject.Safe(data.ReloadTime, 0.05f) / ReloadSpeed;
-    private float ReloadSpeed => 1f + reloadLevel * data.ReloadSpeedPerLevel;
+    private float ReloadSpeed => 1f + reloadLevel * data.ReloadSpeedPerLevel + reloadBonus;
+    public bool TriggerBlocked => requireRelease;
     public float ChargeDuration => (data.ChargeTime + ammoLevel * data.ChargeTimePerAmmo) / ReloadSpeed;
     public float ChargeFraction => IsCharging ? Mathf.Clamp01(chargeElapsed / Mathf.Max(0.001f, ChargeDuration)) : 0f;
     public float ReloadFraction => IsReloading ? Mathf.Clamp01(reloadElapsed / ReloadDuration) : 0f;
@@ -27,10 +29,12 @@ public sealed class RangedWeaponState
         Ammo = Capacity;
     }
 
-    public void SetUpgrades(int ammo, int reload)
+    public void SetUpgrades(int ammo, int reload, float reloadSpeedMultiplier = 1f, float fireRateMultiplier = 1f)
     {
         ammoLevel = Mathf.Clamp(ammo, 0, 999);
         reloadLevel = Mathf.Clamp(reload, 0, 999);
+        reloadBonus = WeaponScriptableObject.Safe(reloadSpeedMultiplier, 1f) - 1f;
+        fireRate = WeaponScriptableObject.Safe(fireRateMultiplier, 1f);
         Ammo = Mathf.Min(Ammo, Capacity); // Increasing capacity never grants free rounds.
     }
 
@@ -108,9 +112,9 @@ public sealed class RangedWeaponState
 
     private bool Shoot()
     {
-        if (Ammo <= 0) return false;
+        if (Ammo <= 0 || cooldown > 0f) return false;
         Ammo--;
-        cooldown = WeaponScriptableObject.Safe(data.Cooldown, 0.01f);
+        cooldown = WeaponScriptableObject.Safe(data.Cooldown, 0.01f) / fireRate;
         if (Ammo == 0 && data.FireMode != WeaponFireMode.Bow)
         {
             IsReloading = true;

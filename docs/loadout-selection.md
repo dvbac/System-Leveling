@@ -15,7 +15,7 @@ Start from `Assets/Scenes/MainMenu.unity` and choose Start Run, or open `Assets/
 
 ## Scope
 
-Character/weapon stat assets and balance are not rewritten. Migration adds a Mage prefab copied from the authored gameplay Player so every catalog entry is a real prefab. Existing weapon-grip settings are reused; Unity can reserialize their calibrated visual transforms when saving imported weapon prefabs. No locked content or fictional passive abilities were added. The persistent Soul balance is displayed separately; purchases/upgrades are deferred (see `docs/soul-currency.md`).
+Character/weapon stat assets and balance are not rewritten. Migration adds a Mage prefab copied from the authored gameplay Player so every catalog entry is a real prefab. Existing weapon-grip settings are reused; Unity can reserialize their calibrated visual transforms when saving imported weapon prefabs. No locked content or fictional passive abilities were added. The persistent Soul balance is displayed separately; Soul purchases/permanent upgrades are deferred (see `docs/soul-currency.md`). Run-only combat upgrades are described in `docs/run-combat-upgrades.md`.
 
 ## Populate from prefabs
 

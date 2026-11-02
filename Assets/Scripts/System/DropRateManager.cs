@@ -38,11 +38,15 @@
                 if (drop.itemPrefap == null)
                     return;
 
-                Instantiate(
+                GameObject item = Instantiate(
                     drop.itemPrefap,
                     transform.position,
                     Quaternion.identity
                 );
+                if (item.TryGetComponent(out Experience experience) &&
+                    TryGetComponent(out EnemyStats enemy) && enemy.enemyData != null)
+                    experience.experienceGranted = (int)System.Math.Min(int.MaxValue,
+                        (long)enemy.enemyData.ExperienceReward * (GetComponent<EliteEnemy>() != null ? 3 : 1));
             }
         }
     }

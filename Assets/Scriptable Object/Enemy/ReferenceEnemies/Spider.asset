@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Spider
   m_EditorClassIdentifier: Assembly-CSharp::EnemyScriptableObject
   moveSpeed: 3
-  maxHealth: 12
-  damage: 3
+  maxHealth: 8
+  damage: 4
+  experienceReward: 8

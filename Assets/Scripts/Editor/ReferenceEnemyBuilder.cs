@@ -23,6 +23,7 @@ public static class ReferenceEnemyBuilder
     private static readonly float[] Speeds = { 2f, 1.8f, 3.6f, 3f };
     private static readonly float[] Health = { 10f, 25f, 18f, 12f };
     private static readonly float[] Damage = { 4f, 6f, 7f, 3f };
+    private static readonly int[] Experience = { 5, 12, 10, 8 };
 
     [MenuItem("Tools/System Leveling/Build Reference Enemies")]
     public static void Build()
@@ -66,6 +67,7 @@ public static class ReferenceEnemyBuilder
                 serialized.FindProperty("moveSpeed").floatValue = Speeds[i];
                 serialized.FindProperty("maxHealth").floatValue = Health[i];
                 serialized.FindProperty("damage").floatValue = Damage[i];
+                serialized.FindProperty("experienceReward").intValue = Experience[i];
                 serialized.ApplyModifiedPropertiesWithoutUndo();
                 AssetDatabase.CreateAsset(data, dataPath);
             }

@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
@@ -22,31 +21,35 @@ public class PlayerStats : MonoBehaviour
     [Header("Experience/Level")]
     public int experience = 0;
     public int level = 1;
-    public int experienceCap;
+    public int experienceCap = 45;
 
-    [System.Serializable]
-    public class LevelRange
-    {
-        public int startLevel;
-        public int endLevel;
-        public int experienceCapIncrease;
-    }
+    public static int ExperienceForLevel(int currentLevel) =>
+        (int)Math.Min(int.MaxValue, 45L + 15L * Math.Max(0L, (long)currentLevel - 1));
 
     [Header("I-frame")]
     public float invincibilityDuration;
     float invincibilityTimer;
     bool isInvincible;
 
-    public List<LevelRange> levelRanges;
-
     public event Action Changed;
     public event Action Died;
     public bool IsDead { get; private set; }
     public float MaxHealth { get; private set; }
     public float DamageMultiplier { get; private set; } = 1f;
+    public float BaseDamageBonus { get; private set; }
     public int PendingUpgrades { get; private set; }
     public int AmmoUpgradeLevel { get; private set; }
     public int ReloadUpgradeLevel { get; private set; }
+    public int QuickHandsUpgradeLevel { get; private set; }
+    public int CriticalUpgradeLevel { get; private set; }
+    public int ExtraProjectiles { get; private set; }
+    public float SpreadModifier { get; private set; }
+    public float ProjectileDamageMultiplier { get; private set; } = 1f;
+    public float ProjectileSpeedMultiplier { get; private set; } = 1f;
+    public float KnockbackMultiplier { get; private set; } = 1f;
+    public float ReloadSpeedMultiplier { get; private set; } = 1f;
+    public float FireRateMultiplier { get; private set; } = 1f;
+    public float CriticalChanceBonus { get; private set; }
     public bool HasRangedWeapon
     {
         get
@@ -78,16 +81,8 @@ public class PlayerStats : MonoBehaviour
 
     private void Start()
     {
-        if (levelRanges == null || levelRanges.Count == 0)
-        {
-            Debug.LogError(
-                $"{name}: PlayerStats cần ít nhất một LevelRange.",
-                this
-            );
-            return;
-        }
-
-        experienceCap = Mathf.Max(1, levelRanges[0].experienceCapIncrease);
+        experienceCap = ExperienceForLevel(level);
+        LevelUpChecker();
         Changed?.Invoke();
     }
 
@@ -108,7 +103,7 @@ public class PlayerStats : MonoBehaviour
     {
         if (IsDead || amount <= 0)
             return;
-        experience += amount;
+        experience = (int)Math.Min(int.MaxValue, (long)experience + amount);
 
         LevelUpChecker();
         Changed?.Invoke();
@@ -126,21 +121,7 @@ public class PlayerStats : MonoBehaviour
             level++;
             PendingUpgrades++;
 
-            int experienceCapIncrease = 0;
-
-            foreach (LevelRange range in levelRanges ?? new List<LevelRange>())
-            {
-                if (level >= range.startLevel &&
-                    level <= range.endLevel)
-                {
-                    experienceCapIncrease =
-                        range.experienceCapIncrease;
-
-                    break;
-                }
-            }
-
-            experienceCap = Mathf.Max(1, experienceCap + experienceCapIncrease);
+            experienceCap = ExperienceForLevel(level);
 
             Debug.Log("Level Up! Current Level: " + level);
         }
@@ -202,33 +183,75 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
+    public bool CanReceiveUpgrade(UpgradeKind kind)
+    {
+        if (IsDead || GameOverController.GameplayStopped || characterData == null) return false;
+        switch (kind)
+        {
+            case UpgradeKind.Ammo: return HasRangedWeapon && AmmoUpgradeLevel < 4;
+            case UpgradeKind.Reload: return HasRangedWeapon && ReloadUpgradeLevel < 5;
+            case UpgradeKind.DoubleShot:
+                WeaponController weapon = GetComponentInChildren<WeaponHolder>()?.CurrentWeapon;
+                return HasRangedWeapon && ExtraProjectiles < 2 && weapon.weaponData != null && weapon.weaponData.Projectiles + ExtraProjectiles < 32;
+            case UpgradeKind.Focus: return HasRangedWeapon;
+            case UpgradeKind.QuickHands: return HasRangedWeapon && QuickHandsUpgradeLevel < 5;
+            case UpgradeKind.Critical: return CriticalUpgradeLevel < 5;
+            case UpgradeKind.Damage:
+            case UpgradeKind.MoveSpeed:
+            case UpgradeKind.Magnet:
+            case UpgradeKind.Vitality:
+            case UpgradeKind.PowerBullet: return true;
+            default: return false;
+        }
+    }
+
     public bool TryApplyUpgrade(UpgradeKind kind)
     {
-        if (IsDead || PendingUpgrades <= 0 || characterData == null)
+        if (PendingUpgrades <= 0 || !CanReceiveUpgrade(kind))
             return false;
 
         switch (kind)
         {
             case UpgradeKind.Damage:
-                DamageMultiplier += 0.1f;
+                BaseDamageBonus += 1f;
                 break;
             case UpgradeKind.MoveSpeed:
-                currentMoveSpeed += characterData.MoveSpeed * 0.1f;
+                currentMoveSpeed += 0.2f;
                 break;
             case UpgradeKind.Magnet:
                 currentMagnet += characterData.Magnet * 0.2f;
                 break;
             case UpgradeKind.Vitality:
-                MaxHealth += 20f;
-                currentHealth = Mathf.Min(MaxHealth, currentHealth + 20f);
+                MaxHealth += 3f;
+                currentHealth = Mathf.Min(MaxHealth, currentHealth + 3f);
                 break;
             case UpgradeKind.Ammo:
-                if (!HasRangedWeapon || AmmoUpgradeLevel >= 999) return false;
                 AmmoUpgradeLevel++;
                 break;
             case UpgradeKind.Reload:
-                if (!HasRangedWeapon || ReloadUpgradeLevel >= 999) return false;
                 ReloadUpgradeLevel++;
+                break;
+            case UpgradeKind.DoubleShot:
+                ExtraProjectiles++;
+                SpreadModifier += 10f;
+                ProjectileDamageMultiplier *= 0.9f;
+                break;
+            case UpgradeKind.Focus:
+                ProjectileSpeedMultiplier += 0.2f;
+                SpreadModifier -= 15f;
+                break;
+            case UpgradeKind.PowerBullet:
+                DamageMultiplier *= 1.15f;
+                KnockbackMultiplier += 0.2f;
+                break;
+            case UpgradeKind.QuickHands:
+                QuickHandsUpgradeLevel++;
+                ReloadSpeedMultiplier += 0.05f;
+                FireRateMultiplier += 0.05f;
+                break;
+            case UpgradeKind.Critical:
+                CriticalUpgradeLevel++;
+                CriticalChanceBonus = CriticalUpgradeLevel * 0.1f;
                 break;
             default:
                 return false;

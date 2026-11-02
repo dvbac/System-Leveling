@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Archer
   m_EditorClassIdentifier: Assembly-CSharp::CharacterScriptableObject
   startingWeapon: {fileID: 6457568805044639683, guid: 7bb5c6d34fe1cf94bb9ef60a22eea46d, type: 3}
-  maxHealth: 80
-  recovery: 0.15
+  maxHealth: 12
+  recovery: 0.03
   moveSpeed: 3.6
   might: 4
-  projectileSpeed: 2
+  projectileSpeed: 1.25
   magnet: 1.8

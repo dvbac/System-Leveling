@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eec8f7279d6244c4c81b73df7f11d069, type: 3}
   m_Name: Snowman
   m_EditorClassIdentifier: Assembly-CSharp::EnemyScriptableObject
-  moveSpeed: 1.25
-  maxHealth: 45
-  damage: 8
+  moveSpeed: 1.6
+  maxHealth: 14
+  damage: 7
+  experienceReward: 15

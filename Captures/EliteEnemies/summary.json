@@ -1,0 +1,31 @@
+{
+    "result":  "PASS",
+    "utc":  "2026-11-01T17:13:02.1288154Z",
+    "reports":  [
+                    {
+                        "report":  "runtime.json",
+                        "result":  "PASS",
+                        "checks":  58
+                    },
+                    {
+                        "report":  "survival-regression.json",
+                        "result":  "PASS",
+                        "checks":  140
+                    },
+                    {
+                        "report":  "boss-regression.json",
+                        "result":  "PASS",
+                        "checks":  49
+                    },
+                    {
+                        "report":  "soul-regression.json",
+                        "result":  "PASS",
+                        "checks":  264
+                    }
+                ],
+    "limits":  [
+                   "Standalone build and long-session target-device performance not tested",
+                   "Existing Soul rewards unchanged",
+                   "Long-frame catch-up coalesces missed milestones into one elite"
+               ]
+}

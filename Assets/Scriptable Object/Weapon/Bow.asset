@@ -13,15 +13,15 @@ MonoBehaviour:
   m_Name: Bow
   m_EditorClassIdentifier: Assembly-CSharp::WeaponScriptableObject
   prefab: {fileID: 4025584811366786360, guid: dc2798ae61f95a245803c27c2c9d45e3, type: 3}
-  damage: 22
-  speed: 15
-  cooldown: 0.25
-  pierce: 1
+  damage: 4
+  speed: 9
+  cooldown: 0.5
+  pierce: 0
   swingAngle: 0
   range: 0
   fireMode: 1
-  magazineSize: 7
-  reloadTime: 0.65
+  magazineSize: 6
+  reloadTime: 0.75
   bowRecoveryDelay: 0.45
   chargeTime: 3
   maxChargeDamage: 4

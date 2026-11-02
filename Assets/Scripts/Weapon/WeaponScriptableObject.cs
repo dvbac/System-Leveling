@@ -16,6 +16,11 @@ public class WeaponScriptableObject : ScriptableObject
     [SerializeField] private float speed;
     [SerializeField] private float cooldown;
     [SerializeField] private int pierce;
+    [Header("Run combat upgrades")]
+    [SerializeField, Range(1, 32)] private int projectiles = 1;
+    [SerializeField, Range(0f, 180f)] private float spreadAngle;
+    [SerializeField, Min(0f)] private float knockback = 2f;
+    [SerializeField, Range(0f, 1f)] private float criticalChance;
 
     [Header("Melee Stats")]
     [SerializeField] private float swingAngle;
@@ -42,6 +47,10 @@ public class WeaponScriptableObject : ScriptableObject
     public float Speed => speed;
     public float Cooldown => cooldown;
     public int Pierce => pierce;
+    public int Projectiles => Mathf.Clamp(projectiles, 1, 32);
+    public float SpreadAngle => Mathf.Clamp(Safe(spreadAngle, 0f), 0f, 180f);
+    public float Knockback => Safe(knockback, 0f);
+    public float CriticalChance => Mathf.Clamp01(Safe(criticalChance, 0f));
 
     public float SwingAngle => swingAngle;
     public float Range => range;
@@ -61,6 +70,8 @@ public class WeaponScriptableObject : ScriptableObject
 
     public void ValidateRangedSettings()
     {
+        projectiles = Mathf.Clamp(projectiles, 1, 32);
+        spreadAngle = SpreadAngle; knockback = Knockback; criticalChance = CriticalChance;
         magazineSize = Mathf.Clamp(magazineSize, 1, 999);
         reloadTime = Safe(reloadTime, 0.05f);
         bowRecoveryDelay = Safe(bowRecoveryDelay, 0f);
@@ -74,4 +85,5 @@ public class WeaponScriptableObject : ScriptableObject
     }
 
     internal static float Safe(float value, float min) => float.IsNaN(value) || float.IsInfinity(value) ? min : Mathf.Max(min, value);
+    internal static float RollDamage(float amount, float chance) => amount * (chance >= 1f || (chance > 0f && Random.value < chance) ? 2f : 1f);
 }

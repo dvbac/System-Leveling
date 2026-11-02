@@ -48,6 +48,7 @@ public static class RotwoodBossBuilder
             serialized.FindProperty("moveSpeed").floatValue = 1.2f;
             serialized.FindProperty("maxHealth").floatValue = 1800f;
             serialized.FindProperty("damage").floatValue = 15f;
+            serialized.FindProperty("experienceReward").intValue = 150;
             serialized.ApplyModifiedPropertiesWithoutUndo();
             AssetDatabase.CreateAsset(data, dataPath);
         }

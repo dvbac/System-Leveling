@@ -85,11 +85,6 @@ public class HudRegressionRunner : MonoBehaviour
         sandbox.SetActive(false);
         PlayerStats player = sandbox.AddComponent<PlayerStats>();
         player.characterData = AssetDatabase.LoadAssetAtPath<CharacterScriptableObject>("Assets/Scriptable Object/Character/Mage.asset");
-        player.levelRanges = new List<PlayerStats.LevelRange>
-        {
-            new PlayerStats.LevelRange {startLevel=1, endLevel=3, experienceCapIncrease=100},
-            new PlayerStats.LevelRange {startLevel=4, endLevel=5, experienceCapIncrease=200}
-        };
         sandbox.SetActive(true);
         sandbox.AddComponent<Rigidbody2D>().gravityScale = 0f;
         GameObject collector = new GameObject("Test Collector", typeof(CircleCollider2D), typeof(PlayerCollector));
@@ -110,8 +105,8 @@ public class HudRegressionRunner : MonoBehaviour
         while (player.experienceCap == 0 && Time.realtimeSinceStartup < initializationDeadline)
             yield return null;
         float baseHealth = player.characterData.MaxHealth;
-        Require(player.MaxHealth == baseHealth && player.currentHealth == baseHealth && player.experienceCap == 100,
-            $"Initial snapshot matches current Mage and LevelRange (max={player.MaxHealth}, HP={player.currentHealth}, cap={player.experienceCap})");
+        Require(player.MaxHealth == baseHealth && player.currentHealth == baseHealth && player.experienceCap == 45,
+            $"Initial snapshot matches current Mage and level curve (max={player.MaxHealth}, HP={player.currentHealth}, cap={player.experienceCap})");
         Image hp = Get<Image>(hud, "healthFill");
         Image xp = Get<Image>(hud, "experienceFill");
         player.TakeDamage(baseHealth * 0.1f);
@@ -142,12 +137,12 @@ public class HudRegressionRunner : MonoBehaviour
         drop.GetComponent<Experience>().experienceGranted = 7;
         yield return new WaitForSeconds(0.2f);
         Require(drop == null && player.experience == 7, "Real EXP prefab is attracted and collected through PlayerCollector");
-        player.IncreaseExperience(95 - player.experience);
-        Require(Mathf.Approximately(xp.fillAmount, 0.95f), "EXP pickup updates fill");
-        player.IncreaseExperience(555);
-        Require(player.level == 4 && player.experience == 50 && player.experienceCap == 500 && player.PendingUpgrades == 3, "650 EXP preserves 50 remainder and queues exactly three upgrades");
+        player.IncreaseExperience(36 - player.experience);
+        Require(Mathf.Approximately(xp.fillAmount, 0.8f), "EXP pickup updates fill");
+        player.IncreaseExperience(159);
+        Require(player.level == 4 && player.experience == 15 && player.experienceCap == 90 && player.PendingUpgrades == 3, "195 EXP preserves 15 remainder and queues exactly three upgrades");
         Require(selection.IsOpen && Time.timeScale == 0 && LevelUpSelection.InputBlocked, "Modal pauses gameplay and blocks input");
-        Require(Get<Text>(hud, "levelText").text == "04" && Mathf.Approximately(xp.fillAmount, 0.1f), "HUD reflects final level and remainder");
+        Require(Get<Text>(hud, "levelText").text == "04" && Mathf.Approximately(xp.fillAmount, 1f / 6f), "HUD reflects final level and remainder");
         Require(selection.ChoiceAt(0) != selection.ChoiceAt(1) && selection.ChoiceAt(0) != selection.ChoiceAt(2) && selection.ChoiceAt(1) != selection.ChoiceAt(2), "Three offers are distinct");
         Vector3 position = Object.FindAnyObjectByType<PlayerController>().transform.position;
         Enemy enemy = Object.FindAnyObjectByType<Enemy>();
@@ -190,9 +185,9 @@ public class HudRegressionRunner : MonoBehaviour
         Require(!LevelUpSelection.InputBlocked, "Input fence clears after closing");
         Require(!player.TryApplyUpgrade(UpgradeKind.Damage), "No reward without pending level");
 
-        foreach (UpgradeKind kind in new[] {UpgradeKind.Damage, UpgradeKind.Damage, UpgradeKind.MoveSpeed, UpgradeKind.Magnet, UpgradeKind.Vitality})
+        foreach (UpgradeKind kind in new[] {UpgradeKind.Damage, UpgradeKind.PowerBullet, UpgradeKind.Damage, UpgradeKind.MoveSpeed, UpgradeKind.Magnet, UpgradeKind.Vitality})
         {
-            float damage = player.DamageMultiplier;
+            float damage = player.BaseDamageBonus;
             float speed = player.currentMoveSpeed;
             float magnet = player.currentMagnet;
             float maxHp = player.MaxHealth;
@@ -202,16 +197,16 @@ public class HudRegressionRunner : MonoBehaviour
             switch (kind)
             {
                 case UpgradeKind.Damage:
-                    Require(Mathf.Approximately(player.DamageMultiplier, damage + 0.1f), "Damage stacks additively");
+                    Require(Mathf.Approximately(player.BaseDamageBonus, damage + 1f), "Power adds one base damage per choice");
                     break;
                 case UpgradeKind.MoveSpeed:
-                    Require(Mathf.Approximately(player.currentMoveSpeed, speed + player.characterData.MoveSpeed * 0.1f), "Move speed uses base 10 percent");
+                    Require(Mathf.Approximately(player.currentMoveSpeed, speed + 0.2f), "Swiftness adds 0.2 base move speed");
                     break;
                 case UpgradeKind.Magnet:
                     Require(Mathf.Approximately(player.currentMagnet, magnet + player.characterData.Magnet * 0.2f), "Magnet uses base 20 percent");
                     break;
                 case UpgradeKind.Vitality:
-                    Require(player.MaxHealth == maxHp + 20 && player.currentHealth == Mathf.Min(player.MaxHealth, currentHp + 20), "Vitality adds 20 max HP and heals 20");
+                    Require(player.MaxHealth == maxHp + 3 && player.currentHealth == Mathf.Min(player.MaxHealth, currentHp + 3), "Vitality adds 3 max HP and heals 3");
                     break;
             }
             yield return null;
@@ -224,15 +219,15 @@ public class HudRegressionRunner : MonoBehaviour
         WeaponScriptableObject sword = AssetDatabase.LoadAssetAtPath<WeaponScriptableObject>("Assets/Scriptable Object/Weapon/Sword.asset");
         MeleeWeaponBehaviour melee = slash.GetComponent<MeleeWeaponBehaviour>();
         melee.Initialize(sword, player.transform, Vector2.right);
-        Require(Mathf.Approximately(Get<float>(melee, "damage"), sword.Damage * player.DamageMultiplier), "Melee uses actual owner damage bonus");
+        Require(Mathf.Approximately(Get<float>(melee, "damage"), (sword.Damage + player.BaseDamageBonus) * player.DamageMultiplier), "Melee adds Power before percentage bonuses");
         Destroy(slash);
         GameObject spellPrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefab/Spell.prefab");
         GameObject spell = Instantiate(spellPrefab);
         ProjectileWeaponBehaviour projectile = spell.GetComponent<ProjectileWeaponBehaviour>();
         projectile.ApplyOwnerStats(player);
-        Require(Mathf.Approximately(Get<float>(projectile, "currentDamage"), projectile.weaponData.Damage * player.DamageMultiplier), "Projectile uses actual owner damage bonus");
+        Require(Mathf.Approximately(Get<float>(projectile, "currentDamage"), (projectile.weaponData.Damage + player.BaseDamageBonus) * player.DamageMultiplier * player.ProjectileDamageMultiplier), "Projectile adds Power before percentage bonuses");
         projectile.ApplyOwnerStats(player);
-        Require(Mathf.Approximately(Get<float>(projectile, "currentDamage"), projectile.weaponData.Damage * player.DamageMultiplier), "Applying projectile owner twice does not multiply twice");
+        Require(Mathf.Approximately(Get<float>(projectile, "currentDamage"), (projectile.weaponData.Damage + player.BaseDamageBonus) * player.DamageMultiplier * player.ProjectileDamageMultiplier), "Applying projectile owner twice does not multiply twice");
         Destroy(spell);
 
         Time.timeScale = 0.5f;

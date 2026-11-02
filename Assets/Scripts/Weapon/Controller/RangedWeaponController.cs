@@ -6,7 +6,8 @@ public class RangedWeaponController : WeaponController
 {
     private WeaponGrip grip;
     private RangedWeaponState state;
-    private PlayerStats owner;
+    private bool attacking;
+    public override bool IsAttacking => isActiveAndEnabled && attacking && !LevelUpSelection.InputBlocked;
     public RangedWeaponState State => state;
     public int ShotsFired { get; private set; }
     public ProjectileWeaponBehaviour LastProjectile { get; private set; }
@@ -14,14 +15,14 @@ public class RangedWeaponController : WeaponController
     protected override void Start()
     {
         base.Start();
-        owner = GetComponentInParent<PlayerStats>();
         grip = GetComponent<WeaponGrip>();
         if (weaponData == null) { Debug.LogError(name + ": missing ranged weapon data.", this); return; }
         state = new RangedWeaponState(weaponData);
         SyncUpgrades();
     }
 
-    private void SyncUpgrades() => state?.SetUpgrades(owner != null ? owner.AmmoUpgradeLevel : 0, owner != null ? owner.ReloadUpgradeLevel : 0);
+    private void SyncUpgrades() => state?.SetUpgrades(owner != null ? owner.AmmoUpgradeLevel : 0, owner != null ? owner.ReloadUpgradeLevel : 0,
+        owner != null ? owner.ReloadSpeedMultiplier : 1f, owner != null ? owner.FireRateMultiplier : 1f);
 
     protected override void Update()
     {
@@ -32,7 +33,8 @@ public class RangedWeaponController : WeaponController
 
     internal void Tick(float delta, bool held, bool overUI = false)
     {
-        if (state == null) return;
+        attacking = false;
+        if (state == null || delta < 0f || float.IsNaN(delta) || float.IsInfinity(delta)) return;
         SyncUpgrades();
         if (Time.timeScale <= 0f || LevelUpSelection.InputBlocked || (owner != null && owner.IsDead))
         {
@@ -47,14 +49,23 @@ public class RangedWeaponController : WeaponController
             return;
         }
         if (wh == null || weaponData.Prefab == null || !weaponData.Prefab.TryGetComponent<ProjectileWeaponBehaviour>(out _)) return;
-        if (!state.Tick(delta, held)) return;
+        bool fired = state.Tick(delta, held);
+        attacking = fired || state.IsCharging || (weaponData.FireMode != WeaponFireMode.Crossbow && held && state.Ammo > 0 && !state.IsReloading && !state.TriggerBlocked);
+        if (!fired) return;
         Vector2 direction = wh.GetDirection();
         Vector3 origin = grip != null ? grip.MuzzlePosition : transform.position + (Vector3)direction * 0.45f;
-        GameObject shot = Instantiate(weaponData.Prefab, origin, Quaternion.identity);
-        LastProjectile = shot.GetComponent<ProjectileWeaponBehaviour>();
-        LastProjectile.InitializeShot(weaponData, owner, direction, state.ShotDamageFactor, state.ShotSizeFactor);
+        int count = Mathf.Clamp(weaponData.Projectiles + (owner != null ? owner.ExtraProjectiles : 0), 1, 32);
+        float spread = Mathf.Clamp(weaponData.SpreadAngle + (owner != null ? owner.SpreadModifier : 0f), 0f, 180f);
+        for (int i = 0; i < count; i++)
+        {
+            float angle = count == 1 ? 0f : Mathf.Lerp(-spread * 0.5f, spread * 0.5f, (float)i / (count - 1));
+            Vector3 shotDirection = Quaternion.Euler(0f, 0f, angle) * direction;
+            GameObject shot = Instantiate(weaponData.Prefab, origin, Quaternion.identity);
+            LastProjectile = shot.GetComponent<ProjectileWeaponBehaviour>();
+            LastProjectile.InitializeShot(weaponData, owner, shotDirection, state.ShotDamageFactor, state.ShotSizeFactor);
+        }
         ShotsFired++;
     }
 
-    private void OnDisable() => state?.Interrupt();
+    private void OnDisable() { attacking = false; state?.Interrupt(); }
 }

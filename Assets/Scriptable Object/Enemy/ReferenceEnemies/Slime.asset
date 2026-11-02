@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Slime
   m_EditorClassIdentifier: Assembly-CSharp::EnemyScriptableObject
   moveSpeed: 2
-  maxHealth: 10
-  damage: 4
+  maxHealth: 6
+  damage: 3
+  experienceReward: 5

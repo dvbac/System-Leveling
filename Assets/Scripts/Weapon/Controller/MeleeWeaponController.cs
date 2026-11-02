@@ -14,6 +14,7 @@ public class MeleeWeaponController : WeaponController
     private float sweptAngle;
 
     private bool isAttacking;
+    public override bool IsAttacking => isActiveAndEnabled && isAttacking && !LevelUpSelection.InputBlocked;
 
     protected override void Start()
     {
@@ -99,6 +100,12 @@ public class MeleeWeaponController : WeaponController
         // Giữ hướng nhát chém dù WeaponHolder đang xoay theo chuột.
         if (isAttacking)
             ApplySwingRotation();
+    }
+
+    private void OnDisable()
+    {
+        if (isAttacking && swordPivot != null) swordPivot.localRotation = idleRotation;
+        isAttacking = false;
     }
 
     private void UpdateSwing()

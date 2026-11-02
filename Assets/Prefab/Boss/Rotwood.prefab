@@ -416,8 +416,8 @@ MonoBehaviour:
   warningRing: {fileID: 21300000, guid: d191c20b6254fa042bc6ba703e078bfd, type: 3}
   rootSprite: {fileID: 21300000, guid: fc74512cfdc12bf478a0ca7fa84d3b48, type: 3}
   wolfPrefab: {fileID: 5368790229546113473, guid: 7eeda13ef4f7d1740b255a3729d02232, type: 3}
-  rootDamage: 18
-  chargeDamage: 25
+  rootDamage: 6
+  chargeDamage: 8
   chargeSpeed: 9
   chargeRange: 8
   chaseDuration: 3

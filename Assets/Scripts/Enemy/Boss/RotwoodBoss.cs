@@ -20,8 +20,8 @@ public class RotwoodBoss : MonoBehaviour
     [SerializeField] private Sprite warningRing;
     [SerializeField] private Sprite rootSprite;
     [SerializeField] private GameObject wolfPrefab;
-    [SerializeField] private float rootDamage = 18f;
-    [SerializeField] private float chargeDamage = 25f;
+    [SerializeField] private float rootDamage = 6f;
+    [SerializeField] private float chargeDamage = 8f;
     [SerializeField] private float chargeSpeed = 9f;
     [SerializeField] private float chargeRange = 8f;
     [SerializeField] private float chaseDuration = 3f;

@@ -1,6 +1,6 @@
 {
     "result": "PASS",
-    "utc": "2026-11-01T10:25:51.9519555Z",
+    "utc": "2026-11-01T17:11:38.6008311Z",
     "checks": [
         "Loaded a clean gameplay scene baseline",
         "Inspector contains the four approved survival phase boundaries",

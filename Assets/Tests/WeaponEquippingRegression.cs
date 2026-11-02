@@ -186,7 +186,7 @@ public class WeaponEquippingRegression : MonoBehaviour
         while (loads < 2 && Time.realtimeSinceStartup < until) yield return null;
         Check(loads == 2, "Scene reload completes with neutral holders"); yield return null;
         WeaponHolder fresh = GameObject.Find("Player").GetComponentInChildren<WeaponHolder>();
-        Check(fresh.CurrentWeapon is MagicBookController && ((RangedWeaponController)fresh.CurrentWeapon).State.Ammo == 8,
+        Check(fresh.CurrentWeapon is MagicBookController && ((RangedWeaponController)fresh.CurrentWeapon).State.Ammo == fresh.CurrentWeapon.weaponData.MagazineSize,
             "Fresh scene equips exactly the default book with a full magazine");
     }
 
