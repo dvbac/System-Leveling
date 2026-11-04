@@ -1,8 +1,8 @@
 # Rotwood — boss rừng đầu tiên
 
 ## Chơi và thử nhanh
-- Mở `Assets/Scenes/SampleScene.unity`, Play. Boss xuất hiện **một lần ở 15:00 gameplay**. Pause/level-up không tính thời gian.
-- Không cần đợi 15 phút: trong Play Mode chọn **Tools > System Leveling > Rotwood > Spawn Now (Play Mode)**.
+- Mở `Assets/Scenes/SampleScene.unity`, Play. Boss xuất hiện **một lần ở 17:00 gameplay (1020 giây)**. Pause/level-up không tính thời gian; mốc 15:00 cũ không còn spawn boss.
+- Không cần đợi 17 phút: trong Play Mode chọn **Tools > System Leveling > Rotwood > Spawn Now (Play Mode)**.
 - Hạ boss: phát Death rồi hiện **VICTORY / YOU WIN**, dừng combat, cho Restart hoặc Main Menu. Player chết trước thì vẫn là thua.
 - Prefab: `Assets/Prefab/Boss/Rotwood.prefab`.
 - Encounter trong scene: `Rotwood Boss Encounter - 15 Minutes`; chỉnh `Spawn At Seconds` nếu cần test.
@@ -27,4 +27,4 @@ HP đầu 1800, đi 1,2; chạm 15, rễ 18, húc 25. Đây là chỉ số khở
 Report và ảnh: `Captures/RotwoodBoss/`. Chạy test sẽ restart scene đang chơi; không dùng giữa một run muốn giữ.
 Specification, approval, các vòng kiểm tra và acceptance: `docs/spec-driven/rotwood-boss/`.
 
-Kết quả gần nhất: **45 kiểm tra PASS**. Chưa cân bằng một run đủ 15 phút; không có lỗi runtime của boss trong regression. Cấu hình spawner hiện tại có cảnh báo `Spawn entry excluded` ở một số pool cũ, được giữ nguyên chứ không tự sửa ngoài phạm vi boss.
+Kết quả gần nhất: **50 kiểm tra PASS**, gồm không spawn ở 15:00/16:59 và spawn một lần khi qua 17:00. Chưa cân bằng một run đủ 17 phút; mốc thời gian được kiểm tra bằng production Tick. Cấu hình spawner hiện tại có cảnh báo `Spawn entry excluded` ở một số pool cũ, được giữ nguyên chứ không tự sửa ngoài phạm vi boss.

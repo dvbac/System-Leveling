@@ -1,0 +1,15 @@
+{
+  "source": "Assets/MyAssets/Other/Drop/RedCard.png",
+  "source_sha256": "6f8dec66534a8bc5b9d66cb30cc8778e3b1c1f296efb9870ba554b9311b5f998",
+  "sheet": "RedCardSparkle.png",
+  "layout": "horizontal, left to right",
+  "cell_size": [
+    64,
+    64
+  ],
+  "frames": 8,
+  "fps": 8,
+  "duration_seconds": 1,
+  "loop": true,
+  "checks": "PASS: original unchanged, silhouette fixed, 8 unique frames, no clipping, exact extraction and GIF timing"
+}

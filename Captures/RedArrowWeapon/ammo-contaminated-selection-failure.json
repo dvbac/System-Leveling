@@ -1,0 +1,8 @@
+{
+    "result": "FAIL",
+    "utc": "2026-11-04T19:33:13.5259497Z",
+    "failure": "System.Exception: Scene Mage has one initialized book with seven rounds\r\n  at WeaponAmmoRegression.Check (System.Boolean pass, System.String name) [0x00016] in C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Tests\\WeaponAmmoRegression.cs:384 \r\n  at WeaponAmmoRegression+<Tests>d__7.MoveNext () [0x000e5] in C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Tests\\WeaponAmmoRegression.cs:64 \r\n  at WeaponAmmoRegression+<Run>d__6.MoveNext () [0x00068] in C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Tests\\WeaponAmmoRegression.cs:39 ",
+    "checks": [
+        "Clean gameplay baseline loaded"
+    ]
+}

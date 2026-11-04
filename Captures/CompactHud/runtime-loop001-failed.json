@@ -1,0 +1,26 @@
+{
+    "result": "FAIL",
+    "checks": [
+        "AC-002: cursor is half size and center-hotspot",
+        "Fresh player alive on Assets/Scenes/SampleScene.unity",
+        "AC-005: current loadout player bindings intact on Assets/Scenes/SampleScene.unity",
+        "AC-001: compact Soul retains per-run value",
+        "AC-001: short readable HP top-left, not full-width top strip",
+        "AC-001: EXP stretches flush along bottom",
+        "AC-001: oversized opaque panels removed",
+        "AC-001: real HP changes update bar",
+        "AC-001: real EXP changes update bar",
+        "AC-001: survival timer preserved",
+        "AC-005: boss can still spawn with compact HUD",
+        "AC-005: boss bar does not overlap compact stats",
+        "Equips MagicBook",
+        "Live ranged state initialized: MagicBook",
+        "AC-003: header and cursor counts match MagicBook",
+        "AC-003: ammo text is visible and smaller than cursor",
+        "AC-003: cursor count clamped to viewport at (0.00, 0.00)",
+        "AC-003: cursor count clamped to viewport at (1920.00, 0.00)",
+        "AC-003: cursor count clamped to viewport at (0.00, 1080.00)",
+        "AC-003: cursor count clamped to viewport at (1920.00, 1080.00)"
+    ],
+    "failure": "System.InvalidOperationException: AC-004: bracket reload only during real reload: MagicBook\r\n  at CompactHudRegression.Check (System.Boolean pass, System.String label) [0x00016] in C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Tests\\CompactHudRegression.cs:217 \r\n  at CompactHudRegression+<Tests>d__12.MoveNext () [0x00a70] in C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Tests\\CompactHudRegression.cs:151 \r\n  at CompactHudRegression+<Start>d__11.MoveNext () [0x0006b] in C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Tests\\CompactHudRegression.cs:50 "
+}

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class RotwoodEncounter : MonoBehaviour
 {
     [SerializeField] private RotwoodBoss bossPrefab;
-    [SerializeField, Min(0)] private float spawnAtSeconds = 900f;
+    [SerializeField, Min(0)] private float spawnAtSeconds = 1020f;
     [SerializeField] private string groundTilemapName;
     [SerializeField] private LayerMask obstacleLayers;
     private PlayerStats player;

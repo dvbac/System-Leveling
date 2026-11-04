@@ -52,6 +52,7 @@ public class RunMenu : MonoBehaviour
     {
         if (IsOpen || gameOver.IsGameOver || gameOver.IsRestarting || (levelUp != null && levelUp.IsOpen) || Time.timeScale <= 0) return;
         previousTimeScale = Time.timeScale; ownsPause = true; Time.timeScale = 0;
+        GameAudio.Play(GameSound.Click);
         pausePanel.SetActive(true); pausePanel.transform.SetAsLastSibling(); continueButton.Select();
     }
 
@@ -59,6 +60,7 @@ public class RunMenu : MonoBehaviour
     {
         if (!ownsPause || settingsPanel.activeSelf || gameOver.IsRestarting) return;
         ownsPause = false; pausePanel.SetActive(false); Time.timeScale = previousTimeScale;
+        GameAudio.Play(GameSound.Click);
         blockedThroughFrame = Time.frameCount + 1;
         if (EventSystem.current != null) EventSystem.current.SetSelectedGameObject(null);
         if (levelUp != null) levelUp.Sync();
@@ -68,6 +70,7 @@ public class RunMenu : MonoBehaviour
     {
         if (gameOver.IsRestarting || (!ownsPause && !gameOver.IsGameOver)) return;
         volume.SetValueWithoutNotify(AudioListener.volume); volumeValue.text = Mathf.RoundToInt(volume.value * 100) + "%";
+        GameAudio.Play(GameSound.Click);
         fullscreen.SetIsOnWithoutNotify(Screen.fullScreen);
         pausePanel.SetActive(false); settingsPanel.SetActive(true); settingsPanel.transform.SetAsLastSibling();
         settingsBackButton.Select();
@@ -76,6 +79,7 @@ public class RunMenu : MonoBehaviour
     public void CloseSettings()
     {
         if (!settingsPanel.activeSelf || gameOver.IsRestarting) return;
+        GameAudio.Play(GameSound.Click);
         settingsPanel.SetActive(false);
         if (ownsPause) { pausePanel.SetActive(true); settingsButton.Select(); }
         else gameOver.FocusSettings();

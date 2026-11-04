@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: RainbowSlime
+  m_Controller: {fileID: 9100000, guid: 387ccc5df7b66bc44ac70596fb32f95e, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: c8e86c8ad908f6149bc253bd949bbc4b, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 89b7d42c787715f46849897e42dcf7fa, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 7f366be953b6fbe47909f46a89e266cb, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 7d6b3e329132f23478405e59233ef5f9, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: cf1f785001a946d4cb3f98312531e8a7, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 5a75b34f3358f43439bbc51e606b9902, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: e6b44bdfba329564499054b334a7debc, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 014a7c72767a45c4fb33dd3b71bc7bbf, type: 2}

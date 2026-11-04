@@ -113,7 +113,7 @@ public class RotwoodBoss : MonoBehaviour
         {
             Vector2 direction = player.transform.position - transform.position;
             visual.flipX = direction.x > 0; // Source art faces left.
-            if (direction.magnitude > 1.8f) Move(direction.normalized, stats.currentMoveSpeed * delta, false);
+            if (direction.magnitude > 1.8f) Move(direction.normalized, stats.currentMoveSpeed * stats.UpgradeMovementFactor * delta, false);
             if (stateTime >= chaseDuration)
             {
                 ActionState[] attacks = { ActionState.Roots, ActionState.Windup, ActionState.Summon };

@@ -129,7 +129,8 @@ public class LoadoutGameplayRegression : MonoBehaviour
                 ranged.Tick(10, false); ranged.Tick(0, true); ranged.Tick(0.2f, true); ranged.Tick(0, false);
                 Check(ranged.LastProjectile != null && ranged.LastProjectile.weaponData == weaponData, "Selected ranged weapon fires its projectile");
                 WeaponHud ammo = FindAnyObjectByType<WeaponHud>(); ammo.SendMessage("Update");
-                Check(Read<Text>(ammo, "label").text.Contains(weaponData.name.ToUpperInvariant()), "Weapon HUD follows selected ammo state");
+                Check(ammo.Compact ? Read<Text>(ammo,"label").text == $"{ranged.State.Ammo} / {ranged.State.Capacity}"
+                    : Read<Text>(ammo, "label").text.Contains(weaponData.name.ToUpperInvariant()), "Weapon HUD follows selected ammo state");
             }
             else
             {

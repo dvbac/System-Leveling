@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Experience : MonoBehaviour, ICollectible
 {
-    public int experienceGranted;
+    public float experienceGranted;
 
     [SerializeField] private float collectDistance = 0.15f;
 
@@ -48,6 +48,7 @@ public class Experience : MonoBehaviour, ICollectible
         }
 
         isCollected = true;
+        if (experienceGranted > 0) GameAudio.Play(GameSound.Experience);
         target.IncreaseExperience(experienceGranted);
 
         Destroy(gameObject);

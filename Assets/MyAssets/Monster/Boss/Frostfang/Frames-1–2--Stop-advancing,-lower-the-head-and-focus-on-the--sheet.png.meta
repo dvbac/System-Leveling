@@ -1,0 +1,429 @@
+fileFormatVersion: 2
+guid: 1952e9035c5774649a3bc441f94ae0ec
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6195742098862762424
+    second: "Frames-1\u20132--Stop-advancing,-lower-the-head-and-focus-on-the--sheet_0"
+  - first:
+      213: 6793864648304163163
+    second: "Frames-1\u20132--Stop-advancing,-lower-the-head-and-focus-on-the--sheet_1"
+  - first:
+      213: 3404112767665702188
+    second: "Frames-1\u20132--Stop-advancing,-lower-the-head-and-focus-on-the--sheet_2"
+  - first:
+      213: 4421333698976300657
+    second: "Frames-1\u20132--Stop-advancing,-lower-the-head-and-focus-on-the--sheet_3"
+  - first:
+      213: -2728404767529141903
+    second: "Frames-1\u20132--Stop-advancing,-lower-the-head-and-focus-on-the--sheet_4"
+  - first:
+      213: 8356880839304099832
+    second: "Frames-1\u20132--Stop-advancing,-lower-the-head-and-focus-on-the--sheet_5"
+  - first:
+      213: 8557220755173927804
+    second: "Frames-1\u20132--Stop-advancing,-lower-the-head-and-focus-on-the--sheet_6"
+  - first:
+      213: -6845881168906528455
+    second: "Frames-1\u20132--Stop-advancing,-lower-the-head-and-focus-on-the--sheet_7"
+  - first:
+      213: -6957982931619918498
+    second: "Frames-1\u20132--Stop-advancing,-lower-the-head-and-focus-on-the--sheet_8"
+  - first:
+      213: -4598154325377318057
+    second: "Frames-1\u20132--Stop-advancing,-lower-the-head-and-focus-on-the--sheet_9"
+  - first:
+      213: 4343917011982873747
+    second: "Frames-1\u20132--Stop-advancing,-lower-the-head-and-focus-on-the--sheet_10"
+  - first:
+      213: 2559351850735306060
+    second: "Frames-1\u20132--Stop-advancing,-lower-the-head-and-focus-on-the--sheet_11"
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: "Frames-1\u20132--Stop-advancing,-lower-the-head-and-focus-on-the--sheet_0"
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 12
+        width: 123
+        height: 116
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b9e5aacc92bbf550800000000000000
+      internalID: 6195742098862762424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Frames-1\u20132--Stop-advancing,-lower-the-head-and-focus-on-the--sheet_1"
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 12
+        width: 124
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b59f046f6e7a84e50800000000000000
+      internalID: 6793864648304163163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Frames-1\u20132--Stop-advancing,-lower-the-head-and-focus-on-the--sheet_2"
+      rect:
+        serializedVersion: 2
+        x: 419
+        y: 12
+        width: 124
+        height: 110
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c250614c686dd3f20800000000000000
+      internalID: 3404112767665702188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Frames-1\u20132--Stop-advancing,-lower-the-head-and-focus-on-the--sheet_3"
+      rect:
+        serializedVersion: 2
+        x: 610
+        y: 12
+        width: 124
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 17e32f0f29bbb5d30800000000000000
+      internalID: 4421333698976300657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Frames-1\u20132--Stop-advancing,-lower-the-head-and-focus-on-the--sheet_4"
+      rect:
+        serializedVersion: 2
+        x: 801
+        y: 12
+        width: 123
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 17971f3d152c22ad0800000000000000
+      internalID: -2728404767529141903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Frames-1\u20132--Stop-advancing,-lower-the-head-and-focus-on-the--sheet_5"
+      rect:
+        serializedVersion: 2
+        x: 993
+        y: 12
+        width: 122
+        height: 109
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f73df0c8da99f370800000000000000
+      internalID: 8356880839304099832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Frames-1\u20132--Stop-advancing,-lower-the-head-and-focus-on-the--sheet_6"
+      rect:
+        serializedVersion: 2
+        x: 1183
+        y: 12
+        width: 125
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c7bedb050fa51c670800000000000000
+      internalID: 8557220755173927804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Frames-1\u20132--Stop-advancing,-lower-the-head-and-focus-on-the--sheet_7"
+      rect:
+        serializedVersion: 2
+        x: 1370
+        y: 20
+        width: 131
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9395ac0195b8ef0a0800000000000000
+      internalID: -6845881168906528455
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Frames-1\u20132--Stop-advancing,-lower-the-head-and-focus-on-the--sheet_8"
+      rect:
+        serializedVersion: 2
+        x: 1565
+        y: 27
+        width: 130
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5d409f7367407f90800000000000000
+      internalID: -6957982931619918498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Frames-1\u20132--Stop-advancing,-lower-the-head-and-focus-on-the--sheet_9"
+      rect:
+        serializedVersion: 2
+        x: 1754
+        y: 7
+        width: 135
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 753857dc0031030c0800000000000000
+      internalID: -4598154325377318057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Frames-1\u20132--Stop-advancing,-lower-the-head-and-focus-on-the--sheet_10"
+      rect:
+        serializedVersion: 2
+        x: 1952
+        y: 4
+        width: 129
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 394f301e181b84c30800000000000000
+      internalID: 4343917011982873747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Frames-1\u20132--Stop-advancing,-lower-the-head-and-focus-on-the--sheet_11"
+      rect:
+        serializedVersion: 2
+        x: 2152
+        y: 8
+        width: 118
+        height: 119
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c45015eb2f4a48320800000000000000
+      internalID: 2559351850735306060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      "Frames-1\u20132--Stop-advancing,-lower-the-head-and-focus-on-the--sheet_0": 6195742098862762424
+      "Frames-1\u20132--Stop-advancing,-lower-the-head-and-focus-on-the--sheet_1": 6793864648304163163
+      "Frames-1\u20132--Stop-advancing,-lower-the-head-and-focus-on-the--sheet_10": 4343917011982873747
+      "Frames-1\u20132--Stop-advancing,-lower-the-head-and-focus-on-the--sheet_11": 2559351850735306060
+      "Frames-1\u20132--Stop-advancing,-lower-the-head-and-focus-on-the--sheet_2": 3404112767665702188
+      "Frames-1\u20132--Stop-advancing,-lower-the-head-and-focus-on-the--sheet_3": 4421333698976300657
+      "Frames-1\u20132--Stop-advancing,-lower-the-head-and-focus-on-the--sheet_4": -2728404767529141903
+      "Frames-1\u20132--Stop-advancing,-lower-the-head-and-focus-on-the--sheet_5": 8356880839304099832
+      "Frames-1\u20132--Stop-advancing,-lower-the-head-and-focus-on-the--sheet_6": 8557220755173927804
+      "Frames-1\u20132--Stop-advancing,-lower-the-head-and-focus-on-the--sheet_7": -6845881168906528455
+      "Frames-1\u20132--Stop-advancing,-lower-the-head-and-focus-on-the--sheet_8": -6957982931619918498
+      "Frames-1\u20132--Stop-advancing,-lower-the-head-and-focus-on-the--sheet_9": -4598154325377318057
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

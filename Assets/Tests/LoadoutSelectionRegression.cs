@@ -60,6 +60,27 @@ public class LoadoutSelectionRegression : MonoBehaviour
         if (launcher != null) launcher.enabled = false;
         GameObject[] originalCharacters = ui.characterPrefabs;
         GameObject[] originalWeapons = ui.weaponPrefabs;
+        ui.SelectCharacter(0);
+        for (int i = 0; i < originalWeapons.Length; i++)
+        {
+            ui.PreviewWeapon(i);
+            var data = originalWeapons[i].GetComponent<WeaponController>().weaponData;
+            if (ui.weaponView.statValues.text != $"{data.Damage:0.##}\n\n{data.Cooldown:0.##} s\n\n{data.MagazineSize}\n\n{data.ReloadTime:0.##} s")
+                throw new Exception("Selection must show actual weapon damage, interval, ammo and reload/per-arrow recovery: " + data.name);
+        }
+        ui.Back();
+        checks.Add("All ranged stat previews match source data; Bow shows per-arrow recovery, not the idle delay");
+        if (originalWeapons.Any(prefab => prefab.GetComponent<MeleeWeaponController>() != null))
+            throw new Exception("Sword must be hidden from weapon selection.");
+        var sword = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefab/Weapons/Sword.prefab");
+        ui.SetPrefabs(originalCharacters, originalWeapons.Concat(new[] { sword }).ToArray());
+        if (!ui.weaponPrefabs.SequenceEqual(originalWeapons) || ui.weaponView.cards.Length != originalWeapons.Length)
+            throw new Exception("Rebuilding the catalog must not reintroduce Sword or alter the ranged choices.");
+        bool onlySwordRejected = false;
+        try { ui.SetPrefabs(originalCharacters, new[] { sword }); } catch (ArgumentException) { onlySwordRejected = true; }
+        if (!onlySwordRejected || !ui.weaponPrefabs.SequenceEqual(originalWeapons))
+            throw new Exception("A filtered-empty catalog must preserve the working selection.");
+        checks.Add("Sword stays hidden on catalog rebuild; sword-only input is rejected without destroying existing choices");
         Button previous = ui.characterView.cards[0];
         GameObject[] shortCharacters = { originalCharacters[0], originalCharacters[originalCharacters.Length - 1] };
         GameObject[] shortWeapons = { originalWeapons[0], originalWeapons[originalWeapons.Length - 1], originalWeapons[0] };

@@ -105,7 +105,7 @@ public class HudRegressionRunner : MonoBehaviour
         while (player.experienceCap == 0 && Time.realtimeSinceStartup < initializationDeadline)
             yield return null;
         float baseHealth = player.characterData.MaxHealth;
-        Require(player.MaxHealth == baseHealth && player.currentHealth == baseHealth && player.experienceCap == 45,
+        Require(player.MaxHealth == baseHealth && player.currentHealth == baseHealth && player.experienceCap == 5,
             $"Initial snapshot matches current Mage and level curve (max={player.MaxHealth}, HP={player.currentHealth}, cap={player.experienceCap})");
         Image hp = Get<Image>(hud, "healthFill");
         Image xp = Get<Image>(hud, "experienceFill");
@@ -134,15 +134,15 @@ public class HudRegressionRunner : MonoBehaviour
         GameObject drop = Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefab/EXP3.prefab"));
         experienceFixture = drop;
         drop.transform.position = sandbox.transform.position + new Vector3(0.4f, 0, 0);
-        drop.GetComponent<Experience>().experienceGranted = 7;
+        drop.GetComponent<Experience>().experienceGranted = 1.5f;
         yield return new WaitForSeconds(0.2f);
-        Require(drop == null && player.experience == 7, "Real EXP prefab is attracted and collected through PlayerCollector");
-        player.IncreaseExperience(36 - player.experience);
+        Require(drop == null && player.experience == 1.5 && Get<Text>(hud, "experienceText").text == $"{1.5:0.##} / 5 EXP", "Real EXP pickup and HUD preserve fractional XP");
+        player.IncreaseExperience(4 - player.experience);
         Require(Mathf.Approximately(xp.fillAmount, 0.8f), "EXP pickup updates fill");
-        player.IncreaseExperience(159);
-        Require(player.level == 4 && player.experience == 15 && player.experienceCap == 90 && player.PendingUpgrades == 3, "195 EXP preserves 15 remainder and queues exactly three upgrades");
+        player.IncreaseExperience(51);
+        Require(player.level == 4 && player.experience == 10 && player.experienceCap == 35 && player.PendingUpgrades == 3, "55 EXP preserves 10 remainder and queues exactly three upgrades");
         Require(selection.IsOpen && Time.timeScale == 0 && LevelUpSelection.InputBlocked, "Modal pauses gameplay and blocks input");
-        Require(Get<Text>(hud, "levelText").text == "04" && Mathf.Approximately(xp.fillAmount, 1f / 6f), "HUD reflects final level and remainder");
+        Require(Get<Text>(hud, "levelText").text == "04" && Mathf.Approximately(xp.fillAmount, 10f / 35f), "HUD reflects final level and remainder");
         Require(selection.ChoiceAt(0) != selection.ChoiceAt(1) && selection.ChoiceAt(0) != selection.ChoiceAt(2) && selection.ChoiceAt(1) != selection.ChoiceAt(2), "Three offers are distinct");
         Vector3 position = Object.FindAnyObjectByType<PlayerController>().transform.position;
         Enemy enemy = Object.FindAnyObjectByType<Enemy>();

@@ -14,7 +14,7 @@ public class PlayerHud : MonoBehaviour
     private int lastSecond = -1;
     private int lastHealth = -1;
     private int lastMaxHealth = -1;
-    private int lastExperience = -1;
+    private double lastExperience = -1;
     private int lastCap = -1;
     private int lastLevel = -1;
 
@@ -70,7 +70,7 @@ public class PlayerHud : MonoBehaviour
         }
         if (player.experience != lastExperience || player.experienceCap != lastCap)
         {
-            experienceText.text = $"{player.experience} / {player.experienceCap} EXP";
+            experienceText.text = $"{player.experience:0.##} / {player.experienceCap} EXP";
             lastExperience = player.experience;
             lastCap = player.experienceCap;
         }

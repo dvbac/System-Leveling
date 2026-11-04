@@ -13,19 +13,20 @@ MonoBehaviour:
   m_Name: Crossbow
   m_EditorClassIdentifier: Assembly-CSharp::WeaponScriptableObject
   prefab: {fileID: 290389657465012760, guid: d859e304e42c4cf478839144e8f0a105, type: 3}
-  damage: 4
-  speed: 10.8
+  damage: 6
+  speed: 12.42
   cooldown: 0.1
-  pierce: 0
+  pierce: 2
   swingAngle: 0
   range: 0
   fireMode: 2
   magazineSize: 1
-  reloadTime: 1.25
+  reloadTime: 1
   bowRecoveryDelay: 0.45
   chargeTime: 1.5
   maxChargeDamage: 2.5
   maxChargeSize: 2
+  maxChargePierce: 2
   chargeTimePerAmmo: 0.25
   chargeDamagePerAmmo: 0.25
   chargeSizePerAmmo: 0.083333336

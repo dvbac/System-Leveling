@@ -6,7 +6,7 @@ Tất cả tiêu chí bên dưới là blocking, bằng chứng gồm report t�
 
 | ID | FR | Kiểm tra và kết quả bắt buộc |
 |---|---|---|
-| AC-001 | FR-001 | Timer dưới 900 không spawn; qua 900 spawn đúng một boss; pause/game-over không tăng; thử ngay Editor được. |
+| AC-001 | FR-001 | Timer dưới 1020 không spawn (kể cả mốc 900 cũ); qua 1020 spawn đúng một boss; pause/game-over không tăng; thử ngay Editor được. |
 | AC-002 | FR-002 | Prefab đủ data/audio/sprite; frames không null; UI máu cập nhật; SHA nguồn không đổi. |
 | AC-003 | FR-003 | Rễ không damage trước báo; hit trong vùng, miss ngoài vùng; slow hết hạn và không mất nâng cấp tốc độ. |
 | AC-004 | FR-004 | Hướng khóa sau windup; charge có swept hit và không xuyên tường; có recovery. |

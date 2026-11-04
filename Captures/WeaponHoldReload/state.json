@@ -1,14 +1,16 @@
 {
     "result": "PASS",
-    "utc": "2026-11-01T10:49:46.4688380Z",
+    "utc": "2026-11-04T20:29:35.4599273Z",
     "checks": [
+        "Current tuning: book6, bow6/interval0.3s/recovery1s/pierce2, crossbow6/pierce2, Red Arrow3/speed6/interval0.7s/ammo9",
+        "Bow fires once per 0.3s, never early or twice in one tick",
         "Empty magazine cannot fire before reload completes",
         "Held magazine fires immediately when reload completes without releasing the trigger",
         "Reload completion never bypasses shot cooldown",
         "Held fire continues after the first post-reload shot",
         "Releasing a partly used magazine starts recovery before ammo reaches zero",
-        "Holding again waits for the partial reload to finish",
-        "Holding again resumes fire after a partial reload",
+        "Holding again cancels partial reload without free ammo, but cannot bypass cooldown",
+        "Remaining ammo fires as soon as the normal cooldown permits",
         "Partial reload refills the magazine but never fires with the trigger released",
         "Reload completion does not defeat a pause/UI input fence",
         "An interrupted held trigger still requires a real release",
@@ -23,7 +25,18 @@
         "Invalid time cannot consume recovered ammo",
         "Crossbow still fires only when a charge is released",
         "Crossbow hold/release mechanics remain unchanged by the normal weapon fix",
-        "Crossbow can still charge a fresh full-power shot"
+        "Crossbow can still charge a fresh full-power shot",
+        "Magic Book: cancel wins over reload completion in the same input frame",
+        "Magic Book: releasing after a canceled reload starts progress from zero",
+        "Magic Book: blocked held input cannot cancel reload or shoot",
+        "Magic Book: a real release clears the input fence before firing interrupts reload",
+        "Red Arrow: cancel wins over reload completion in the same input frame",
+        "Red Arrow: releasing after a canceled reload starts progress from zero",
+        "Red Arrow: blocked held input cannot cancel reload or shoot",
+        "Red Arrow: a real release clears the input fence before firing interrupts reload",
+        "Multi-ammo crossbow recovers automatically while idle",
+        "Remaining crossbow ammo cancels recovery and starts a fresh charge",
+        "Canceling crossbow recovery preserves release-to-fire and charge damage"
     ],
     "failures": []
 }

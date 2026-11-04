@@ -1,0 +1,30 @@
+{
+    "result":  "PASS",
+    "utc":  "2026-11-02T04:15:02.8759186Z",
+    "cursor":  "Original 32x32 artwork copied at 16x16 with centered 8,8 hotspot; broken asset reference repaired",
+    "originalCursorPreserved":  true,
+    "expCurve":  "20 + 10*(level-1)",
+    "reports":  [
+                    {
+                        "report":  "progression-regression.json",
+                        "checks":  98,
+                        "result":  "PASS"
+                    },
+                    {
+                        "report":  "compact-regression.json",
+                        "checks":  259,
+                        "result":  "PASS"
+                    },
+                    {
+                        "report":  "hud-regression.json",
+                        "checks":  43,
+                        "result":  "PASS"
+                    }
+                ],
+    "totalChecks":  400,
+    "notChecked":  [
+                       "Standalone build",
+                       "OS cursor DPI scaling",
+                       "Long-session balance pacing"
+                   ]
+}

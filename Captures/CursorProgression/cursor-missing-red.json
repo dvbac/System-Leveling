@@ -1,0 +1,5 @@
+{
+    "result": "FAIL",
+    "checks": [],
+    "failure": "System.InvalidOperationException: Cursor setting resolves to an existing asset, not a deleted generated texture\r\n  at CompactHudRegression.Check (System.Boolean pass, System.String label) [0x00016] in C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Tests\\CompactHudRegression.cs:227 \r\n  at CompactHudRegression+<Tests>d__12.MoveNext () [0x00081] in C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Tests\\CompactHudRegression.cs:66 \r\n  at CompactHudRegression+<Start>d__11.MoveNext () [0x0006b] in C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Tests\\CompactHudRegression.cs:50 "
+}

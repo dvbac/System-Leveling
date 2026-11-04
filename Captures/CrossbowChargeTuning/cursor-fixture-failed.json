@@ -1,0 +1,7 @@
+{
+    "result": "FAIL",
+    "checks": [
+        "Cursor setting resolves to an existing asset, not a deleted generated texture"
+    ],
+    "failure": "System.InvalidOperationException: AC-002: cursor is half size and center-hotspot\r\n  at CompactHudRegression.Check (System.Boolean pass, System.String label) [0x00016] in C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Tests\\CompactHudRegression.cs:248 \r\n  at CompactHudRegression+<Tests>d__12.MoveNext () [0x000a5] in C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Tests\\CompactHudRegression.cs:67 \r\n  at CompactHudRegression+<Start>d__11.MoveNext () [0x0006b] in C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Tests\\CompactHudRegression.cs:50 "
+}

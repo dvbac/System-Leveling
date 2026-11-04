@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
@@ -52,6 +53,8 @@ public class LoadoutSelection : MonoBehaviour
     public void SetPrefabs(GameObject[] characters, GameObject[] weapons)
     {
         if (!Application.isPlaying) throw new InvalidOperationException("SetPrefabs generates the selection list in Play Mode.");
+        // Temporarily hide Sword in selection only; its assets and direct equipment remain available.
+        weapons = weapons?.Where(prefab => prefab == null || prefab.GetComponent<MeleeWeaponController>() == null).ToArray();
         ValidatePrefabs(characters, weapons);
         if (optionPrefab == null || optionPrefab.button == null || optionPrefab.icon == null || optionPrefab.ring == null ||
             characterView.options == null || weaponView.options == null)
@@ -123,6 +126,7 @@ public class LoadoutSelection : MonoBehaviour
     {
         if (ChoosingWeapon || index < 0 || index >= characterPrefabs.Length) return;
         CharacterIndex = characterPreview = index;
+        GameAudio.Play(GameSound.Click);
         Confirmed = false;
         ChoosingWeapon = true;
         weaponPreview = WeaponIndex;
@@ -135,6 +139,7 @@ public class LoadoutSelection : MonoBehaviour
         if (!ChoosingWeapon || index < 0 || index >= weaponPrefabs.Length) return;
         if (Confirmed && WeaponIndex == index) return;
         WeaponIndex = weaponPreview = index;
+        GameAudio.Play(GameSound.Click);
         Confirmed = true;
         Refresh();
         onConfirmed.Invoke();
@@ -153,6 +158,7 @@ public class LoadoutSelection : MonoBehaviour
         ChoosingWeapon = false;
         Confirmed = false;
         characterPreview = CharacterIndex;
+        GameAudio.Play(GameSound.Click);
         weaponPreview = WeaponIndex;
         Refresh();
         characterView.cards[CharacterIndex].Select();
@@ -168,6 +174,7 @@ public class LoadoutSelection : MonoBehaviour
     {
         if (ChoosingWeapon || index < 0 || index >= characterPrefabs.Length) return;
         characterPreview = index;
+        GameAudio.Play(GameSound.Hover);
         Refresh();
     }
 
@@ -175,6 +182,7 @@ public class LoadoutSelection : MonoBehaviour
     {
         if (!ChoosingWeapon || index < 0 || index >= weaponPrefabs.Length) return;
         weaponPreview = index;
+        GameAudio.Play(GameSound.Hover);
         Refresh();
     }
 
@@ -208,11 +216,13 @@ public class LoadoutSelection : MonoBehaviour
         weaponView.category.text = melee ? "MELEE" : "RANGED / " + w.FireMode.ToString().ToUpperInvariant();
         weaponView.description.text = melee ? "Strike nearby enemies in a sweeping arc." : w.FireMode == WeaponFireMode.Crossbow
             ? "Hold to charge a stronger shot, then release to fire." : w.FireMode == WeaponFireMode.Bow
-            ? "Hold to fire arrows. Release to recover; an empty bow also recovers while held." : "Hold to fire. Reload when empty or after releasing a partially used magazine.";
+            ? "Hold to fire arrows. Release to recover; fire with remaining arrows to cancel recovery." : "Release to reload. Fire with remaining ammo to cancel reload; an empty magazine must recover first.";
+        if (weapon.GetComponent<RedArrowController>() != null)
+            weaponView.description.text = "Seeking arrows chase enemies and bounce once. Release to reload; fire with remaining ammo to cancel reload.";
         weaponView.stats.text = melee ? "DAMAGE\n\nCOOLDOWN\n\nSWING ANGLE\n\nREACH" : "DAMAGE\n\nCOOLDOWN\n\nMAGAZINE\n\n" + (w.FireMode == WeaponFireMode.Bow ? "RECOVERY" : "RELOAD");
         weaponView.statValues.text = melee
             ? $"{w.Damage:0.##}\n\n{w.Cooldown:0.##} s\n\n{w.SwingAngle:0.##} deg\n\n{w.Range:0.##}"
-            : $"{w.Damage:0.##}\n\n{w.Cooldown:0.##} s\n\n{w.MagazineSize}\n\n" + (w.FireMode == WeaponFireMode.Bow ? $"{w.BowRecoveryDelay:0.##} s" : $"{w.ReloadTime:0.##} s");
+            : $"{w.Damage:0.##}\n\n{w.Cooldown:0.##} s\n\n{w.MagazineSize}\n\n{w.ReloadTime:0.##} s";
         weaponView.note.text = "CHARACTER / " + SelectedCharacter.name.ToUpperInvariant() + "   /   ANY WEAPON ALLOWED";
         Highlight(characterView, characterPreview, CharacterIndex, ChoosingWeapon);
         Highlight(weaponView, weaponPreview, WeaponIndex, Confirmed);

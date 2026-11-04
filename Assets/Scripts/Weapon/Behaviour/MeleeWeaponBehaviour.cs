@@ -15,6 +15,7 @@ public class MeleeWeaponBehaviour : MonoBehaviour
 
     private float damage;
     private float knockback, criticalChance;
+    private UpgradeHit upgradeHit;
     private float speed;
     private float swingAngle;
     private float startAngle;
@@ -45,8 +46,9 @@ public class MeleeWeaponBehaviour : MonoBehaviour
 
         damage = data.Damage;
         PlayerStats player = attackOrigin.GetComponentInParent<PlayerStats>();
+        upgradeHit = UpgradeHit.Capture(player);
         if (player != null)
-            damage = (damage + player.BaseDamageBonus) * player.DamageMultiplier;
+            damage = (damage + player.TotalBaseDamageBonus) * player.DamageMultiplier * player.TomeDamageMultiplier * player.CombatDamageMultiplier;
         knockback = data.Knockback * (player != null ? player.KnockbackMultiplier : 1f);
         criticalChance = Mathf.Clamp01(data.CriticalChance + (player != null ? player.CriticalChanceBonus : 0f));
         speed = data.Speed;
@@ -116,9 +118,12 @@ public class MeleeWeaponBehaviour : MonoBehaviour
 
         if (enemy != null)
         {
-            if (hitEnemies.Add(enemy))
+            if (!enemy.IsDead && hitEnemies.Add(enemy))
             {
-                enemy.TakeDamage(WeaponScriptableObject.RollDamage(damage, criticalChance));
+                if (upgradeHit.Owner != null) upgradeHit.Apply(enemy, WeaponScriptableObject.RollDamage(damage, criticalChance));
+                else enemy.TakeDamage(WeaponScriptableObject.RollDamage(damage, criticalChance));
+                UpgradeEffect.Burst(enemy.transform.position, upgradeHit.Burn ? UpgradeEffect.Fire : upgradeHit.Freeze ? UpgradeEffect.Ice : new Color(1f, .85f, .45f), 4, .4f);
+                GameAudio.Play(GameSound.Hit);
                 if (!enemy.IsDead && enemy.TryGetComponent(out Enemy movement))
                     movement.ApplyKnockback(enemy.transform.position - owner.position, knockback);
             }
@@ -130,7 +135,10 @@ public class MeleeWeaponBehaviour : MonoBehaviour
             other.GetComponentInParent<BreakableProps>();
 
         if (prop != null && hitProps.Add(prop))
+        {
             prop.TakeDamage(WeaponScriptableObject.RollDamage(damage, criticalChance));
+            GameAudio.Play(GameSound.Hit);
+        }
     }
 
     private void FinishSwing()

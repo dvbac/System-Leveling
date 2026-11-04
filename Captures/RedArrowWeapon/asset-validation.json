@@ -1,0 +1,10 @@
+{
+  "result": "PASS",
+  "sourceUnchanged": true,
+  "spriteCopyExact": true,
+  "catalogAppendOnly": true,
+  "existingSceneContentsUnchanged": true,
+  "oldCatalogEntries": 4,
+  "newCatalogEntries": 5,
+  "setupIdempotent": true
+}

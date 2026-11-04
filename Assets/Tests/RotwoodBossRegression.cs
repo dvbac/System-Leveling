@@ -81,16 +81,18 @@ public class RotwoodBossRegression : MonoBehaviour
         player.currentHealth = 1000;
         var encounter = FindAnyObjectByType<RotwoodEncounter>();
         encounter.enabled = false;
-        Check(Read<float>(encounter,"spawnAtSeconds") == 900f, "AC-001: authored encounter uses minute 15");
+        Check(Read<float>(encounter,"spawnAtSeconds") == 1020f, "AC-001: authored encounter uses minute 17");
         float elapsed = encounter.ElapsedTime;
         Time.timeScale = 0;
         encounter.Tick(1000);
         Check(encounter.ElapsedTime == elapsed && !encounter.HasSpawned, "AC-001: pause does not advance encounter");
         Time.timeScale = 1;
-        encounter.Tick(899f-elapsed);
-        Check(!encounter.HasSpawned, "AC-001: no early spawn before 900 seconds");
+        encounter.Tick(900f-elapsed);
+        Check(!encounter.HasSpawned, "AC-001: old minute-15 milestone no longer spawns a boss");
+        encounter.Tick(119f);
+        Check(!encounter.HasSpawned, "AC-001: no early spawn before 1020 seconds");
         encounter.Tick(1.01f);
-        Check(encounter.HasSpawned && encounter.Boss != null, "AC-001: spawns once after 900s");
+        Check(encounter.HasSpawned && encounter.Boss != null, "AC-001: spawns once after 1020s");
         RotwoodBoss boss = encounter.Boss;
         boss.enabled = false;
         Check(!encounter.SpawnNow() && FindObjectsByType<RotwoodBoss>().Length == 1, "AC-001: repeated spawn cannot duplicate boss");
@@ -107,7 +109,7 @@ public class RotwoodBossRegression : MonoBehaviour
         Transform hudRoot = FindAnyObjectByType<PlayerHud>().transform;
         Canvas.ForceUpdateCanvases();
         Rect bossBounds = ScreenBounds(Read<GameObject>(encounter,"hud").GetComponent<RectTransform>());
-        foreach (string path in new[] { "HUD/Health Panel", "Weapon Panel", "HUD/Run Timer", "HUD/Soul Balance" })
+        foreach (string path in new[] { "HUD/Health Panel", "Weapon Panel", "HUD/Weapon Panel", "HUD/Run Timer", "HUD/Soul Balance" })
         {
             Transform panel = hudRoot.Find(path);
             if (panel != null) Check(!bossBounds.Overlaps(ScreenBounds(panel.GetComponent<RectTransform>())), "Boss health does not overlap " + path);

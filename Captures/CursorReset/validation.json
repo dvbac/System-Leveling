@@ -1,0 +1,9 @@
+{
+    "result": "PASS",
+    "sourceSHA256": "9D85949F61DFF801F2A77E1040E1CA00266119E9585ED90542A6DE6B9E951835",
+    "nativeSHA256": "40A3C8EB6B499A92452D0E3BDB57BBA6D3ECDB18678AE13FF5B6A8C7ED0741E1",
+    "note": "Asset/import/hotspot verified; OS hardware cursor appearance still needs Game View confirmation.",
+    "pixelChecks": 256,
+    "textureSize": 16,
+    "artworkSize": 16
+}

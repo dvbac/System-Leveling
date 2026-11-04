@@ -67,6 +67,7 @@ public class LoadoutLauncher : MonoBehaviour
     {
         if (IsLoading || !ChoosingMap) return;
         ChoosingMap = false;
+        GameAudio.Play(GameSound.Click);
         mapPage.SetActive(false); loadoutPage.SetActive(true);
         selection.ReopenWeapons();
     }
@@ -120,6 +121,7 @@ public class LoadoutLauncher : MonoBehaviour
     {
         if (!Application.CanStreamedLevelBeLoaded(path)) throw new InvalidOperationException("Scene is missing from Build Settings: " + path);
         IsLoading = true;
+        GameAudio.Play(GameSound.Click);
         input.interactable = input.blocksRaycasts = false;
         if (ChoosingMap) mapStatus.text = message;
         else selection.status.text = message;

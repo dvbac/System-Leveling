@@ -15,6 +15,10 @@ public class EnemyStats : MonoBehaviour
 
     private bool isDead = false;
     public bool IsDead => isDead;
+    public float MaxHealth { get; private set; }
+    public PlayerStats UpgradeAttacker { get; set; }
+    public bool SecondaryUpgradeHit { get; set; }
+    public float UpgradeMovementFactor => TryGetComponent(out EnemyUpgradeStatus status) ? status.MovementFactor : 1f;
 
     void Awake()
     {
@@ -29,13 +33,21 @@ public class EnemyStats : MonoBehaviour
 
         currentMoveSpeed = enemyData.MoveSpeed;
         currentHealth = enemyData.MaxHealth;
+        MaxHealth = currentHealth;
         currentDamage = enemyData.Damage;
+    }
+
+    public void ScaleHealth(float multiplier)
+    {
+        MaxHealth *= multiplier;
+        currentHealth *= multiplier;
     }
 
     public void TakeDamage(float dmg)
     {
         if (isDead || GameOverController.GameplayStopped)
             return;
+        if (TryGetComponent(out RainbowSlime rainbow) && rainbow.Expired) return;
 
         if (TryGetComponent(out RotwoodBoss boss))
             dmg *= boss.DamageTakenMultiplier;
@@ -53,10 +65,15 @@ public class EnemyStats : MonoBehaviour
     public void Kill()
     {
         if (isDead) return;
+        if (TryGetComponent(out RainbowSlime expiredSlime) && expiredSlime.Expired) return;
         isDead = true;
+        if (TryGetComponent(out EnemyUpgradeStatus status)) status.OnKilled();
+        if (UpgradeAttacker != null) UpgradeAttacker.OnUpgradeKill(this, SecondaryUpgradeHit);
+        if (TryGetComponent(out RainbowSlime rainbow)) rainbow.Defeated();
 
         if (Application.isPlaying && enemyData != null && !GameOverController.GameplayStopped)
             SoulWallet.Add(SoulReward);
+        if (TryGetComponent(out EliteEnemy elite)) elite.DropTreasure();
 
         if (TryGetComponent(out DropRateManager dropManager))
         {
@@ -65,6 +82,7 @@ public class EnemyStats : MonoBehaviour
 
         float deathDuration = TryGetComponent(out RotwoodBoss boss)
             ? boss.BeginDeath()
+            : TryGetComponent(out FrostfangBoss frostfang) ? frostfang.BeginDeath()
             : TryGetComponent(out EnemyAnimation animation) ? animation.PlayDeath() : 0f;
         Destroy(gameObject, deathDuration);
     }

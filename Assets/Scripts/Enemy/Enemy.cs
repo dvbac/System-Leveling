@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    public bool chasesPlayer = true;
+    public bool IsKnockedBack => knockbackTime > 0f;
     [SerializeField] private bool spriteFacesLeft;
     private EnemyStats enemy;
     private SpriteRenderer spriteRenderer;
@@ -28,6 +30,7 @@ public class Enemy : MonoBehaviour
             return;
         }
         // Player có thể được tạo sau enemy (hoặc chưa tồn tại).
+        if (!chasesPlayer) return;
         if (player == null && !FindPlayer())
             return;
 
@@ -71,7 +74,7 @@ public class Enemy : MonoBehaviour
 
         transform.position +=
             (Vector3)direction *
-            enemy.currentMoveSpeed *
+            enemy.currentMoveSpeed * enemy.UpgradeMovementFactor *
             Time.deltaTime;
     }
 
@@ -81,7 +84,7 @@ public class Enemy : MonoBehaviour
             direction.sqrMagnitude <= 0f || float.IsNaN(direction.x) || float.IsNaN(direction.y) ||
             float.IsInfinity(direction.x) || float.IsInfinity(direction.y) || float.IsNaN(strength) || float.IsInfinity(strength) || strength <= 0f) return;
         if (body == null) body = GetComponent<Rigidbody2D>();
-        if (body == null || !body.simulated) return;
+        if (body == null || !body.simulated || (enemy != null && enemy.UpgradeMovementFactor == 0f)) return;
         knockbackVelocity = direction.normalized * strength;
         knockbackTime = KnockbackDuration;
         body.linearVelocity = knockbackVelocity;
@@ -92,7 +95,7 @@ public class Enemy : MonoBehaviour
         if (knockbackTime <= 0f || Time.timeScale <= 0f) return;
         knockbackTime = GameOverController.GameplayStopped || (enemy != null && enemy.IsDead)
             ? 0f : Mathf.Max(0f, knockbackTime - Time.fixedDeltaTime);
-        if (body != null && body.simulated) body.linearVelocity = knockbackVelocity * (knockbackTime / KnockbackDuration);
+        if (body != null && body.simulated) body.linearVelocity = knockbackVelocity * (knockbackTime / KnockbackDuration) * (enemy != null ? enemy.UpgradeMovementFactor : 1f);
     }
 
     private void OnDisable()

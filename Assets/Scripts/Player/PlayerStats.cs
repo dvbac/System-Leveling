@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class PlayerStats : MonoBehaviour
+public partial class PlayerStats : MonoBehaviour
 {
     public CharacterScriptableObject characterData;
 
@@ -19,12 +19,20 @@ public class PlayerStats : MonoBehaviour
     public float currentMagnet;
 
     [Header("Experience/Level")]
-    public int experience = 0;
+    public double experience = 0;
     public int level = 1;
-    public int experienceCap = 45;
+    public int experienceCap = 5;
 
-    public static int ExperienceForLevel(int currentLevel) =>
-        (int)Math.Min(int.MaxValue, 45L + 15L * Math.Max(0L, (long)currentLevel - 1));
+    public static int ExperienceForLevel(int currentLevel)
+    {
+        long current = Math.Max(1, currentLevel);
+        long required = current < 20 ? 10 * current - 5
+            : current == 20 ? 16 * current - 8
+            : current < 40 ? 13 * current - 6
+            : current < 60 ? 16 * current - 8
+            : current * current;
+        return (int)Math.Min(int.MaxValue, required);
+    }
 
     [Header("I-frame")]
     public float invincibilityDuration;
@@ -98,12 +106,13 @@ public class PlayerStats : MonoBehaviour
             }
         }
         Recover();
+        TickUpgradeTrees();
     }
-    public void IncreaseExperience(int amount)
+    public void IncreaseExperience(double amount)
     {
-        if (IsDead || amount <= 0)
+        if (IsDead || amount <= 0 || double.IsNaN(amount) || double.IsInfinity(amount))
             return;
-        experience = (int)Math.Min(int.MaxValue, (long)experience + amount);
+        experience = Math.Min(int.MaxValue, experience + amount);
 
         LevelUpChecker();
         Changed?.Invoke();
@@ -115,7 +124,7 @@ public class PlayerStats : MonoBehaviour
         if (experienceCap <= 0)
             return;
 
-        while (experience >= experienceCap)
+        while (experience >= experienceCap && level < int.MaxValue)
         {
             experience -= experienceCap;
             level++;
@@ -124,6 +133,7 @@ public class PlayerStats : MonoBehaviour
             experienceCap = ExperienceForLevel(level);
 
             Debug.Log("Level Up! Current Level: " + level);
+            GameAudio.Play(GameSound.LevelUp);
         }
     }
 
@@ -132,7 +142,10 @@ public class PlayerStats : MonoBehaviour
         if (IsDead || dmg <= 0f || Time.timeScale <= 0f || GameOverController.GameplayStopped)
             return;
         if (!isInvincible) {
-            currentHealth = Mathf.Max(0f, currentHealth - dmg);
+            if (EffectiveDodgeChance > 0f && UnityEngine.Random.value < EffectiveDodgeChance) return;
+            currentHealth = HasTome(TomeKind.Glass) ? 0f : Mathf.Max(0f, currentHealth - dmg);
+            OnUpgradeHurt();
+            GameAudio.Play(GameSound.PlayerHurt);
             invincibilityTimer = invincibilityDuration;
             isInvincible = true;
             if (currentHealth <= 0)
@@ -150,6 +163,7 @@ public class PlayerStats : MonoBehaviour
         IsDead = true;
         currentHealth = 0f;
         PendingUpgrades = 0;
+        PendingTomeChoices = 0;
         Died?.Invoke();
         Changed?.Invoke();
     }
@@ -161,6 +175,7 @@ public class PlayerStats : MonoBehaviour
 
         if(amount > 0f && currentHealth < MaxHealth)
         {
+            UpgradeEffect.Burst(transform.position, new Color(.4f, 1f, .5f), 8, .8f);
             currentHealth += amount;
             if (currentHealth > MaxHealth)
             {  currentHealth = MaxHealth; }
@@ -186,6 +201,7 @@ public class PlayerStats : MonoBehaviour
     public bool CanReceiveUpgrade(UpgradeKind kind)
     {
         if (IsDead || GameOverController.GameplayStopped || characterData == null) return false;
+        if (UpgradeCatalog.IsNew(kind)) return CanReceiveTreeUpgrade(kind);
         switch (kind)
         {
             case UpgradeKind.Ammo: return HasRangedWeapon && AmmoUpgradeLevel < 4;
@@ -254,9 +270,12 @@ public class PlayerStats : MonoBehaviour
                 CriticalChanceBonus = CriticalUpgradeLevel * 0.1f;
                 break;
             default:
-                return false;
+                if (!UpgradeCatalog.IsNew(kind)) return false;
+                ApplyTreeUpgrade(kind);
+                break;
         }
 
+        RecordUpgrade(kind);
         PendingUpgrades--;
         Changed?.Invoke();
         return true;

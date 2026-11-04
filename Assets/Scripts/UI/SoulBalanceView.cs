@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class SoulBalanceView : MonoBehaviour
 {
     public Text caption, amount;
+    [SerializeField] private bool compact;
     private int lastTotal = -1;
     private bool lastUnsaved;
     private GameOverController run;
@@ -16,6 +17,12 @@ public class SoulBalanceView : MonoBehaviour
         if (total == lastTotal && unsaved == lastUnsaved) return;
         caption.text = unsaved ? "SOUL / SAVE FAILED" : "SOUL";
         amount.text = total.ToString("N0");
+        if (compact)
+        {
+            Vector2 position = amount.rectTransform.anchoredPosition;
+            position.x = caption.preferredWidth + 6;
+            amount.rectTransform.anchoredPosition = position;
+        }
         lastTotal = total; lastUnsaved = unsaved;
     }
 

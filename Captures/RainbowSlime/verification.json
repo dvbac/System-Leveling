@@ -1,0 +1,15 @@
+{
+    "result":  "PASS",
+    "rainbowChecks":  90,
+    "combatChecks":  222,
+    "rainbowUtc":  "2026-11-04T15:08:33.7401613Z",
+    "combatUtc":  "2026-11-04T15:09:38.8038519Z",
+    "playModeTested":  true,
+    "buildTested":  false,
+    "chanceAtSeven":  0.5,
+    "chanceAtTwelveAfterFirst":  0.5,
+    "guaranteedAtTwelveIfFirstMissed":  true,
+    "maxPerRun":  2,
+    "expiryGameplaySeconds":  60,
+    "burnAndFreezeSourcesAvailable":  false
+}

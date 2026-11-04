@@ -1,0 +1,8 @@
+defeat.png:4C-A9-4D-84-28-D4-84-2A-83-89-56-23-AA-CE-9D-40-22-41-26-84-A7-DC-89-C9-23-53-F5-47-94-E7-0A-4B
+Frames-1–2--Shift-weight-onto-three-supporting-legs.-Frames-.png:B8-DF-9A-5F-CF-F7-AD-84-06-6E-00-EA-6D-62-2D-16-62-AA-AF-4C-62-2D-A4-7F-8A-08-CE-13-46-20-16-4C
+Frames-1–2--Spread-the-forepaws-and-brace-the-hind-legs.-Fra.png:6E-02-5F-8F-3F-69-ED-42-0D-BE-C3-13-83-3F-C3-C6-F9-A4-D4-30-6E-C7-1B-62-B6-17-DF-59-84-63-3F-B7
+Frames-1–2--Stop-advancing,-lower-the-head-and-focus-on-the--sheet.png:16-96-46-16-39-85-BB-D9-C7-63-8B-D3-D8-76-FF-9A-E8-C7-58-52-9C-EA-FB-C0-A9-4F-52-2B-7F-86-4D-0C
+Frames-1–2--Widen-the-stance-and-become-still.-Frames-3–4--E.png:20-98-F9-A5-5C-83-78-F0-A9-26-A6-F5-45-28-F3-EF-F7-8C-E8-DE-C7-B9-2E-CA-79-F6-93-12-6E-13-BB-86
+generated-image-3.png:C1-4C-1D-30-48-01-D4-C7-38-7E-D3-6A-9D-0F-A4-A9-43-47-DB-21-06-E1-72-C0-A4-65-36-25-3C-18-78-AB
+idle.png:8A-E2-8B-9A-D2-E1-D8-F0-29-E3-55-20-84-1C-51-9E-7F-D0-F0-58-7E-B4-85-69-F4-F2-73-E2-9B-86-CD-48
+Move.png:67-7B-02-39-F4-CF-B5-81-E6-51-5E-6C-DF-17-F9-F0-E1-9E-AE-34-12-D8-FB-6C-33-6B-46-C5-CC-2B-FA-E5

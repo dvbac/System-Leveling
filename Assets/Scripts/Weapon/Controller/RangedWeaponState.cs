@@ -5,13 +5,13 @@ using UnityEngine;
 public sealed class RangedWeaponState
 {
     private readonly WeaponScriptableObject data;
-    private int ammoLevel, reloadLevel;
+    private int ammoLevel, reloadLevel, baseAmmoMultiplier = 1;
     private float reloadBonus, fireRate = 1f;
     private float cooldown, reloadElapsed, idleElapsed, chargeElapsed;
     private bool wasHeld, requireRelease;
 
     public int Ammo { get; private set; }
-    public int Capacity => data.FireMode == WeaponFireMode.Crossbow ? 1 : Mathf.Min(999, data.MagazineSize + ammoLevel);
+    public int Capacity => Mathf.Min(999, (data.FireMode == WeaponFireMode.Crossbow ? 1 : data.MagazineSize) * baseAmmoMultiplier + (data.FireMode == WeaponFireMode.Crossbow ? 0 : ammoLevel));
     public bool IsReloading { get; private set; }
     public bool IsCharging { get; private set; }
     public float ReloadDuration => WeaponScriptableObject.Safe(data.ReloadTime, 0.05f) / ReloadSpeed;
@@ -22,6 +22,10 @@ public sealed class RangedWeaponState
     public float ReloadFraction => IsReloading ? Mathf.Clamp01(reloadElapsed / ReloadDuration) : 0f;
     public float ShotDamageFactor { get; private set; } = 1f;
     public float ShotSizeFactor { get; private set; } = 1f;
+    public int ShotPierceBonus { get; private set; }
+    public int AmmoRecovered { get; private set; }
+
+    public void RefundRound() { Ammo = Mathf.Min(Capacity, Ammo + 1); IsReloading = false; reloadElapsed = 0; }
 
     public RangedWeaponState(WeaponScriptableObject data)
     {
@@ -29,12 +33,13 @@ public sealed class RangedWeaponState
         Ammo = Capacity;
     }
 
-    public void SetUpgrades(int ammo, int reload, float reloadSpeedMultiplier = 1f, float fireRateMultiplier = 1f)
+    public void SetUpgrades(int ammo, int reload, float reloadSpeedMultiplier = 1f, float fireRateMultiplier = 1f, int ammoMultiplier = 1)
     {
         ammoLevel = Mathf.Clamp(ammo, 0, 999);
+        baseAmmoMultiplier = Mathf.Clamp(ammoMultiplier, 1, 3);
         reloadLevel = Mathf.Clamp(reload, 0, 999);
-        reloadBonus = WeaponScriptableObject.Safe(reloadSpeedMultiplier, 1f) - 1f;
-        fireRate = WeaponScriptableObject.Safe(fireRateMultiplier, 1f);
+        reloadBonus = WeaponScriptableObject.Safe(reloadSpeedMultiplier, 0.05f) - 1f;
+        fireRate = WeaponScriptableObject.Safe(fireRateMultiplier, 0.05f);
         Ammo = Mathf.Min(Ammo, Capacity); // Increasing capacity never grants free rounds.
     }
 
@@ -42,6 +47,7 @@ public sealed class RangedWeaponState
     {
         IsCharging = false;
         chargeElapsed = 0;
+        ShotPierceBonus = 0;
         requireRelease = true;
     }
 
@@ -50,25 +56,30 @@ public sealed class RangedWeaponState
     {
         if (delta < 0 || float.IsNaN(delta) || float.IsInfinity(delta)) return false;
         cooldown = Mathf.Max(0, cooldown - delta);
-        if (data.FireMode == WeaponFireMode.Magazine && !held && Ammo < Capacity && !IsReloading)
+        bool triggerBlocked = requireRelease;
+        if (!held) requireRelease = false;
+        if (data.FireMode != WeaponFireMode.Bow && IsReloading && held && Ammo > 0 && !triggerBlocked)
+        {
+            IsReloading = false;
+            reloadElapsed = 0;
+        }
+        if (data.FireMode != WeaponFireMode.Bow && !held && Ammo < Capacity && !IsReloading && !IsCharging)
         {
             IsReloading = true;
             reloadElapsed = 0;
         }
         if (IsReloading && data.FireMode != WeaponFireMode.Bow)
         {
-            if (data.FireMode == WeaponFireMode.Magazine && !held) requireRelease = false;
             reloadElapsed += delta;
             if (reloadElapsed < ReloadDuration) { wasHeld = held; return false; }
+            AmmoRecovered += Capacity - Ammo;
             Ammo = Capacity;
             reloadElapsed = 0;
             IsReloading = false;
             if (data.FireMode == WeaponFireMode.Crossbow) { wasHeld = held; return false; }
         }
-        bool triggerBlocked = requireRelease;
-        if (!held) requireRelease = false;
-
         ShotDamageFactor = ShotSizeFactor = 1f;
+        ShotPierceBonus = 0;
         if (data.FireMode == WeaponFireMode.Crossbow)
         {
             if (triggerBlocked) { wasHeld = held; return false; }
@@ -80,6 +91,7 @@ public sealed class RangedWeaponState
             float fraction = ChargeFraction;
             ShotDamageFactor = Mathf.Lerp(1f, data.MaxChargeDamage + ammoLevel * data.ChargeDamagePerAmmo, fraction);
             ShotSizeFactor = Mathf.Lerp(1f, data.MaxChargeSize + ammoLevel * data.ChargeSizePerAmmo, fraction);
+            ShotPierceBonus = Mathf.FloorToInt(fraction * data.MaxChargePierce);
             IsCharging = false;
             chargeElapsed = 0;
             return Shoot();
@@ -101,6 +113,7 @@ public sealed class RangedWeaponState
                 if (reloadElapsed + 0.000001f >= ReloadDuration)
                 {
                     Ammo++;
+                    AmmoRecovered++;
                     reloadElapsed = 0;
                     IsReloading = Ammo < Capacity;
                 }

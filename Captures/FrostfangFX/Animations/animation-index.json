@@ -1,0 +1,69 @@
+{
+  "source_sha256": {
+    "Blizzard.png": "9f55efdf12fbe1f1fe79bf9e0d76699bd0a74231f8ceacbfd85d938f1584b1a4",
+    "FrostBreath.png": "c8dde9b598069b38e5662c45907977d7a42fa63a5b4e65bb9c14eec669b51ff5",
+    "IcePillar.png": "826fd652e303b085dad7b7d25f78ecbc653d852efd63d1009ba5c75e716ce22f",
+    "PounceImpact.png": "9fe44186edaf5549de62d1f5b68b895bf612b426fbdca39d95660ddfae82b09d"
+  },
+  "animations": {
+    "PounceImpact": {
+      "frames": 8,
+      "cell_size": [
+        128,
+        128
+      ],
+      "fps": 16,
+      "duration_seconds": 0.5,
+      "loop": false,
+      "layout": "one horizontal row, left to right"
+    },
+    "FrostBreath": {
+      "frames": 8,
+      "cell_size": [
+        256,
+        128
+      ],
+      "fps": 16,
+      "duration_seconds": 0.5,
+      "loop": true,
+      "layout": "one horizontal row, left to right"
+    },
+    "IcePillar": {
+      "frames": 12,
+      "cell_size": [
+        64,
+        128
+      ],
+      "fps": 12,
+      "duration_seconds": 1.0,
+      "loop": false,
+      "layout": "one horizontal row, left to right",
+      "phases_zero_based": {
+        "grow": [
+          0,
+          4
+        ],
+        "hold": [
+          5,
+          7
+        ],
+        "shatter": [
+          8,
+          11
+        ]
+      }
+    },
+    "Blizzard": {
+      "frames": 8,
+      "cell_size": [
+        128,
+        128
+      ],
+      "fps": 8,
+      "duration_seconds": 1.0,
+      "loop": true,
+      "layout": "one horizontal row, left to right"
+    }
+  },
+  "note": "Preview GIFs repeat for viewing. Only loop=True clips should loop in gameplay. Particle motion is derived from the approved still images; no boss scripts or hitboxes changed."
+}

@@ -1,0 +1,484 @@
+fileFormatVersion: 2
+guid: 5d897b73940afdb46875db505203899c
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6406108581446624908
+    second: PounceImpact_0
+  - first:
+      213: 8868158990592626303
+    second: PounceImpact_1
+  - first:
+      213: 2418055761901929418
+    second: PounceImpact_2
+  - first:
+      213: 2342015461697772529
+    second: PounceImpact_3
+  - first:
+      213: -838831709144177987
+    second: PounceImpact_4
+  - first:
+      213: 6515124807598651869
+    second: PounceImpact_5
+  - first:
+      213: 3431494577028828276
+    second: PounceImpact_6
+  - first:
+      213: 5452430009916107317
+    second: PounceImpact_7
+  - first:
+      213: -4433639298478038258
+    second: PounceImpact_8
+  - first:
+      213: 9165979193435332357
+    second: PounceImpact_9
+  - first:
+      213: -2236001932746142102
+    second: PounceImpact_10
+  - first:
+      213: 5833952234949216463
+    second: PounceImpact_11
+  - first:
+      213: 8534873348102186268
+    second: PounceImpact_12
+  - first:
+      213: 8795166718561980694
+    second: PounceImpact_13
+  - first:
+      213: 7255756741080982392
+    second: PounceImpact_14
+  - first:
+      213: 9011452808723325250
+    second: PounceImpact_15
+  - first:
+      213: -841182627700600613
+    second: PounceImpact_16
+  - first:
+      213: -3082170665349461381
+    second: PounceImpact_17
+  - first:
+      213: -201754227932653236
+    second: PounceImpact_18
+  - first:
+      213: -2637916790499844439
+    second: PounceImpact_19
+  - first:
+      213: -6238649855307825518
+    second: PounceImpact_20
+  - first:
+      213: -7121571038417687850
+    second: PounceImpact_21
+  - first:
+      213: -8646451271500632617
+    second: PounceImpact_22
+  - first:
+      213: -5706460657822730649
+    second: PounceImpact_23
+  - first:
+      213: 2660883674552949965
+    second: PounceImpact_24
+  - first:
+      213: 2899715978082073901
+    second: PounceImpact_25
+  - first:
+      213: 294867586994800928
+    second: PounceImpact_26
+  - first:
+      213: 1508234641991674002
+    second: PounceImpact_27
+  - first:
+      213: -1801253025061960975
+    second: PounceImpact_28
+  - first:
+      213: 1619577399671118388
+    second: PounceImpact_29
+  - first:
+      213: -2333721256859590065
+    second: PounceImpact_30
+  - first:
+      213: -7244463694105601922
+    second: PounceImpact_31
+  - first:
+      213: -489711751588909281
+    second: PounceImpact_32
+  - first:
+      213: 7996535197082078562
+    second: PounceImpact_33
+  - first:
+      213: 1067644099579433529
+    second: PounceImpact_34
+  - first:
+      213: 1792257563617517222
+    second: PounceImpact_35
+  - first:
+      213: -2859471403920865097
+    second: PounceImpact_36
+  - first:
+      213: 297321124816238725
+    second: PounceImpact_37
+  - first:
+      213: 7515104955265993923
+    second: PounceImpact_38
+  - first:
+      213: -4468996528113733768
+    second: PounceImpact_39
+  - first:
+      213: 3255245522860746631
+    second: PounceImpact_40
+  - first:
+      213: -147051977556770730
+    second: PounceImpact_41
+  - first:
+      213: -7915891617375964193
+    second: PounceImpact_42
+  - first:
+      213: 6645407666934134449
+    second: PounceImpact_43
+  - first:
+      213: -5928156605535679854
+    second: PounceImpact_44
+  - first:
+      213: 361218764086808131
+    second: PounceImpact_45
+  - first:
+      213: -2368230787937661078
+    second: PounceImpact_46
+  - first:
+      213: -3449000305866233537
+    second: PounceImpact_47
+  - first:
+      213: 3394473439184858921
+    second: PounceImpact_48
+  - first:
+      213: 5075819813213993252
+    second: PounceImpact_49
+  - first:
+      213: 3874506546386267891
+    second: PounceImpact_50
+  - first:
+      213: -4140395897339300532
+    second: PounceImpact_51
+  - first:
+      213: -5006487722605144267
+    second: PounceImpact_52
+  - first:
+      213: -2561120815931197904
+    second: PounceImpact_53
+  - first:
+      213: 3712007795236460807
+    second: PounceImpact_54
+  - first:
+      213: -8684778482752609301
+    second: PounceImpact_55
+  - first:
+      213: -7662874750741097531
+    second: PounceImpact_56
+  - first:
+      213: -1628997123768741438
+    second: PounceImpact_57
+  - first:
+      213: -2693296878966498508
+    second: PounceImpact_58
+  - first:
+      213: 5351625979376438754
+    second: PounceImpact_59
+  - first:
+      213: -452902907433958123
+    second: PounceImpact_60
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 48
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: PounceImpact_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e0f6acdfa68521ef17f310876f06e92
+      internalID: -6406108581446624908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PounceImpact_1
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb2973f4528af20f153e68e28a67eab7
+      internalID: 8868158990592626303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PounceImpact_2
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0cedc405cf1ec062e07870227bd1c540
+      internalID: 2418055761901929418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PounceImpact_3
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fec2ee2f5dda39c2dc6f9d6defe136d8
+      internalID: 2342015461697772529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PounceImpact_4
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39b41c1b33249548c3703d7ce3fd5ace
+      internalID: -838831709144177987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PounceImpact_5
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 0
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd5bced8e0fece777e1cc09dca585f23
+      internalID: 6515124807598651869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PounceImpact_6
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3dfc2c157901b93e2451f632a6a09c9
+      internalID: 3431494577028828276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PounceImpact_7
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 0
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b7d82184257130d14f92a91ffe86b16
+      internalID: 5452430009916107317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5ac7798e077b6a74e941c0a3be97ad3d
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      PounceImpact_0: -6406108581446624908
+      PounceImpact_1: 8868158990592626303
+      PounceImpact_2: 2418055761901929418
+      PounceImpact_3: 2342015461697772529
+      PounceImpact_4: -838831709144177987
+      PounceImpact_5: 6515124807598651869
+      PounceImpact_6: 3431494577028828276
+      PounceImpact_7: 5452430009916107317
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

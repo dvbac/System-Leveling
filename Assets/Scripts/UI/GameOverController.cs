@@ -80,13 +80,15 @@ public class GameOverController : MonoBehaviour
         Finish(false);
     }
 
-    public void Win()
+    public void Win() => Win("ROTWOOD");
+
+    public void Win(string bossName)
     {
         if (player == null || player.IsDead) return;
-        Finish(true);
+        Finish(true, bossName);
     }
 
-    private void Finish(bool won)
+    private void Finish(bool won, string bossName = "ROTWOOD")
     {
         if (IsGameOver)
             return;
@@ -103,7 +105,7 @@ public class GameOverController : MonoBehaviour
         if (player.TryGetComponent(out PlayerController controller))
             controller.HoldForGameOver();
         int seconds = Mathf.FloorToInt(PlayedSeconds);
-        resultText.text = (won ? "YOU WIN / ROTWOOD DEFEATED\n" : "")
+        resultText.text = (won ? $"YOU WIN / {bossName} DEFEATED\n" : "")
             + $"LEVEL REACHED  {player.level:00}\nTIME PLAYED  {seconds / 60:00}:{seconds % 60:00}\nSOUL EARNED  {SoulEarned:N0}";
         Transform heading = resultText.transform.parent.Find("Heading");
         if (heading != null && heading.TryGetComponent(out Text headingText))
@@ -155,6 +157,7 @@ public class GameOverController : MonoBehaviour
             return;
         }
         IsRestarting = true;
+        GameAudio.Play(GameSound.Click);
         SetNavigationEnabled(false);
         if (TryGetComponent(out RunMenu menu)) menu.SetLoading(true);
         resultText.text = message;

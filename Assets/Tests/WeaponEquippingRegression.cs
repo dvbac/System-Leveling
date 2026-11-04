@@ -139,7 +139,9 @@ public class WeaponEquippingRegression : MonoBehaviour
                 if (actor == mage)
                 {
                     hud.SendMessage("Update");
-                    Check(current is RangedWeaponController ? label.text.Contains(current.weaponData.name.ToUpperInvariant()) : label.text == "MELEE",
+                    var rangedHud=current as RangedWeaponController;
+                    Check(rangedHud!=null ? hud.Compact ? label.text==$"{rangedHud.State.Ammo} / {rangedHud.State.Capacity}"
+                        : label.text.Contains(current.weaponData.name.ToUpperInvariant()) : label.text == "MELEE",
                         "HUD follows current selection: " + name);
                     Check(actor.HasRangedWeapon == (current is RangedWeaponController), "Upgrade eligibility follows current weapon type");
                 }

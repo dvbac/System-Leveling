@@ -48,7 +48,7 @@ public static class RotwoodBossBuilder
             serialized.FindProperty("moveSpeed").floatValue = 1.2f;
             serialized.FindProperty("maxHealth").floatValue = 1800f;
             serialized.FindProperty("damage").floatValue = 15f;
-            serialized.FindProperty("experienceReward").intValue = 150;
+            serialized.FindProperty("experienceReward").floatValue = 150;
             serialized.ApplyModifiedPropertiesWithoutUndo();
             AssetDatabase.CreateAsset(data, dataPath);
         }
@@ -104,26 +104,28 @@ public static class RotwoodBossBuilder
         var encounter = Object.FindAnyObjectByType<RotwoodEncounter>(FindObjectsInactive.Include);
         if (encounter == null)
         {
-            var go = new GameObject("Rotwood Boss Encounter - 15 Minutes");
+            var go = new GameObject("Rotwood Boss Encounter - 17 Minutes");
             Undo.RegisterCreatedObjectUndo(go, "Create Rotwood encounter");
             encounter = go.AddComponent<RotwoodEncounter>();
             var serialized = new SerializedObject(encounter);
             serialized.FindProperty("bossPrefab").objectReferenceValue = prefab.GetComponent<RotwoodBoss>();
-            serialized.FindProperty("spawnAtSeconds").floatValue = 900;
             var spawnConfig = new SerializedObject(spawner);
             var ground = spawnConfig.FindProperty("allowedGround").objectReferenceValue as Tilemap;
             serialized.FindProperty("groundTilemapName").stringValue = ground != null ? ground.name : "";
             serialized.FindProperty("obstacleLayers").intValue = spawnConfig.FindProperty("obstacleLayers").intValue;
             serialized.ApplyModifiedPropertiesWithoutUndo();
         }
+        var timing = new SerializedObject(encounter);
+        timing.FindProperty("spawnAtSeconds").floatValue = 1020;
+        timing.ApplyModifiedPropertiesWithoutUndo();
         AssetDatabase.SaveAssets();
         EditorSceneManager.MarkSceneDirty(encounter.gameObject.scene);
         EditorSceneManager.SaveScene(encounter.gameObject.scene);
         if (EditorJsonUtility.ToJson(spawner) != spawnerBefore) throw new InvalidOperationException("Spawner configuration changed.");
         if (SourceSnapshot() != File.ReadAllText("Captures/RotwoodBoss/source-hashes-before.json"))
             throw new InvalidOperationException("Source art/audio changed.");
-        File.WriteAllText("Captures/RotwoodBoss/setup.json", "{\"result\":\"PASS\",\"spawnAtSeconds\":900,\"sourceUnchanged\":true,\"spawnerUnchanged\":true}");
-        Debug.Log("ROTWOOD SETUP PASS: prefab + 7 animations + audio + health UI + 900s encounter; originals and spawner preserved.");
+        File.WriteAllText("Captures/RotwoodBoss/setup.json", "{\"result\":\"PASS\",\"spawnAtSeconds\":1020,\"sourceUnchanged\":true,\"spawnerUnchanged\":true}");
+        Debug.Log("ROTWOOD SETUP PASS: prefab + 7 animations + audio + health UI + 1020s encounter; originals and spawner preserved.");
     }
 
     [MenuItem("Tools/System Leveling/Rotwood/Spawn Now (Play Mode)")]

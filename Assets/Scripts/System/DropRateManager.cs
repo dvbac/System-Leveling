@@ -45,8 +45,8 @@
                 );
                 if (item.TryGetComponent(out Experience experience) &&
                     TryGetComponent(out EnemyStats enemy) && enemy.enemyData != null)
-                    experience.experienceGranted = (int)System.Math.Min(int.MaxValue,
-                        (long)enemy.enemyData.ExperienceReward * (GetComponent<EliteEnemy>() != null ? 3 : 1));
+                    experience.experienceGranted = (float)System.Math.Min(int.MaxValue,
+                        (double)enemy.enemyData.ExperienceReward * (GetComponent<EliteEnemy>() != null ? 3 : 1));
             }
         }
     }

@@ -1,0 +1,32 @@
+{
+  "result": "PASS",
+  "suites": [
+    {
+      "report": "Captures/RedArrowWeapon/runtime.json",
+      "result": "PASS",
+      "checks": 70
+    },
+    {
+      "report": "Captures/WeaponAmmo/regression.json",
+      "result": "PASS",
+      "checks": 139
+    },
+    {
+      "report": "Captures/UpgradeTrees/runtime.json",
+      "result": "PASS",
+      "checks": 284
+    },
+    {
+      "report": "Captures/RunCombatUpgrades/runtime.json",
+      "result": "PASS",
+      "checks": 222
+    },
+    {
+      "report": "Captures/LoadoutGameplay/regression.json",
+      "result": "PASS",
+      "checks": 305
+    }
+  ],
+  "totalChecks": 1020,
+  "consoleErrors": 0
+}

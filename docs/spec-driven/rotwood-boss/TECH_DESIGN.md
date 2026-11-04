@@ -10,7 +10,7 @@ Status: Frozen. Approval: User approved on 2026-11-01. Based on PRD 2026-11-01.
 
 ## Thiết kế
 - RotwoodBoss: state machine Chase -> Root/Charge/Summon -> Recovery/Exposed -> Chase; Death là terminal. Serialized reference tới EnemyStats, sprite sequences/audio; không dùng EnemyAnimation để tránh nó ghi đè đòn boss.
-- RotwoodEncounter: timer 900s, spawn một lần tại vị trí ground hợp lệ gần người chơi, quản lý UI máu, nút thử Editor.
+- RotwoodEncounter: timer 1020s (17 phút), spawn một lần tại vị trí ground hợp lệ gần người chơi, quản lý UI máu, nút thử Editor.
 - Root hazard/telegraph: có vòng báo, khóa vị trí trước damage, scale theo thời gian gameplay; hủy khi boss chết/game-over. Slow có thời hạn, không ghi đè stat nâng cấp của người chơi.
 - EnemyStats: thêm hook optional cho hệ số damage/Death của Rotwood, giữ nhánh enemy thường nguyên vẹn.
 - GameOverController: thêm kết quả thắng dùng cùng panel và nút có sẵn; GameplayStopped cũng dừng thắng. Không đổi hành vi thua/restart/menu.

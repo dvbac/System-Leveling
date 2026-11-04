@@ -26,8 +26,8 @@ public class PlayerController : MonoBehaviour
     private PlayerStats player;
     private float slowUntil;
     private float slowFactor = 1f;
-    public float MovementMultiplier => Mathf.Min(Time.time < slowUntil ? slowFactor : 1f,
-        weaponHolder != null && weaponHolder.CurrentWeapon != null && weaponHolder.CurrentWeapon.IsAttacking ? 0.2f : 1f);
+    public float MovementMultiplier => (player != null ? player.WalkSpeedMultiplier : 1f) * Mathf.Min(Time.time < slowUntil ? slowFactor : 1f,
+        weaponHolder != null && weaponHolder.CurrentWeapon != null && weaponHolder.CurrentWeapon.IsAttacking ? (player != null ? player.AttackMovementFactor : .45f) : 1f);
 
     public void ApplySlow(float factor, float duration)
     {

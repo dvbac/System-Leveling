@@ -28,9 +28,9 @@ public static class WeaponAmmoSetup
         WeaponScriptableObject book = Load<WeaponScriptableObject>(Data + "/Magic Book.asset");
         WeaponScriptableObject bow = NewData("Bow");
         WeaponScriptableObject crossbow = NewData("Crossbow");
-        ConfigureData(book, WeaponFireMode.Magazine, 8, 14, 9, 0.4f, 1.8f, 2);
-        ConfigureData(bow, WeaponFireMode.Bow, 7, 22, 15, 0.25f, 0.65f, 1);
-        ConfigureData(crossbow, WeaponFireMode.Crossbow, 1, 24, 18, 0.1f, 1.5f, 2);
+        ConfigureData(book, WeaponFireMode.Magazine, 8, 6, 9, 0.4f, 1.4f, 2);
+        ConfigureData(bow, WeaponFireMode.Bow, 7, 6, 15, 0.3f, 1f, 2);
+        ConfigureData(crossbow, WeaponFireMode.Crossbow, 1, 6, 18, 0.1f, 1f, 2);
         GameObject magicShot = Projectile("MagicBolt", book, null);
         Sprite arrow = SpriteAt("Assets/MyAssets/Weapon/Hit/Arows1.png");
         GameObject bowShot = Projectile("Arrow", bow, arrow);

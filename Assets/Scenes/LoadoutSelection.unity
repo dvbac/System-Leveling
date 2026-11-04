@@ -1246,6 +1246,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SoulBalanceView
   caption: {fileID: 923591624}
   amount: {fileID: 2117425047}
+  compact: 0
 --- !u!114 &689467683
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2500,6 +2501,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SoulBalanceView
   caption: {fileID: 1407351730}
   amount: {fileID: 2035987736}
+  compact: 0
 --- !u!114 &1074815406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2937,6 +2939,7 @@ MonoBehaviour:
   - {fileID: 5274142845828472441, guid: 3794c78a37a5d2542b67d96661a906c8, type: 3}
   - {fileID: 343300575173549981, guid: 31c22699d8f19504f8e12cdefb592673, type: 3}
   - {fileID: 9218329595843393466, guid: a30d23a3c73590d4a9c897b14db3391f, type: 3}
+  - {fileID: 6554099147776137076, guid: 8eb5c0d08e04db943ae68f6cc10d5fa4, type: 3}
   optionPrefab: {fileID: 4173816509978031913, guid: df0cd175b6080814891d231e30caa499, type: 3}
   characterView:
     root: {fileID: 949177405}

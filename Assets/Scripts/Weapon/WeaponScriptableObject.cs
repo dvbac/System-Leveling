@@ -21,6 +21,7 @@ public class WeaponScriptableObject : ScriptableObject
     [SerializeField, Range(0f, 180f)] private float spreadAngle;
     [SerializeField, Min(0f)] private float knockback = 2f;
     [SerializeField, Range(0f, 1f)] private float criticalChance;
+    [SerializeField, Range(0, 32)] private int baseBounces;
 
     [Header("Melee Stats")]
     [SerializeField] private float swingAngle;
@@ -35,6 +36,7 @@ public class WeaponScriptableObject : ScriptableObject
     [SerializeField, Min(0.05f)] private float chargeTime = 3f;
     [SerializeField, Min(1f)] private float maxChargeDamage = 4f;
     [SerializeField, Min(1f)] private float maxChargeSize = 2f;
+    [SerializeField, Range(0, 32)] private int maxChargePierce = 2;
     [SerializeField, Min(0f)] private float chargeTimePerAmmo = 0.5f;
     [SerializeField, Min(0f)] private float chargeDamagePerAmmo = 0.5f;
     [SerializeField, Min(0f)] private float chargeSizePerAmmo = 1f / 6f;
@@ -51,6 +53,7 @@ public class WeaponScriptableObject : ScriptableObject
     public float SpreadAngle => Mathf.Clamp(Safe(spreadAngle, 0f), 0f, 180f);
     public float Knockback => Safe(knockback, 0f);
     public float CriticalChance => Mathf.Clamp01(Safe(criticalChance, 0f));
+    public int BaseBounces => Mathf.Clamp(baseBounces, 0, 32);
 
     public float SwingAngle => swingAngle;
     public float Range => range;
@@ -61,6 +64,7 @@ public class WeaponScriptableObject : ScriptableObject
     public float ChargeTime => chargeTime;
     public float MaxChargeDamage => maxChargeDamage;
     public float MaxChargeSize => maxChargeSize;
+    public int MaxChargePierce => Mathf.Clamp(maxChargePierce, 0, 32);
     public float ChargeTimePerAmmo => chargeTimePerAmmo;
     public float ChargeDamagePerAmmo => chargeDamagePerAmmo;
     public float ChargeSizePerAmmo => chargeSizePerAmmo;
@@ -72,12 +76,14 @@ public class WeaponScriptableObject : ScriptableObject
     {
         projectiles = Mathf.Clamp(projectiles, 1, 32);
         spreadAngle = SpreadAngle; knockback = Knockback; criticalChance = CriticalChance;
+        baseBounces = BaseBounces;
         magazineSize = Mathf.Clamp(magazineSize, 1, 999);
         reloadTime = Safe(reloadTime, 0.05f);
         bowRecoveryDelay = Safe(bowRecoveryDelay, 0f);
         chargeTime = Safe(chargeTime, 0.05f);
         maxChargeDamage = Safe(maxChargeDamage, 1f);
         maxChargeSize = Safe(maxChargeSize, 1f);
+        maxChargePierce = MaxChargePierce;
         chargeTimePerAmmo = Safe(chargeTimePerAmmo, 0f);
         chargeDamagePerAmmo = Safe(chargeDamagePerAmmo, 0f);
         chargeSizePerAmmo = Safe(chargeSizePerAmmo, 0f);

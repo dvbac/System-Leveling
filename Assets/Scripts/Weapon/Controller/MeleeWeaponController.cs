@@ -69,6 +69,8 @@ public class MeleeWeaponController : WeaponController
 
         sweptAngle = 0f;
         isAttacking = true;
+        GameAudio.Play(GameSound.Sword);
+        if (owner != null) owner.OnUpgradeAttack(weaponData, swordPivot.position, direction, false);
 
         ApplySwingRotation();
 

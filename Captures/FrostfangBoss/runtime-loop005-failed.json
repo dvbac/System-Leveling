@@ -1,0 +1,27 @@
+{
+    "result": "FAIL",
+    "checks": [
+        "AC-001: forest map has no Frostfang encounter",
+        "AC-001: snow starts alive",
+        "AC-001: authored spawn is 15 minutes",
+        "AC-001: paused spawn clock does not advance",
+        "AC-001: no early spawn at 899 seconds",
+        "AC-001: one boss at 900 seconds on streamed snow ground",
+        "AC-001: repeated spawn cannot duplicate boss",
+        "AC-006: forest encounter stays disabled on snow",
+        "AC-002: seven motions have actual source frame counts",
+        "AC-002: valid sprites, no competing ordinary AI or Animator",
+        "AC-002: imported FX impactFrames",
+        "AC-002: imported FX breathFrames",
+        "AC-002: imported FX pillarFrames",
+        "AC-002: imported FX blizzardFrames",
+        "AC-002: animation actually advances",
+        "AC-004: body animation pauses",
+        "AC-005: boss HP exists and never blocks shooting input",
+        "AC-005: boss HP does not overlap player HP",
+        "AC-003: natural attack cycle begins with telegraphed pounce",
+        "AC-003: pounce windup pauses",
+        "AC-003: target locked during windup; no early damage"
+    ],
+    "failure": "System.InvalidOperationException: AC-003: dodging landing circle avoids damage (state=Recover, hp=1000/1000, position=(-4.00, 0.00, 0.00), landing=(0.00, 0.00))\r\n  at FrostfangBossRegression.Check (System.Boolean condition, System.String label) [0x00016] in C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Tests\\FrostfangBossRegression.cs:206 \r\n  at FrostfangBossRegression+<Tests>d__8.MoveNext () [0x0081d] in C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Tests\\FrostfangBossRegression.cs:109 \r\n  at FrostfangBossRegression+<Start>d__7.MoveNext () [0x00041] in C:\\Users\\Arcueid\\Documents\\MAKEGAME\\System Leveling\\Assets\\Tests\\FrostfangBossRegression.cs:42 "
+}

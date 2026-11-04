@@ -63,6 +63,12 @@ public class WeaponAmmoRegression : MonoBehaviour
         sceneWeapon.enabled = false;
         Check(sceneWeapon is MagicBookController && sceneWeapon.State.Ammo == 7, "Scene Mage has one initialized book with seven rounds");
         Check(FindAnyObjectByType<PlayerStats>().GetComponentsInChildren<WeaponController>().Length == 1, "Scene does not fire a second weapon");
+        var audioBank = Resources.Load<GameAudioBank>("GameAudio");
+        Check(FindAnyObjectByType<GameAudio>() != null && audioBank != null && audioBank.Clip(GameSound.Reload) != null, "Live audio service and legacy reload clip exist for the silence regression");
+        sceneWeapon.Tick(0, false); // Clear OnDisable's existing release-to-rearm fence before the test shot.
+        sceneWeapon.Tick(0, true); sceneWeapon.Tick(0, false);
+        Check(sceneWeapon.State.IsReloading && FindObjectsByType<AudioSource>().All(source => source.clip != audioBank.Clip(GameSound.Reload)), "Magazine reload starts without assigning or playing the reload sound");
+        sceneWeapon.Tick(sceneWeapon.State.ReloadDuration, false);
         PureTests();
         sandbox = new GameObject("Weapon Test Fixtures");
         HoldingTests();
@@ -83,7 +89,8 @@ public class WeaponAmmoRegression : MonoBehaviour
         ProjectileWeaponBehaviour bolt = cross.LastProjectile;
         Check(Vector3.Distance(bolt.transform.position, cross.GetComponent<WeaponGrip>().MuzzlePosition) < 0.002f,
             "Actual crossbow bolt originates at its configured muzzle");
-        Check(Near(bolt.CurrentDamage, 10) && Near(bolt.CurrentSpeed, cross.weaponData.Speed), "Bolt receives charged damage and speed from the firing weapon");
+        Check(Near(bolt.CurrentDamage, 15) && Near(bolt.CurrentSpeed, cross.weaponData.Speed), "Bolt receives charged damage and speed from the firing weapon");
+        Check(cross.State.ShotPierceBonus == 2 && bolt.CurrentPierce == 4, "Fully charged crossbow adds two charge pierce to two base targets, hitting four targets");
         GameObject baseBolt = cross.weaponData.Prefab;
         Check(Near(bolt.transform.localScale.x, baseBolt.transform.localScale.x * 2), "Charged bolt sprite scale doubles");
         Collider2D shape = bolt.GetComponent<Collider2D>(); Physics2D.SyncTransforms();
@@ -92,6 +99,18 @@ public class WeaponAmmoRegression : MonoBehaviour
         PlayerStats owner = cross.GetComponentInParent<PlayerStats>();
         owner.experienceCap = 100; owner.IncreaseExperience(100);
         Check(owner.TryApplyUpgrade(UpgradeKind.Damage) && bolt.CurrentDamage == damage, "Already-fired projectile keeps its damage snapshot after an upgrade");
+        MethodInfo chargedHit = typeof(ProjectileWeaponBehaviour).GetMethod("OnTriggerEnter2D", Fields);
+        for (int i = 0; i < 5; i++)
+        {
+            var victim = Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefab/ReferenceEnemies/Skeleton.prefab"), new Vector3(21000 + i * 3, 21000), Quaternion.identity, sandbox.transform);
+            victim.GetComponent<Enemy>().enabled = false; victim.GetComponent<Rigidbody2D>().simulated = false;
+            EnemyStats victimStats = victim.GetComponent<EnemyStats>(); victimStats.currentHealth = 1000;
+            chargedHit.Invoke(bolt, new object[] { victim.GetComponent<Collider2D>() });
+            Check(Near(victimStats.currentHealth, i < 4 ? 1000 - damage : 1000), "Charged bolt damages only its four allowed distinct targets, including same-frame contacts: " + i);
+            int remaining = bolt.CurrentPierce; float hp = victimStats.currentHealth;
+            chargedHit.Invoke(bolt, new object[] { victim.GetComponent<Collider2D>() });
+            Check(victimStats.currentHealth == hp && bolt.CurrentPierce == remaining, "Repeated contact cannot spend another pierce point or deal damage: " + i);
+        }
         // The same EnemyStats can have multiple colliders; one projectile must only damage it once.
         GameObject enemy = Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefab/ReferenceEnemies/Skeleton.prefab"), new Vector3(20000, 20000), Quaternion.identity, sandbox.transform);
         enemy.GetComponent<Enemy>().enabled = false;
@@ -111,17 +130,27 @@ public class WeaponAmmoRegression : MonoBehaviour
         cross.Tick(1.5f, false);
         Check(cross.State.Capacity == 1 && Near(cross.State.ChargeDuration, 1.75f / 1.1f), "Runtime crossbow upgrades add charge ceiling and shorten actual charge duration");
         cross.Tick(0, true); cross.Tick(cross.State.ChargeDuration, true); cross.Tick(0, false);
-        Check(Near(cross.LastProjectile.CurrentDamage, (4 + owner.BaseDamageBonus) * 2.75f * owner.DamageMultiplier), "Upgraded crossbow applies both charge and owner damage bonuses");
+        Check(Near(cross.LastProjectile.CurrentDamage, (6 + owner.BaseDamageBonus) * 2.75f * owner.DamageMultiplier), "Upgraded crossbow applies both charge and owner damage bonuses");
         RangedWeaponController bow = Fixture("Archer");
         bow.Tick(0, true);
-        Check(bow.LastProjectile != null && Near(bow.LastProjectile.CurrentDamage, 4), "Actual bow emits an arrow with configured damage");
+        Check(bow.LastProjectile != null && Near(bow.LastProjectile.CurrentDamage, 6), "Actual bow emits an arrow with configured damage");
+        Check(bow.LastProjectile.CurrentPierce == 2 && gentle.CurrentPierce == 1, "Bow and uncharged crossbow start with two target hits; the tested crossbow bolt has one remaining after its first hit");
+        for (int i = 0; i < 3; i++)
+        {
+            var victim = Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefab/ReferenceEnemies/Skeleton.prefab"), new Vector3(22000 + i * 3, 22000), Quaternion.identity, sandbox.transform);
+            victim.GetComponent<Enemy>().enabled = false; victim.GetComponent<Rigidbody2D>().simulated = false;
+            var victimStats = victim.GetComponent<EnemyStats>(); victimStats.currentHealth = 1000;
+            chargedHit.Invoke(bow.LastProjectile, new object[] { victim.GetComponent<Collider2D>() });
+            Check(Near(victimStats.currentHealth, i < 2 ? 994 : 1000), "Base bow damages exactly two distinct targets; target " + i);
+        }
         int rounds = bow.State.Ammo;
         bow.Tick(100, true); Check(bow.State.Ammo == rounds - 1, "Controller long frame fires at most once");
-        rounds = bow.State.Ammo; bow.Tick(1.2f, false);
+        rounds = bow.State.Ammo; bow.Tick(1.45f, false);
         Check(bow.State.Ammo == rounds + 1, "Actual bow recovers one arrow when released");
+        Check(FindObjectsByType<AudioSource>().All(source => source.clip != audioBank.Clip(GameSound.Reload)), "Crossbow reload and bow recovery also remain silent");
         while (bow.State.Ammo > 0) bow.Tick(0.25f, true);
         int bowShots = bow.ShotsFired;
-        bow.Tick(1.2f, true);
+        bow.Tick(1.45f, true);
         Check(bow.ShotsFired == bowShots + 1 && bow.State.Ammo == 0, "Actual empty bow recovers and fires without releasing held input");
         RangedWeaponController book = Fixture("Mage");
         int count = book.State.Ammo;
@@ -132,7 +161,7 @@ public class WeaponAmmoRegression : MonoBehaviour
         book.weaponData = invalidData;
         book.Tick(1, true); Check(book.State.Ammo == count && book.ShotsFired == 0, "Missing projectile prefab does not spend ammo");
         book.weaponData = AssetDatabase.LoadAssetAtPath<WeaponScriptableObject>("Assets/Scriptable Object/Weapon/Magic Book.asset"); DestroyImmediate(invalidData);
-        book.Tick(0, true); Check(book.LastProjectile != null && Near(book.LastProjectile.CurrentDamage, 3), "Book projectile uses migrated weapon data rather than stale prefab values");
+        book.Tick(0, true); Check(book.LastProjectile != null && Near(book.LastProjectile.CurrentDamage, 6), "Book projectile uses current weapon data rather than stale prefab values");
         cross.Tick(2, false); cross.Tick(0, true); cross.Tick(1, true);
         count = cross.ShotsFired; Time.timeScale = 0; cross.Tick(20, true);
         Check(!cross.State.IsCharging && cross.ShotsFired == count, "Pause cancels charge without emitting a bolt");
@@ -140,9 +169,10 @@ public class WeaponAmmoRegression : MonoBehaviour
         Check(cross.ShotsFired == count, "Releasing after pause does not fire a stored charge");
         book.Tick(0, true, true); count = book.ShotsFired; book.Tick(1, true);
         Check(book.ShotsFired == count, "UI click requires a release before firing resumes");
+        int ammoBeforeCancel = book.State.Ammo;
         book.Tick(0, false); book.Tick(book.State.ReloadDuration, true);
         Check(book.ShotsFired == count + 1, "Ranged input works again after UI release gate");
-        Check(book.State.Ammo == book.State.Capacity - 1, "Actual partial magazine reload completes before the held trigger fires again");
+        Check(book.State.Ammo == ammoBeforeCancel - 1 && !book.State.IsReloading, "Actual trigger cancels partial reload and spends existing ammo without refilling");
         while (book.State.Ammo > 0) book.Tick(0.4f, true);
         count = book.ShotsFired; book.Tick(book.State.ReloadDuration, true);
         Check(book.ShotsFired == count + 1 && book.State.Ammo == book.State.Capacity - 1, "Actual empty magazine reload resumes held fire without another click");
@@ -159,7 +189,7 @@ public class WeaponAmmoRegression : MonoBehaviour
         RangedWeaponState loading = new RangedWeaponState(Data("Magic Book"));
         for (int i = 0; i < 7; i++) loading.Tick(0.45f, true);
         loading.Tick(0.5f, false); float progress = loading.ReloadFraction;
-        Check(loading.IsReloading && Near(progress, 0.5f / 1.6f), "Magazine exposes measured reload progress for HUD");
+        Check(loading.IsReloading && Near(progress, 0.5f / 1.4f), "Magazine exposes measured reload progress for HUD");
 
         // Exercise the actual level-up offers and buttons on a ranged scene owner.
         PlayerStats scenePlayer = sceneWeapon.GetComponentInParent<PlayerStats>();
@@ -184,7 +214,7 @@ public class WeaponAmmoRegression : MonoBehaviour
             yield return null; yield return null;
         }
         sceneWeapon.Tick(0, false);
-        Check(sceneWeapon.State.Capacity == 8 && sceneWeapon.State.Ammo == 7 && Near(sceneWeapon.State.ReloadDuration, 1.6f / 1.2f), "Scene book consumes both real UI upgrades without granting free ammo");
+        Check(sceneWeapon.State.Capacity == 8 && sceneWeapon.State.Ammo == 7 && Near(sceneWeapon.State.ReloadDuration, 1.4f / 1.2f), "Scene book consumes both real UI upgrades without granting free ammo");
         GameObject knight = Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefab/Characters/Knight.prefab"), new Vector3(15000, 15000), Quaternion.identity, sandbox.transform);
         knight.GetComponent<PlayerController>().enabled = false;
         knight.GetComponent<Rigidbody2D>().simulated = false;
@@ -291,25 +321,39 @@ public class WeaponAmmoRegression : MonoBehaviour
     private void PureTests()
     {
         WeaponScriptableObject book = Data("Magic Book"), bow = Data("Bow"), cross = Data("Crossbow");
+        Check(Near(book.Speed, 6.21f) && Near(bow.Speed, 10.35f) && Near(cross.Speed, 12.42f), "All three projectile weapon speeds increase 15%, with melee speed untouched");
+        foreach (float fraction in new[] { 0f, 0.49f, 0.5f, 0.99f, 1f })
+        {
+            var charge = new RangedWeaponState(cross);
+            charge.Tick(0, true); charge.Tick(charge.ChargeDuration * fraction, true);
+            Check(charge.Tick(0, false) && charge.ShotPierceBonus == Mathf.FloorToInt(fraction * 2f), "Crossbow pierce follows released charge fraction: " + fraction);
+            var shot = Instantiate(cross.Prefab).GetComponent<ProjectileWeaponBehaviour>();
+            shot.InitializeShot(cross, null, Vector3.right, charge.ShotDamageFactor, charge.ShotSizeFactor, charge.ShotPierceBonus);
+            Check(shot.CurrentPierce == 2 + Mathf.FloorToInt(fraction * 2f), "Real crossbow projectile combines two base hits with charged pierce: " + fraction);
+            DestroyImmediate(shot.gameObject);
+        }
+        var canceled = new RangedWeaponState(cross); canceled.Tick(0, true); canceled.Tick(canceled.ChargeDuration, true); canceled.Interrupt();
+        Check(!canceled.Tick(0, false) && canceled.ShotPierceBonus == 0 && canceled.Ammo == 1, "Canceling charge cannot fire or retain a piercing bonus");
         RangedWeaponState state = new RangedWeaponState(book);
         Check(state.Ammo == 7 && !state.Tick(1, false), "Book begins full and does not auto-fire");
         Check(state.Tick(0, true) && !state.Tick(0.44f, true) && state.Tick(0.02f, true), "Book enforces 0.45s fire interval");
+        Check(state.ShotPierceBonus == 0, "Book shots never inherit a crossbow charge bonus");
         for (int i = 0; i < 5; i++) state.Tick(0.45f, true);
         Check(state.Ammo == 0 && state.IsReloading, "Seventh book shot starts magazine reload");
-        state.Tick(1.59f, true); Check(state.Ammo == 0, "Book does not refill early");
-        Check(state.Tick(0.02f, true) && state.Ammo == 6 && !state.IsReloading, "Book resumes held fire immediately after its 1.6s reload");
-        state.SetUpgrades(1, 1); Check(state.Capacity == 8 && state.Ammo == 6 && Near(state.ReloadDuration, 1.6f / 1.2f), "Magazine upgrades increase cap without free ammo and shorten reload");
+        state.Tick(1.39f, true); Check(state.Ammo == 0, "Book does not refill early");
+        Check(state.Tick(0.02f, true) && state.Ammo == 6 && !state.IsReloading, "Book resumes held fire immediately after its 1.4s reload");
+        state.SetUpgrades(1, 1); Check(state.Capacity == 8 && state.Ammo == 6 && Near(state.ReloadDuration, 1.4f / 1.2f), "Magazine upgrades increase cap without free ammo and shorten reload");
         state = new RangedWeaponState(bow);
-        for (int i = 0; i < 6; i++) Check(state.Tick(i == 0 ? 0 : 0.5f, true), "Bow can fire ready arrow " + i);
+        for (int i = 0; i < 6; i++) Check(state.Tick(i == 0 ? 0 : 0.3f, true), "Bow can fire ready arrow " + i);
         Check(state.Ammo == 0 && state.Tick(100, true) && state.Ammo == 0, "An empty bow recovers and emits at most one shot during a held long frame");
         state = new RangedWeaponState(bow);
-        for (int i = 0; i < 6; i++) state.Tick(i == 0 ? 0 : 0.5f, true);
-        state.Tick(0.45f, false); state.Tick(0.74f, false); Check(state.Ammo == 0, "Bow waits idle delay plus per-arrow recovery");
-        state.Tick(0.01f, false); Check(state.Ammo == 1, "Bow recovers exactly one arrow after 1.20s");
-        state.Tick(0.75f, false); Check(state.Ammo == 2, "Later bow arrows recover at 0.75s each");
-        state.Tick(0.3f, false); state.Tick(0, true); state.Tick(1.19f, false); Check(state.Ammo == 1, "Resuming fire discards partial recovery rather than duplicating arrows");
+        for (int i = 0; i < 6; i++) state.Tick(i == 0 ? 0 : 0.3f, true);
+        state.Tick(0.45f, false); state.Tick(0.99f, false); Check(state.Ammo == 0, "Bow waits idle delay plus per-arrow recovery");
+        state.Tick(0.01f, false); Check(state.Ammo == 1, "Bow recovers exactly one arrow after 1.45s");
+        state.Tick(1f, false); Check(state.Ammo == 2, "Later bow arrows recover at 1s each");
+        state.Tick(0.3f, false); state.Tick(0, true); state.Tick(1.44f, false); Check(state.Ammo == 1, "Resuming fire discards partial recovery rather than duplicating arrows");
         state.Tick(0.02f, false); Check(state.Ammo == 2, "Recovery restarts normally after fire interruption");
-        state.Interrupt(); state.Tick(1.2f, false);
+        state.Interrupt(); state.Tick(1.45f, false);
         Check(state.Ammo == 3, "A released trigger recovers bow arrows even while clearing an input fence");
         state = new RangedWeaponState(cross);
         state.Tick(0, true); state.Tick(0.75f, true);
@@ -320,7 +364,7 @@ public class WeaponAmmoRegression : MonoBehaviour
         Check(Near(state.ChargeFraction, 1) && state.Ammo == 1, "Crossbow clamps at full charge and waits for release");
         Check(state.Tick(0, false) && Near(state.ShotDamageFactor, 2.5f) && Near(state.ShotSizeFactor, 2), "Full crossbow release reaches approved damage and scale");
         state.SetUpgrades(1, 1);
-        Check(state.Capacity == 1 && Near(state.ChargeDuration, 1.75f / 1.1f) && Near(state.ReloadDuration, 1.25f / 1.1f), "Crossbow ammo upgrade is charge ceiling, not extra arrows");
+        Check(state.Capacity == 1 && Near(state.ChargeDuration, 1.75f / 1.1f) && Near(state.ReloadDuration, 1f / 1.1f), "Crossbow ammo upgrade is charge ceiling, not extra arrows");
         state.Tick(2, false); state.Tick(0, true); state.Tick(100, true); state.Tick(0, false);
         Check(Near(state.ShotDamageFactor, 2.75f) && Near(state.ShotSizeFactor, 2 + 1f / 12f), "Extended ceiling has a greater damage and size reward");
         state = new RangedWeaponState(book);

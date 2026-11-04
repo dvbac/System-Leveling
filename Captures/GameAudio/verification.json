@@ -1,0 +1,11 @@
+{
+    "result":  "PASS",
+    "wavCount":  18,
+    "allOriginalWavHashesUnchanged":  true,
+    "checks":  86,
+    "sceneName":  "LoadoutSelection",
+    "sceneIsDirty":  true,
+    "compileSuccess":  true,
+    "playModeTested":  false,
+    "listeningTested":  false
+}

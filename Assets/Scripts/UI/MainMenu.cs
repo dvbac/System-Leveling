@@ -40,6 +40,7 @@ public class MainMenu : MonoBehaviour
             if (!Application.CanStreamedLevelBeLoaded(LoadoutLauncher.SelectionScene))
                 throw new InvalidOperationException("Selection scene is missing from Build Settings. Run Build Main Menu.");
             IsLoading = true;
+            GameAudio.Play(GameSound.Click);
             GetComponent<CanvasGroup>().interactable = false;
             status.text = "OPENING CHARACTER SELECTION...";
             Time.timeScale = 1f;
@@ -59,6 +60,7 @@ public class MainMenu : MonoBehaviour
     {
         if (IsLoading) return;
         controlsPanel.SetActive(true);
+        GameAudio.Play(GameSound.Click);
         buttons.interactable = false;
         closeControlsButton.Select();
     }
@@ -68,12 +70,14 @@ public class MainMenu : MonoBehaviour
         if (IsLoading) return;
         controlsPanel.SetActive(false);
         buttons.interactable = true;
+        GameAudio.Play(GameSound.Click);
         controlsButton.Select();
     }
 
     public void Quit()
     {
         if (IsLoading || controlsPanel.activeSelf) return;
+        GameAudio.Play(GameSound.Click);
         if (Application.isEditor) { status.text = "QUIT EXITS THE STANDALONE GAME."; return; }
         Application.Quit();
     }

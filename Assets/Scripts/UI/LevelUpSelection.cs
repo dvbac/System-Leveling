@@ -16,6 +16,11 @@ public class LevelUpSelection : MonoBehaviour
     private static LevelUpSelection active;
     private static int blockedThroughFrame = -1;
     private readonly UpgradeKind[] choices = new UpgradeKind[3];
+    private readonly TomeKind[] tomeChoices = new TomeKind[3];
+    private bool choosingTome;
+    private Graphic[] themeGraphics;
+    private Color[] normalGraphicColors;
+    private ColorBlock[] normalButtonColors;
     private bool selecting;
     private bool ownsPause;
     private float previousTimeScale;
@@ -24,6 +29,8 @@ public class LevelUpSelection : MonoBehaviour
     public bool IsOpen => ownsPause;
     public static bool InputBlocked => GameOverController.GameplayStopped || RunMenu.InputBlocked || (active != null && active.IsOpen) || Time.frameCount <= blockedThroughFrame;
     public UpgradeKind ChoiceAt(int index) => choices[index];
+    public TomeKind TomeChoiceAt(int index) => tomeChoices[index];
+    public bool IsChoosingTome => choosingTome;
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
     private static void ResetStatics()
@@ -55,6 +62,12 @@ public class LevelUpSelection : MonoBehaviour
             return;
         }
         active = this;
+        if (themeGraphics == null)
+        {
+            themeGraphics = panel.GetComponentsInChildren<Graphic>(true);
+            normalGraphicColors = themeGraphics.Select(graphic => graphic.color).ToArray();
+            normalButtonColors = buttons.Select(button => button.colors).ToArray();
+        }
         for (int i = 0; i < buttons.Length; i++)
         {
             int index = i;
@@ -73,6 +86,7 @@ public class LevelUpSelection : MonoBehaviour
             foreach (Button button in buttons)
                 if (button != null)
                     button.onClick.RemoveAllListeners();
+        ApplyTheme(false);
         Close();
         if (active == this)
             active = null;
@@ -88,7 +102,7 @@ public class LevelUpSelection : MonoBehaviour
         if (selecting)
             return;
         if (RunMenu.IsPaused) return;
-        if (player.PendingUpgrades <= 0)
+        if (player.PendingUpgrades <= 0 && player.PendingTomeChoices <= 0)
         {
             Close();
             return;
@@ -102,13 +116,39 @@ public class LevelUpSelection : MonoBehaviour
             panel.transform.SetAsLastSibling();
             PresentChoices();
         }
-        queueText.text = player.PendingUpgrades > 1
+        queueText.text = choosingTome ? "RED CARD / CHOOSE ONE TOME / POSITIVES AND NEGATIVES APPLY FOR THIS RUN" : player.PendingUpgrades > 1
             ? $"{player.PendingUpgrades} UPGRADES WAITING  /  CHOOSE ONE TO CONTINUE"
             : "CHOOSE ONE UPGRADE TO CONTINUE";
     }
 
     private void PresentChoices()
     {
+        choosingTome = player.PendingTomeChoices > 0;
+        ApplyTheme(choosingTome);
+        Transform window = queueText.transform.parent;
+        Transform headingTransform = window.Find("Heading"), subtitleTransform = window.Find("Subtitle");
+        if (headingTransform != null && headingTransform.TryGetComponent(out Text heading)) heading.text = choosingTome ? "RED CARD" : "LEVEL UP";
+        if (subtitleTransform != null && subtitleTransform.TryGetComponent(out Text subtitle)) subtitle.text = choosingTome ? "Choose one special Tome. Read its cost carefully." : "Forge your path. Choose your next advantage.";
+        for (int i = 0; i < buttons.Length; i++)
+        {
+            titles[i].resizeTextForBestFit = true; titles[i].resizeTextMinSize = 12; titles[i].resizeTextMaxSize = 22;
+            descriptions[i].resizeTextForBestFit = true; descriptions[i].resizeTextMinSize = 10; descriptions[i].resizeTextMaxSize = 16;
+            symbols[i].resizeTextForBestFit = true; symbols[i].resizeTextMinSize = 10; symbols[i].resizeTextMaxSize = 20;
+        }
+        if (choosingTome)
+        {
+            TomeKind[] tomePool = ((TomeKind[])System.Enum.GetValues(typeof(TomeKind))).Where(player.CanReceiveTome).ToArray();
+            for (int i = 0; i < tomeChoices.Length; i++)
+            {
+                int pick = Random.Range(i, tomePool.Length);
+                TomeKind swap = tomePool[i]; tomePool[i] = tomePool[pick]; tomePool[pick] = swap;
+                tomeChoices[i] = tomePool[i];
+                symbols[i].color = new Color32(255, 105, 125, 255);
+                titles[i].text = TomeInfo.Title(tomePool[i]); descriptions[i].text = TomeInfo.Description(tomePool[i]); symbols[i].text = "TOME";
+            }
+            ArmChoiceInput();
+            return;
+        }
         UpgradeKind[] pool = ((UpgradeKind[])System.Enum.GetValues(typeof(UpgradeKind))).Where(player.CanReceiveUpgrade).ToArray();
         for (int i = 0; i < choices.Length; i++)
         {
@@ -120,7 +160,48 @@ public class LevelUpSelection : MonoBehaviour
             titles[i].text = Title(pool[i]);
             descriptions[i].text = Description(pool[i]);
             symbols[i].text = Symbol(pool[i]);
+            var tree = UpgradeCatalog.Find(pool[i]);
+            symbols[i].color = tree != null ? tree.Color : Color.white;
+            if (tree != null)
+            {
+                int tier = pool[i] == tree.Root ? 1 : pool[i] == tree.Final ? 3 : 2;
+                symbols[i].text += " / T" + tier;
+            }
         }
+        ArmChoiceInput();
+    }
+
+    private void ApplyTheme(bool red)
+    {
+        if (themeGraphics == null) return;
+        for (int i = 0; i < themeGraphics.Length; i++)
+        {
+            Graphic graphic = themeGraphics[i];
+            if (graphic == null) continue;
+            if (!red) { graphic.color = normalGraphicColors[i]; continue; }
+            if (graphic is Text)
+                graphic.color = graphic.name == "Heading" || graphic.name == "Title" ? new Color32(255, 235, 236, 255)
+                    : graphic.name == "Description" || graphic.name == "Eyebrow" || graphic.name == "Queue" ? new Color32(235, 183, 191, 255) : new Color32(255, 105, 125, 255);
+            else
+                graphic.color = graphic.name.Contains("Border") ? new Color32(246, 63, 86, 255)
+                    : graphic.gameObject == panel ? new Color32(27, 2, 9, 210)
+                    : graphic.name.Contains("Card") ? new Color32(74, 16, 31, 255) : new Color32(35, 8, 16, 255);
+        }
+        for (int i = 0; i < buttons.Length; i++)
+        {
+            if (buttons[i] == null) continue;
+            ColorBlock colors = normalButtonColors[i];
+            if (red)
+            {
+                colors.highlightedColor = colors.selectedColor = new Color(1.45f, 1.08f, 1.08f);
+                colors.pressedColor = new Color(0.8f, 0.6f, 0.65f);
+            }
+            buttons[i].colors = colors;
+        }
+    }
+
+    private void ArmChoiceInput()
+    {
         openedFrame = Time.frameCount;
         if (EventSystem.current != null)
             EventSystem.current.SetSelectedGameObject(buttons[0].gameObject);
@@ -132,11 +213,12 @@ public class LevelUpSelection : MonoBehaviour
         if (player.IsDead || GameOverController.GameplayStopped || !ownsPause || selecting || index < 0 || index >= choices.Length || Time.frameCount <= openedFrame)
             return;
         selecting = true;
-        bool applied = player.TryApplyUpgrade(choices[index]);
+        bool applied = choosingTome ? player.TryApplyTome(tomeChoices[index]) : player.TryApplyUpgrade(choices[index]);
         selecting = false;
         if (!applied)
             return;
-        if (player.PendingUpgrades > 0)
+        GameAudio.Play(GameSound.Upgrade);
+        if (player.PendingUpgrades > 0 || player.PendingTomeChoices > 0)
             PresentChoices();
         Sync();
     }
@@ -159,6 +241,7 @@ public class LevelUpSelection : MonoBehaviour
 
     public static string Title(UpgradeKind kind)
     {
+        if (UpgradeCatalog.IsNew(kind)) return UpgradeCatalog.Title(kind);
         switch (kind)
         {
             case UpgradeKind.Damage: return "POWER";
@@ -177,6 +260,7 @@ public class LevelUpSelection : MonoBehaviour
 
     public static string Description(UpgradeKind kind)
     {
+        if (UpgradeCatalog.IsNew(kind)) return UpgradeCatalog.Description(kind);
         switch (kind)
         {
             case UpgradeKind.Damage: return "+1 BASE DAMAGE\n\nApplied before damage\npercentage bonuses.";
@@ -195,6 +279,7 @@ public class LevelUpSelection : MonoBehaviour
 
     public static string Symbol(UpgradeKind kind)
     {
+        if (UpgradeCatalog.IsNew(kind)) return UpgradeCatalog.Find(kind).Symbol;
         switch (kind)
         {
             case UpgradeKind.Damage: return "ATK";

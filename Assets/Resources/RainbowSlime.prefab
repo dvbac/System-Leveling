@@ -1,0 +1,109 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &3435988724175592878
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 303186445221693202, guid: 0dd99e9b51df2874d95eb0dd187ab4a5, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 303186445221693202, guid: 0dd99e9b51df2874d95eb0dd187ab4a5, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 303186445221693202, guid: 0dd99e9b51df2874d95eb0dd187ab4a5, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 303186445221693202, guid: 0dd99e9b51df2874d95eb0dd187ab4a5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 303186445221693202, guid: 0dd99e9b51df2874d95eb0dd187ab4a5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 303186445221693202, guid: 0dd99e9b51df2874d95eb0dd187ab4a5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 303186445221693202, guid: 0dd99e9b51df2874d95eb0dd187ab4a5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 303186445221693202, guid: 0dd99e9b51df2874d95eb0dd187ab4a5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 303186445221693202, guid: 0dd99e9b51df2874d95eb0dd187ab4a5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 303186445221693202, guid: 0dd99e9b51df2874d95eb0dd187ab4a5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 303186445221693202, guid: 0dd99e9b51df2874d95eb0dd187ab4a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 303186445221693202, guid: 0dd99e9b51df2874d95eb0dd187ab4a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 303186445221693202, guid: 0dd99e9b51df2874d95eb0dd187ab4a5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3069729517584759444, guid: 0dd99e9b51df2874d95eb0dd187ab4a5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 4723107735738678597, guid: 61bb0be4cafe7b546bcb5f78cff4d7f9, type: 3}
+    - target: {fileID: 3296609391984318719, guid: 0dd99e9b51df2874d95eb0dd187ab4a5, type: 3}
+      propertyPath: chasesPlayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5546970013595590121, guid: 0dd99e9b51df2874d95eb0dd187ab4a5, type: 3}
+      propertyPath: m_Name
+      value: RainbowSlime
+      objectReference: {fileID: 0}
+    - target: {fileID: 5749937526905207485, guid: 0dd99e9b51df2874d95eb0dd187ab4a5, type: 3}
+      propertyPath: enemyData
+      value: 
+      objectReference: {fileID: 11400000, guid: 219a28395ce8fdb4e8564c32c19e4063, type: 2}
+    - target: {fileID: 6723768029808134897, guid: 0dd99e9b51df2874d95eb0dd187ab4a5, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: edf8869b974a8324991b9644df0475e9, type: 2}
+    m_RemovedComponents:
+    - {fileID: 4921163586479446214, guid: 0dd99e9b51df2874d95eb0dd187ab4a5, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5546970013595590121, guid: 0dd99e9b51df2874d95eb0dd187ab4a5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8641026821835744362}
+  m_SourcePrefab: {fileID: 100100000, guid: 0dd99e9b51df2874d95eb0dd187ab4a5, type: 3}
+--- !u!1 &7157871672255578183 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5546970013595590121, guid: 0dd99e9b51df2874d95eb0dd187ab4a5, type: 3}
+  m_PrefabInstance: {fileID: 3435988724175592878}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8641026821835744362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7157871672255578183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 552fa814a3db9d945aeeee2fb1a6eb58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RainbowSlime
+  redCardPrefab: {fileID: 4115750084277347873, guid: c37c14afcf869a74eb3a64aa7046a0a2, type: 3}

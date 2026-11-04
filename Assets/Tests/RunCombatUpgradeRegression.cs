@@ -79,14 +79,15 @@ public class RunCombatUpgradeRegression : MonoBehaviour
             holder.PointerPosition = (Vector2)holder.transform.position + Vector2.right * 10;
             weapon.enabled = true;
             ProjectileWeaponBehaviour[] first = Fire(weapon);
+            Check(first.All(shot => shot.CurrentPierce == (name == "Crossbow" ? 4 : name == "Bow" ? 2 : 1)), "Each multishot path snapshots the correct charged or normal pierce budget");
             foreach (var projectile in first) projectile.enabled = false;
             Check(first.Length == 2 && Near(Vector2.Angle(first[0].transform.right, first[1].transform.right), 10f), name + ": real shot creates a symmetric ten-degree two-projectile fan");
             Check(first.All(shot => Near(shot.CurrentDamage, weapon.weaponData.Damage * 0.9f * weapon.State.ShotDamageFactor)), "Double Shot damage penalty applies to each path, including crossbow charge");
-            Check(weapon.IsAttacking && Near(movement.MovementMultiplier, 0.2f), "Firing reduces actual movement multiplier to 20%");
+            Check(weapon.IsAttacking && Near(movement.MovementMultiplier, 0.45f), "Firing leaves movement at 45% of normal speed");
             Rigidbody2D playerBody = player.GetComponent<Rigidbody2D>(); Vector2 beforeMove = playerBody.position;
             Set(movement, "moveInput", Vector2.right); Call(movement, "FixedUpdate");
             yield return new WaitForFixedUpdate();
-            Check(Mathf.Abs(playerBody.position.x - beforeMove.x - player.currentMoveSpeed * 0.2f * Time.fixedDeltaTime) < 0.002f, "Real Rigidbody2D movement covers only 20% of the normal attack-frame distance");
+            Check(Mathf.Abs(playerBody.position.x - beforeMove.x - player.currentMoveSpeed * 0.45f * Time.fixedDeltaTime) < 0.002f, "Real Rigidbody2D movement covers 45% of the normal attack-frame distance");
             Set(movement, "moveInput", Vector2.zero);
             weapon.Tick(0.01f, false);
             Check(!weapon.IsAttacking && Near(movement.MovementMultiplier, 1f), "Trigger release/reload restores full movement speed");
@@ -130,7 +131,7 @@ public class RunCombatUpgradeRegression : MonoBehaviour
             holder.PointerPosition = (Vector2)holder.transform.position + Vector2.right * 10;
             weapon.Tick(0f, true);
             movement.ApplySlow(0.6f, 0.4f);
-            Check(Near(movement.MovementMultiplier, 0.2f), "Attack slowdown takes priority over the weaker Rotwood root slow");
+            Check(Near(movement.MovementMultiplier, 0.45f), "Attack slowdown takes priority over the weaker Rotwood root slow");
             weapon.enabled = false;
             Check(Near(movement.MovementMultiplier, 0.6f), "Disabling a weapon removes only attack slowdown, preserving the root slow");
             yield return new WaitForSeconds(0.45f);
@@ -145,7 +146,7 @@ public class RunCombatUpgradeRegression : MonoBehaviour
             var sword = (MeleeWeaponController)holder.CurrentWeapon;
             Check(!player.CanReceiveUpgrade(UpgradeKind.DoubleShot) && !player.CanReceiveUpgrade(UpgradeKind.Focus) && !player.CanReceiveUpgrade(UpgradeKind.QuickHands), "Sword never offers ranged-only upgrades");
             Call(sword, "Attack");
-            Check(sword.IsAttacking && Near(movement.MovementMultiplier, 0.2f), "Actual sword swing also slows movement to 20%");
+            Check(sword.IsAttacking && Near(movement.MovementMultiplier, 0.45f), "Actual sword swing also leaves movement at 45%");
             sword.enabled = false;
             Check(Near(movement.MovementMultiplier, 1f), "Unequip/disable during a swing cannot leave movement slowed");
             yield return Choose(player, selection, UpgradeKind.PowerBullet, false);

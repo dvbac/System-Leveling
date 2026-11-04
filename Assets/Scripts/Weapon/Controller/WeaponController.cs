@@ -40,6 +40,6 @@ public class WeaponController : MonoBehaviour
         if (weaponData == null)
             return;
 
-        currentCooldown = weaponData.Cooldown / (owner != null ? owner.FireRateMultiplier : 1f);
+        currentCooldown = weaponData.Cooldown / (owner != null ? owner.EffectiveFireRate : 1f);
     }
 }

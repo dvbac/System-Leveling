@@ -1,0 +1,533 @@
+fileFormatVersion: 2
+guid: 52dbdcaa90aedb74d978c05bd6aff59e
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1289092707116949511
+    second: "Frames-1\u20132--Spread-the-forepaws-and-brace-the-hind-legs.-Fra_0"
+  - first:
+      213: 8310550698481724244
+    second: "Frames-1\u20132--Spread-the-forepaws-and-brace-the-hind-legs.-Fra_1"
+  - first:
+      213: 7163822999325122290
+    second: "Frames-1\u20132--Spread-the-forepaws-and-brace-the-hind-legs.-Fra_2"
+  - first:
+      213: -5431898065789161880
+    second: "Frames-1\u20132--Spread-the-forepaws-and-brace-the-hind-legs.-Fra_3"
+  - first:
+      213: 5405507600203829623
+    second: "Frames-1\u20132--Spread-the-forepaws-and-brace-the-hind-legs.-Fra_4"
+  - first:
+      213: -1309793102156370027
+    second: "Frames-1\u20132--Spread-the-forepaws-and-brace-the-hind-legs.-Fra_5"
+  - first:
+      213: -8298415528721406756
+    second: "Frames-1\u20132--Spread-the-forepaws-and-brace-the-hind-legs.-Fra_6"
+  - first:
+      213: -7337873774458374242
+    second: "Frames-1\u20132--Spread-the-forepaws-and-brace-the-hind-legs.-Fra_7"
+  - first:
+      213: -8491538495887351085
+    second: "Frames-1\u20132--Spread-the-forepaws-and-brace-the-hind-legs.-Fra_8"
+  - first:
+      213: 2189952039940094805
+    second: "Frames-1\u20132--Spread-the-forepaws-and-brace-the-hind-legs.-Fra_9"
+  - first:
+      213: -5376988300687197902
+    second: "Frames-1\u20132--Spread-the-forepaws-and-brace-the-hind-legs.-Fra_10"
+  - first:
+      213: -6733225909002840281
+    second: "Frames-1\u20132--Spread-the-forepaws-and-brace-the-hind-legs.-Fra_11"
+  - first:
+      213: 1729650574754400933
+    second: "Frames-1\u20132--Spread-the-forepaws-and-brace-the-hind-legs.-Fra_12"
+  - first:
+      213: -2960300001756711556
+    second: "Frames-1\u20132--Spread-the-forepaws-and-brace-the-hind-legs.-Fra_13"
+  - first:
+      213: -7540294141661839839
+    second: "Frames-1\u20132--Spread-the-forepaws-and-brace-the-hind-legs.-Fra_14"
+  - first:
+      213: -6571358493810381284
+    second: "Frames-1\u20132--Spread-the-forepaws-and-brace-the-hind-legs.-Fra_15"
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: "Frames-1\u20132--Spread-the-forepaws-and-brace-the-hind-legs.-Fra_0"
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 6
+        width: 123
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 700a04abcf6c3e110800000000000000
+      internalID: 1289092707116949511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Frames-1\u20132--Spread-the-forepaws-and-brace-the-hind-legs.-Fra_1"
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 6
+        width: 123
+        height: 115
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45ba0ee34d1055370800000000000000
+      internalID: 8310550698481724244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Frames-1\u20132--Spread-the-forepaws-and-brace-the-hind-legs.-Fra_2"
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 6
+        width: 122
+        height: 110
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2fe1c84ff030b6360800000000000000
+      internalID: 7163822999325122290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Frames-1\u20132--Spread-the-forepaws-and-brace-the-hind-legs.-Fra_3"
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 6
+        width: 120
+        height: 111
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 86e61841d750e94b0800000000000000
+      internalID: -5431898065789161880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Frames-1\u20132--Spread-the-forepaws-and-brace-the-hind-legs.-Fra_4"
+      rect:
+        serializedVersion: 2
+        x: 514
+        y: 6
+        width: 120
+        height: 107
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 771d2d4d588340b40800000000000000
+      internalID: 5405507600203829623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Frames-1\u20132--Spread-the-forepaws-and-brace-the-hind-legs.-Fra_5"
+      rect:
+        serializedVersion: 2
+        x: 642
+        y: 6
+        width: 120
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 59f66b8fc1ea2dde0800000000000000
+      internalID: -1309793102156370027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Frames-1\u20132--Spread-the-forepaws-and-brace-the-hind-legs.-Fra_6"
+      rect:
+        serializedVersion: 2
+        x: 770
+        y: 6
+        width: 121
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd4a9f32b0b16dc80800000000000000
+      internalID: -8298415528721406756
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Frames-1\u20132--Spread-the-forepaws-and-brace-the-hind-legs.-Fra_7"
+      rect:
+        serializedVersion: 2
+        x: 898
+        y: 6
+        width: 124
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e97f0ca0ea2aa2a90800000000000000
+      internalID: -7337873774458374242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Frames-1\u20132--Spread-the-forepaws-and-brace-the-hind-legs.-Fra_8"
+      rect:
+        serializedVersion: 2
+        x: 1026
+        y: 6
+        width: 125
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d264146abef72a80800000000000000
+      internalID: -8491538495887351085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Frames-1\u20132--Spread-the-forepaws-and-brace-the-hind-legs.-Fra_9"
+      rect:
+        serializedVersion: 2
+        x: 1154
+        y: 6
+        width: 125
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55b75c707c5446e10800000000000000
+      internalID: 2189952039940094805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Frames-1\u20132--Spread-the-forepaws-and-brace-the-hind-legs.-Fra_10"
+      rect:
+        serializedVersion: 2
+        x: 1282
+        y: 6
+        width: 125
+        height: 106
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 239bb1801a91165b0800000000000000
+      internalID: -5376988300687197902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Frames-1\u20132--Spread-the-forepaws-and-brace-the-hind-legs.-Fra_11"
+      rect:
+        serializedVersion: 2
+        x: 1410
+        y: 6
+        width: 125
+        height: 110
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 727dd6db5b6ce82a0800000000000000
+      internalID: -6733225909002840281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Frames-1\u20132--Spread-the-forepaws-and-brace-the-hind-legs.-Fra_12"
+      rect:
+        serializedVersion: 2
+        x: 1538
+        y: 6
+        width: 125
+        height: 115
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5aa49cd9804f00810800000000000000
+      internalID: 1729650574754400933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Frames-1\u20132--Spread-the-forepaws-and-brace-the-hind-legs.-Fra_13"
+      rect:
+        serializedVersion: 2
+        x: 1666
+        y: 6
+        width: 125
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c75f3be25d6eae6d0800000000000000
+      internalID: -2960300001756711556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Frames-1\u20132--Spread-the-forepaws-and-brace-the-hind-legs.-Fra_14"
+      rect:
+        serializedVersion: 2
+        x: 1794
+        y: 6
+        width: 124
+        height: 113
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12e7948ad6e7b5790800000000000000
+      internalID: -7540294141661839839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Frames-1\u20132--Spread-the-forepaws-and-brace-the-hind-legs.-Fra_15"
+      rect:
+        serializedVersion: 2
+        x: 1922
+        y: 6
+        width: 123
+        height: 111
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c1eafa43448ddc4a0800000000000000
+      internalID: -6571358493810381284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      "Frames-1\u20132--Spread-the-forepaws-and-brace-the-hind-legs.-Fra_0": 1289092707116949511
+      "Frames-1\u20132--Spread-the-forepaws-and-brace-the-hind-legs.-Fra_1": 8310550698481724244
+      "Frames-1\u20132--Spread-the-forepaws-and-brace-the-hind-legs.-Fra_10": -5376988300687197902
+      "Frames-1\u20132--Spread-the-forepaws-and-brace-the-hind-legs.-Fra_11": -6733225909002840281
+      "Frames-1\u20132--Spread-the-forepaws-and-brace-the-hind-legs.-Fra_12": 1729650574754400933
+      "Frames-1\u20132--Spread-the-forepaws-and-brace-the-hind-legs.-Fra_13": -2960300001756711556
+      "Frames-1\u20132--Spread-the-forepaws-and-brace-the-hind-legs.-Fra_14": -7540294141661839839
+      "Frames-1\u20132--Spread-the-forepaws-and-brace-the-hind-legs.-Fra_15": -6571358493810381284
+      "Frames-1\u20132--Spread-the-forepaws-and-brace-the-hind-legs.-Fra_2": 7163822999325122290
+      "Frames-1\u20132--Spread-the-forepaws-and-brace-the-hind-legs.-Fra_3": -5431898065789161880
+      "Frames-1\u20132--Spread-the-forepaws-and-brace-the-hind-legs.-Fra_4": 5405507600203829623
+      "Frames-1\u20132--Spread-the-forepaws-and-brace-the-hind-legs.-Fra_5": -1309793102156370027
+      "Frames-1\u20132--Spread-the-forepaws-and-brace-the-hind-legs.-Fra_6": -8298415528721406756
+      "Frames-1\u20132--Spread-the-forepaws-and-brace-the-hind-legs.-Fra_7": -7337873774458374242
+      "Frames-1\u20132--Spread-the-forepaws-and-brace-the-hind-legs.-Fra_8": -8491538495887351085
+      "Frames-1\u20132--Spread-the-forepaws-and-brace-the-hind-legs.-Fra_9": 2189952039940094805
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

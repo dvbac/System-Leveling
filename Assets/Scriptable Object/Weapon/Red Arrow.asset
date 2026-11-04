@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c6ab5874045d5f4098490eecb61e348, type: 3}
+  m_Name: Red Arrow
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponScriptableObject
+  prefab: {fileID: 1324045573548823952, guid: 5784fcd0459772e4a92ae28fadd6f0ec, type: 3}
+  damage: 3
+  speed: 6
+  cooldown: 0.7
+  pierce: 1
+  projectiles: 1
+  spreadAngle: 60
+  knockback: 2
+  criticalChance: 0
+  baseBounces: 1
+  swingAngle: 0
+  range: 0
+  fireMode: 0
+  magazineSize: 9
+  reloadTime: 1.5
+  bowRecoveryDelay: 0.45
+  chargeTime: 3
+  maxChargeDamage: 4
+  maxChargeSize: 2
+  maxChargePierce: 2
+  chargeTimePerAmmo: 0.5
+  chargeDamagePerAmmo: 0.5
+  chargeSizePerAmmo: 0.16666667
+  reloadSpeedPerLevel: 0.2

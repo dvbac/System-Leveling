@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Rendering;
 
-// Runtime-only variant: prefab art, animation, combat data and drops remain unchanged.
+// Runtime-only variant; base art/combat/loot stay unchanged, with an extra treasure reward on defeat.
 [DisallowMultipleComponent]
 [RequireComponent(typeof(EnemyStats), typeof(SpriteRenderer))]
 [DefaultExecutionOrder(100)]
@@ -11,6 +11,7 @@ public class EliteEnemy : MonoBehaviour
     private readonly SpriteRenderer[] outline = new SpriteRenderer[8];
     private Material outlineMaterial;
     private bool configured;
+    private bool treasureDropped;
     public float SizeMultiplier { get; private set; } = 1f;
 
     public void Configure(EliteSpawnSettings settings)
@@ -19,7 +20,7 @@ public class EliteEnemy : MonoBehaviour
         configured = true;
         settings.Validate();
         EnemyStats stats = GetComponent<EnemyStats>();
-        stats.currentHealth *= settings.healthMultiplier;
+        stats.ScaleHealth(settings.healthMultiplier);
         stats.currentMoveSpeed *= settings.speedMultiplier;
         stats.currentDamage *= settings.damageMultiplier;
         SizeMultiplier = settings.sizeMultiplier;
@@ -45,6 +46,17 @@ public class EliteEnemy : MonoBehaviour
             outline[i].sharedMaterial = outlineMaterial;
         }
         LateUpdate();
+    }
+
+    public EliteTreasureChest DropTreasure()
+    {
+        if (!Application.isPlaying || treasureDropped || GameOverController.GameplayStopped || !GetComponent<EnemyStats>().IsDead) return null;
+        var prefab = Resources.Load<EliteTreasureChest>("EliteTreasureChest");
+        if (prefab == null) { Debug.LogError("EliteTreasureChest resource is missing. Run Build Elite Treasure Chest.", this); return null; }
+        treasureDropped = true;
+        var chest = Instantiate(prefab, transform.position, Quaternion.identity);
+        chest.RollReward();
+        return chest;
     }
 
     private void LateUpdate()

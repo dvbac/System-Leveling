@@ -29,7 +29,7 @@ Master volume changes `AudioListener.volume` immediately (0–100%, non-finite v
 
 The separate **Soul wallet** is persistent and is not cleared by Quick Restart, Another Fate, Main Menu or a new application session. Selection shows the saved total; the gameplay HUD starts at zero and shows only Soul earned this run. Main Menu hides Soul. Both victory and defeat show the frozen gameplay time (MM:SS, pauses excluded) and Soul earned. Soul spending/permanent upgrades are not implemented yet. See `docs/soul-currency.md`.
 
-Level-up choices now also include Double Shot, Focus, Power Bullet, Quick Hands and Critical. These are run-only rewards, reset by Quick Restart; no Soul is spent. Active weapon use leaves the player at 20% movement speed. See `docs/run-combat-upgrades.md` for effects, compatibility and stacking.
+Level-up choices now also include Double Shot, Focus, Power Bullet, Quick Hands and Critical. These are run-only rewards, reset by Quick Restart; no Soul is spent. Active weapon use leaves the player at 45% movement speed. See `docs/run-combat-upgrades.md` for effects, compatibility and stacking.
 
 ## Gameplay timer
 

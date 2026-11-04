@@ -1,0 +1,36 @@
+{
+    "result":  "PASS",
+    "utc":  "2026-11-02T06:23:11.9675579Z",
+    "attackMoveSpeed":  "45% of normal",
+    "projectileSpeedIncrease":  "15%",
+    "crossbowChargePierce":  "floor(chargeFraction * 2), up to 3 distinct targets per stock bolt",
+    "chargeIndicator":  "Amber bracket above character; white during reload",
+    "cursorAndSettingsUnchanged":  true,
+    "reports":  [
+                    {
+                        "report":  "ammo-regression.json",
+                        "result":  "PASS",
+                        "checks":  136
+                    },
+                    {
+                        "report":  "hud-regression.json",
+                        "result":  "PASS",
+                        "checks":  275
+                    },
+                    {
+                        "report":  "combat-regression.json",
+                        "result":  "PASS",
+                        "checks":  222
+                    },
+                    {
+                        "report":  "boss-regression.json",
+                        "result":  "PASS",
+                        "checks":  49
+                    }
+                ],
+    "totalChecks":  682,
+    "notChecked":  [
+                       "Standalone build",
+                       "Long-session balance and target-device performance"
+                   ]
+}

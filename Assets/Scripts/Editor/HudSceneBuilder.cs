@@ -216,6 +216,7 @@ public static class HudSceneBuilder
         }
         if (root.transform.Find("Game Over Modal") == null)
             AddGameOver(root);
+        CompactHudSetup.Apply(root);
     }
 
     private static void AddGameOver(GameObject root)

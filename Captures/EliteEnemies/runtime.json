@@ -1,6 +1,6 @@
 {
     "result": "PASS",
-    "utc": "2026-11-01T18:09:23.4340482Z",
+    "utc": "2026-11-04T15:30:53.8728156Z",
     "failure": "",
     "checks": [
         "Red silhouette shader imports, compiles and is included through Resources",
@@ -11,7 +11,7 @@
         "Exactly one elite spawns at 05:00",
         "Elite uses the active map's enemy pool, never the other biome",
         "Elite has its own population and still spawns when the normal cap is full",
-        "Elite has multiplied runtime HP, damage and movement speed (Slime: 50/8/2.5)",
+        "Elite has multiplied runtime HP, damage and movement speed (Slime: 30/6/2.5)",
         "Elite scales the original map enemy and collider together",
         "Configuring twice cannot stack elite bonuses",
         "Elite starts outside the gameplay camera",
@@ -39,7 +39,7 @@
         "Exactly one elite spawns at 05:00",
         "Elite uses the active map's enemy pool, never the other biome",
         "Elite has its own population and still spawns when the normal cap is full",
-        "Elite has multiplied runtime HP, damage and movement speed (SnowWolf: 90/14/4.5)",
+        "Elite has multiplied runtime HP, damage and movement speed (IceSlime: 30/6/2.5)",
         "Elite scales the original map enemy and collider together",
         "Configuring twice cannot stack elite bonuses",
         "Elite starts outside the gameplay camera",

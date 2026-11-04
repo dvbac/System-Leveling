@@ -25,6 +25,9 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private HordeSpawnSettings horde = new HordeSpawnSettings();
     [Header("Elite - one every 5 minutes (independent population)")]
     [SerializeField] private EliteSpawnSettings elite = new EliteSpawnSettings();
+    [Header("Rainbow slime - minute 7 / 12, one or two per run")]
+    [SerializeField] private RainbowSlime rainbowSlimePrefab;
+    [SerializeField, Range(0f, 1f)] private float rainbowSpawnChance = 0.5f;
     [Header("Placement")]
     [SerializeField] private SpawnPlacementSettings placement = new SpawnPlacementSettings();
     [Header("Diagnostics")]
@@ -35,6 +38,9 @@ public class EnemySpawner : MonoBehaviour
     private readonly List<EnemyStats> normalEnemies = new List<EnemyStats>();
     private readonly List<EnemyStats> hordeEnemies = new List<EnemyStats>();
     private readonly List<EnemyStats> eliteEnemies = new List<EnemyStats>();
+    private readonly List<EnemyStats> rainbowEnemies = new List<EnemyStats>();
+    private readonly RainbowSpawnSchedule rainbowSchedule = new RainbowSpawnSchedule();
+    private float rainbowRetryAt;
     private float nextEliteAt = 300f, eliteRetryAt;
     private bool elitePending;
     private readonly Collider2D[] obstacleHit = new Collider2D[1];
@@ -63,6 +69,7 @@ public class EnemySpawner : MonoBehaviour
     public int TotalNormalSpawned { get; private set; }
     public int TotalHordeSpawned { get; private set; }
     public int TotalEliteSpawned { get; private set; }
+    public int TotalRainbowSpawned => rainbowSchedule.Spawned;
     public int EliteAliveCount => eliteEnemies.Count;
     public string LastPlacementFailure { get; private set; }
     public SpawnPhase CurrentPhase => SpawnSelection.PhaseAt(phases, ElapsedTime);
@@ -75,6 +82,7 @@ public class EnemySpawner : MonoBehaviour
         cycle = new HordeSpawnCycle(horde);
         cycle.Log = Log;
         normalSpawnTimer = initialDelay;
+        if (rainbowSlimePrefab == null) rainbowSlimePrefab = Resources.Load<RainbowSlime>("RainbowSlime");
         foreach (SpawnPhase phase in phases) if (phase != null) WarnInvalidEntries(phase.enemies);
         if (horde.enabled) WarnInvalidEntries(horde.enemies);
     }
@@ -86,6 +94,7 @@ public class EnemySpawner : MonoBehaviour
     public void ValidateConfiguration()
     {
         initialDelay = SpawnSelection.NonNegative(initialDelay);
+        rainbowSpawnChance = Mathf.Clamp01(SpawnSelection.NonNegative(rainbowSpawnChance));
         normalPopulationCap = Mathf.Max(1, normalPopulationCap);
         normalSpawnsPerFrame = Mathf.Clamp(normalSpawnsPerFrame, 1, 64);
         if (placement == null) placement = new SpawnPlacementSettings();
@@ -117,9 +126,11 @@ public class EnemySpawner : MonoBehaviour
         RemoveDead(normalEnemies);
         RemoveDead(hordeEnemies);
         RemoveDead(eliteEnemies);
+        RemoveDead(rainbowEnemies);
         ElapsedTime += delta;
         TickNormal(delta);
         TickElite();
+        TickRainbow();
 
         // A pending/spawning horde completes even if its toggle is disabled mid-event.
         if (horde.enabled || HordeState == HordeSpawnState.Spawning)
@@ -140,6 +151,29 @@ public class EnemySpawner : MonoBehaviour
             }
             else if (cycle.State == HordeSpawnState.Spawning) DeployFrame(delta);
         }
+    }
+
+    private void TickRainbow()
+    {
+        if (rainbowSlimePrefab == null) return;
+        rainbowSchedule.Advance(ElapsedTime, rainbowSpawnChance, () => Random.value);
+        if (rainbowSchedule.Pending <= 0 || ElapsedTime < rainbowRetryAt) return;
+        rainbowRetryAt = ElapsedTime + 1f;
+        if (!TryPosition(false, out Vector3 position, 1.5f)) return;
+        var slime = Instantiate(rainbowSlimePrefab, position, Quaternion.identity, enemyContainer);
+        slime.Configure(this); rainbowEnemies.Add(slime.GetComponent<EnemyStats>());
+        rainbowSchedule.RecordSpawn();
+        Log("Rainbow slime appeared. Defeat it within 60 seconds for a red Tome card.");
+    }
+
+    public bool IsWalkableForSpecial(Vector3 position, float radius)
+    {
+        if (!OnAllowedGround(position) || !OnAllowedGround(position + Vector3.up * radius) ||
+            !OnAllowedGround(position - Vector3.up * radius) || !OnAllowedGround(position + Vector3.right * radius) ||
+            !OnAllowedGround(position - Vector3.right * radius)) return false;
+        if (obstacleLayers.value == 0) return true;
+        var filter = new ContactFilter2D(); filter.SetLayerMask(obstacleLayers); filter.useTriggers = false;
+        return Physics2D.OverlapCircle(position, radius, filter, obstacleHit) == 0;
     }
 
     private void TickElite()
@@ -363,7 +397,7 @@ public class EnemySpawner : MonoBehaviour
                 return Reject("Solid obstacle overlap");
         }
         if (TooClose(normalEnemies, position, sizeMultiplier) || TooClose(hordeEnemies, position, sizeMultiplier) ||
-            TooClose(eliteEnemies, position, sizeMultiplier)) return Reject("Enemy separation");
+            TooClose(eliteEnemies, position, sizeMultiplier) || TooClose(rainbowEnemies, position, sizeMultiplier)) return Reject("Enemy separation");
         LastPlacementFailure = "";
         return true;
     }
